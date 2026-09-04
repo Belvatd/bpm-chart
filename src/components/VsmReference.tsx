@@ -1,0 +1,351 @@
+import { useState } from 'react';
+import {
+  vsmCategoriesList,
+  vsmSymbolsList,
+  type VsmCategory,
+  type VsmSymbolItem,
+} from '../data/vsmSymbolsData';
+
+// Miniatur Simbol SVG Standar Lean VSM
+function VsmSymbolIcon({ shapeType }: { shapeType: string }) {
+  switch (shapeType) {
+    case 'vsm-customer-box':
+      return (
+        <svg width="56" height="42" viewBox="0 0 56 42">
+          {/* Atap Pabrik Bergigi VSM */}
+          <polygon points="6,12 14,4 22,12 30,4 38,12 46,4 54,12" fill="#2563eb" />
+          <rect x="6" y="12" width="48" height="26" fill="#eff6ff" stroke="#2563eb" strokeWidth="2" rx="2" />
+          <text x="30" y="28" textAnchor="middle" fontSize="7.5" fontWeight="bold" fill="#1e3a8a">CUSTOMER</text>
+        </svg>
+      );
+    case 'vsm-process-box':
+      return (
+        <svg width="56" height="42" viewBox="0 0 56 42">
+          <rect x="4" y="4" width="48" height="34" fill="#ffffff" stroke="#1e293b" strokeWidth="2" rx="3" />
+          <rect x="4" y="4" width="48" height="11" fill="#1e293b" rx="2" />
+          <text x="28" y="12" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#ffffff">PROSES</text>
+          <text x="28" y="27" textAnchor="middle" fontSize="7" fill="#475569">Operasi</text>
+        </svg>
+      );
+    case 'vsm-data-box':
+      return (
+        <svg width="56" height="42" viewBox="0 0 56 42">
+          <rect x="4" y="3" width="48" height="36" fill="#f8fafc" stroke="#0284c7" strokeWidth="1.5" rx="2" />
+          <line x1="4" y1="15" x2="52" y2="15" stroke="#cbd5e1" />
+          <line x1="4" y1="27" x2="52" y2="27" stroke="#cbd5e1" />
+          <text x="7" y="12" fontSize="6" fontWeight="bold" fill="#0284c7">C/T = 8m</text>
+          <text x="7" y="23" fontSize="6" fill="#64748b">C/O = 0m</text>
+          <text x="7" y="35" fontSize="6" fill="#64748b">1 Shift</text>
+        </svg>
+      );
+    case 'vsm-inventory-triangle':
+      return (
+        <svg width="48" height="42" viewBox="0 0 48 42">
+          <polygon points="24,2 4,38 44,38" fill="#fef08a" stroke="#ca8a04" strokeWidth="2" />
+          <text x="24" y="31" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="16">I</text>
+        </svg>
+      );
+    case 'vsm-push-arrow':
+      return (
+        <svg width="56" height="32" viewBox="0 0 56 32">
+          {/* Panah Push Belang-Belang Khas VSM */}
+          <path d="M 4,11 L 36,11 L 36,5 L 52,16 L 36,27 L 36,21 L 4,21 Z" fill="#f1f5f9" stroke="#475569" strokeWidth="1.5" />
+          {/* Garis-garis belang */}
+          <line x1="12" y1="11" x2="12" y2="21" stroke="#475569" strokeWidth="1.8" />
+          <line x1="20" y1="11" x2="20" y2="21" stroke="#475569" strokeWidth="1.8" />
+          <line x1="28" y1="11" x2="28" y2="21" stroke="#475569" strokeWidth="1.8" />
+        </svg>
+      );
+    case 'vsm-fifo-lane':
+      return (
+        <svg width="56" height="32" viewBox="0 0 56 32">
+          <line x1="4" y1="8" x2="42" y2="8" stroke="#059669" strokeWidth="2" />
+          <line x1="4" y1="24" x2="42" y2="24" stroke="#059669" strokeWidth="2" />
+          <polygon points="42,4 52,16 42,28" fill="#059669" />
+          <text x="22" y="19" textAnchor="middle" fontSize="7.5" fontWeight="bold" fill="#047857">FIFO</text>
+        </svg>
+      );
+    case 'vsm-supermarket':
+      return (
+        <svg width="48" height="40" viewBox="0 0 48 40">
+          {/* Rak Supermarket Lean */}
+          <path d="M 6,36 L 6,6 L 42,6 L 42,36" fill="none" stroke="#0d9488" strokeWidth="3" />
+          <line x1="6" y1="16" x2="36" y2="16" stroke="#0d9488" strokeWidth="2.5" />
+          <line x1="6" y1="26" x2="36" y2="26" stroke="#0d9488" strokeWidth="2.5" />
+        </svg>
+      );
+    case 'vsm-manual-info':
+      return (
+        <svg width="56" height="30" viewBox="0 0 56 30">
+          <line x1="4" y1="15" x2="44" y2="15" stroke="#64748b" strokeWidth="2" />
+          <polygon points="44,10 52,15 44,20" fill="#64748b" />
+          <text x="25" y="11" textAnchor="middle" fontSize="6.5" fill="#64748b">Nota / Lisan</text>
+        </svg>
+      );
+    case 'vsm-electronic-info':
+      return (
+        <svg width="56" height="32" viewBox="0 0 56 32">
+          {/* Panah Kilat / Lightning Bolt Informasi Digital */}
+          <polyline points="4,16 16,8 24,24 36,8 44,18" fill="none" stroke="#2563eb" strokeWidth="2.2" />
+          <polygon points="43,13 52,21 41,23" fill="#2563eb" />
+          <text x="26" y="30" textAnchor="middle" fontSize="6" fontWeight="bold" fill="#2563eb">Digital/KDS</text>
+        </svg>
+      );
+    case 'vsm-control-box':
+      return (
+        <svg width="56" height="42" viewBox="0 0 56 42">
+          <rect x="4" y="4" width="48" height="34" fill="#f8fafc" stroke="#4f46e5" strokeWidth="2" rx="3" />
+          <text x="28" y="18" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#312e81">CONTROL</text>
+          <text x="28" y="30" textAnchor="middle" fontSize="6" fill="#6366f1">Pusat Jadwal</text>
+        </svg>
+      );
+    case 'vsm-kanban-card':
+      return (
+        <svg width="48" height="38" viewBox="0 0 48 38">
+          <rect x="6" y="5" width="36" height="28" fill="#fffbeb" stroke="#f59e0b" strokeWidth="1.8" rx="2" />
+          <line x1="12" y1="13" x2="36" y2="13" stroke="#d97706" strokeWidth="1.5" />
+          <line x1="12" y1="20" x2="30" y2="20" stroke="#d97706" strokeWidth="1.5" />
+          <line x1="12" y1="26" x2="24" y2="26" stroke="#d97706" strokeWidth="1.5" />
+        </svg>
+      );
+    case 'vsm-kaizen-burst':
+      return (
+        <svg width="52" height="42" viewBox="0 0 52 42">
+          <polygon
+            points="26,2 32,13 44,8 39,20 50,28 37,31 36,41 26,33 16,41 15,31 2,28 13,20 8,8 20,13"
+            fill="#ea580c"
+            stroke="#c2410c"
+            strokeWidth="1.5"
+          />
+          <text x="26" y="24" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#ffffff">KAIZEN</text>
+        </svg>
+      );
+    case 'vsm-operator':
+      return (
+        <svg width="44" height="42" viewBox="0 0 44 42">
+          <circle cx="22" cy="13" r="7" fill="#f1f5f9" stroke="#475569" strokeWidth="2" />
+          <path d="M 8,36 C 8,25 36,25 36,36" fill="#f1f5f9" stroke="#475569" strokeWidth="2" />
+        </svg>
+      );
+    case 'vsm-timeline-ladder':
+      return (
+        <svg width="56" height="36" viewBox="0 0 56 36">
+          {/* Garis tangga NVA (atas) vs VA (bawah) */}
+          <line x1="4" y1="8" x2="22" y2="8" stroke="#dc2626" strokeWidth="2.5" />
+          <line x1="22" y1="8" x2="22" y2="26" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="2 1" />
+          <line x1="22" y1="26" x2="44" y2="26" stroke="#16a34a" strokeWidth="2.5" />
+          <line x1="44" y1="26" x2="44" y2="8" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="2 1" />
+          <line x1="44" y1="8" x2="54" y2="8" stroke="#dc2626" strokeWidth="2.5" />
+          <text x="13" y="6" textAnchor="middle" fontSize="5" fill="#dc2626" fontWeight="bold">NVA</text>
+          <text x="33" y="34" textAnchor="middle" fontSize="5" fill="#16a34a" fontWeight="bold">VA</text>
+        </svg>
+      );
+    case 'vsm-summary-box':
+      return (
+        <svg width="48" height="44" viewBox="0 0 48 44">
+          <rect x="4" y="3" width="40" height="38" fill="#f1f5f9" stroke="#4338ca" strokeWidth="1.8" rx="3" />
+          <text x="24" y="13" textAnchor="middle" fontSize="5.5" fontWeight="bold" fill="#4338ca">LEAD TIME</text>
+          <line x1="4" y1="16" x2="44" y2="16" stroke="#cbd5e1" />
+          <text x="24" y="26" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#dc2626">22m (NVA)</text>
+          <text x="24" y="36" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#16a34a">12m (VA)</text>
+        </svg>
+      );
+    default:
+      return (
+        <svg width="44" height="40" viewBox="0 0 44 40">
+          <rect x="4" y="4" width="36" height="32" fill="#f8fafc" stroke="#94a3b8" strokeWidth="1.5" rx="2" />
+        </svg>
+      );
+  }
+}
+
+export function VsmReference() {
+  const [selectedCategory, setSelectedCategory] = useState<VsmCategory | 'All'>('All');
+  const [searchKeyword, setSearchKeyword] = useState<string>('');
+  const [activeItem, setActiveItem] = useState<VsmSymbolItem | null>(null);
+
+  // Filter logika
+  const filteredSymbols = vsmSymbolsList.filter((item) => {
+    const matchCategory = selectedCategory === 'All' || item.category === selectedCategory;
+    const matchKeyword =
+      item.name.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+      item.officialName.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+      item.simpleExplanation.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+      item.example.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+      item.leanSignificance.toLowerCase().includes(searchKeyword.toLowerCase());
+    return matchCategory && matchKeyword;
+  });
+
+  return (
+    <div className="reference-container">
+      <header className="reference-header">
+        <div>
+          <h2>Kamus Notasi &amp; Simbol Value Stream Mapping (VSM)</h2>
+          <p>
+            Panduan lengkap memahami simbol-simbol standar Lean Manufacturing &amp; Service VSM untuk memetakan alur nilai, mengidentifikasi pemborosan (waste), dan menghitung lead time.
+          </p>
+        </div>
+      </header>
+
+      {/* Bar Kontrol: Filter Kategori & Pencarian */}
+      <div className="reference-controls">
+        <div className="search-box-wrapper">
+          <span className="search-icon">🔍</span>
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Cari simbol VSM, nama, atau istilah Lean (cth: inventory, kaizen, push, supermarket, tangga, lead time)..."
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+          />
+          {searchKeyword && (
+            <button className="clear-search-btn" onClick={() => setSearchKeyword('')}>
+              ✕
+            </button>
+          )}
+        </div>
+
+        <div className="filter-chips-wrapper">
+          {vsmCategoriesList.map((cat) => (
+            <button
+              key={cat.id}
+              className={`filter-chip ${selectedCategory === cat.id ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(cat.id)}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Tabel Notasi VSM Lengkap */}
+      <div className="table-responsive">
+        <table className="bpmn-table">
+          <thead>
+            <tr>
+              <th style={{ width: '80px', textAlign: 'center' }}>Bentuk Simbol</th>
+              <th style={{ width: '220px' }}>Nama Notasi VSM</th>
+              <th style={{ width: '150px' }}>Kategori</th>
+              <th>Penjelasan Mudah Dipahami &amp; Analogi</th>
+              <th>Contoh Nyata (Tenant QuickBite)</th>
+              <th style={{ width: '80px', textAlign: 'center' }}>Makna Lean</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredSymbols.length > 0 ? (
+              filteredSymbols.map((item) => (
+                <tr key={item.id} className="bpmn-row">
+                  {/* Kolom 1: Bentuk Simbol SVG */}
+                  <td className="symbol-cell" align="center">
+                    <div className="symbol-preview-wrapper" title={item.officialName}>
+                      <VsmSymbolIcon shapeType={item.shapeType} />
+                    </div>
+                  </td>
+
+                  {/* Kolom 2: Nama Notasi */}
+                  <td>
+                    <strong className="symbol-title">{item.name}</strong>
+                    <span className="symbol-official"><code>{item.officialName}</code></span>
+                  </td>
+
+                  {/* Kolom 3: Kategori Badge */}
+                  <td>
+                    <span
+                      className="category-pill"
+                      style={{
+                        backgroundColor: `${item.badgeColor}18`,
+                        color: item.badgeColor,
+                        borderColor: `${item.badgeColor}40`,
+                      }}
+                    >
+                      {item.categoryLabel}
+                    </span>
+                  </td>
+
+                  {/* Kolom 4: Penjelasan Mudah & Analogi */}
+                  <td>
+                    <p className="explanation-text">{item.simpleExplanation}</p>
+                    <div className="analogy-box">
+                      <span className="analogy-tag">💡 Analogi:</span> {item.analogy}
+                    </div>
+                  </td>
+
+                  {/* Kolom 5: Contoh Nyata */}
+                  <td>
+                    <div className="example-box">
+                      <strong>Contoh Kasus:</strong>
+                      <p>{item.example}</p>
+                    </div>
+                  </td>
+
+                  {/* Kolom 6: Tombol Detail Makna Lean */}
+                  <td align="center">
+                    <button
+                      className="detail-action-btn"
+                      onClick={() => setActiveItem(item)}
+                      title="Lihat peran simbol dalam Lean Thinking"
+                    >
+                      Peran Lean ⚡
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={6} align="center" className="empty-search-cell">
+                  Tidak ditemukan simbol VSM yang sesuai dengan kata kunci "<strong>{searchKeyword}</strong>".
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Modal Detail Peran Simbol dalam Lean Thinking */}
+      {activeItem && (
+        <div className="reference-modal-backdrop" onClick={() => setActiveItem(null)}>
+          <div className="reference-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <span
+                className="category-pill"
+                style={{
+                  backgroundColor: `${activeItem.badgeColor}18`,
+                  color: activeItem.badgeColor,
+                  borderColor: `${activeItem.badgeColor}40`,
+                }}
+              >
+                {activeItem.categoryLabel}
+              </span>
+              <button className="close-btn" onClick={() => setActiveItem(null)}>✕</button>
+            </div>
+
+            <div className="modal-symbol-preview">
+              <VsmSymbolIcon shapeType={activeItem.shapeType} />
+              <div>
+                <h3>{activeItem.name}</h3>
+                <code>{activeItem.officialName}</code>
+              </div>
+            </div>
+
+            <div className="modal-section">
+              <h4>🎯 Peran Kunci dalam Metodologi Lean:</h4>
+              <p>{activeItem.leanSignificance}</p>
+            </div>
+
+            <div className="modal-section">
+              <h4>🔍 Contoh Kasus di QuickBite:</h4>
+              <p>{activeItem.example}</p>
+            </div>
+
+            {activeItem.tips && (
+              <div className="modal-tips-box">
+                <strong>💡 Panduan Praktis Menggambar VSM:</strong>
+                <p>{activeItem.tips}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
