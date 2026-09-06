@@ -177,4 +177,109 @@
       </root>
     </mxGraphModel>
   </diagram>
+
+  <!-- ======================================================== -->
+  <!-- HALAMAN 2: FUTURE STATE (WORKCELL LEAN KITCHEN)          -->
+  <!-- ======================================================== -->
+  <diagram id="VSM_QuickBite_Workcell" name="2. Future State (Workcell)">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="wc_0" />
+        <mxCell id="wc_1" parent="wc_0" />
+
+        <!-- PRODUCTION CONTROL: KDS & KASIR DIGITAL (TOP-CENTER) -->
+        <mxCell id="wc_ctrl" value="&lt;b&gt;PRODUCTION CONTROL&lt;/b&gt;&lt;br&gt;&lt;b&gt;KDS &amp;amp; Kasir Digital&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Kendali Pesanan Real-Time)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#1e293b;strokeWidth=2;fontSize=12;verticalAlign=middle;" vertex="1" parent="wc_1">
+          <mxGeometry x="500" y="40" width="180" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- CUSTOMER: MAHASISWA (TOP-RIGHT) -->
+        <mxCell id="wc_cust" value="&lt;b&gt;Customer&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#2563eb&quot;&gt;&lt;b&gt;(Mahasiswa Kampus)&lt;/b&gt;&lt;/font&gt;" style="shape=mxgraph.vsm.enterprise;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e293b;strokeWidth=2;fontSize=13;verticalAlign=middle;" vertex="1" parent="wc_1">
+          <mxGeometry x="1000" y="40" width="140" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- SUPPLIER: BAHAN SEGAR (TOP-LEFT) -->
+        <mxCell id="wc_supp" value="&lt;b&gt;Supplier&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Distributor Segar)&lt;/font&gt;" style="shape=mxgraph.vsm.enterprise;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e293b;strokeWidth=2;fontSize=13;verticalAlign=middle;" vertex="1" parent="wc_1">
+          <mxGeometry x="80" y="40" width="140" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- INFO FLOWS -->
+        <mxCell id="wc_info_cust" value="&lt;b&gt;Pemesanan via QR/Kiosk&lt;/b&gt;&lt;br&gt;Sinyal Elektronik Real-Time" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2;fontSize=10;fontColor=#2563eb;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="wc_1" source="wc_cust" target="wc_ctrl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wc_info_supp" value="PO Harian" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=1.5;fontSize=10;fontColor=#64748b;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="wc_1" source="wc_ctrl" target="wc_supp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wc_info_kds" value="&lt;b&gt;Sinyal KDS Real-Time&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=2;fontSize=10;fontColor=#2563eb;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="wc_1" source="wc_ctrl" target="wc_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TAHAP 1: KIOSK PEMESANAN DIGITAL -->
+        <mxCell id="wc_inv1" value="I&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 1m&lt;/b&gt;&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="wc_1">
+          <mxGeometry x="50" y="270" width="45" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wc_p1" value="&lt;b&gt;Tahap 1: Pemesanan Digital&lt;/b&gt;&lt;br&gt;Self-Service Kiosk / QR Menu" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e293b;strokeWidth=2;fontSize=11;" vertex="1" parent="wc_1">
+          <mxGeometry x="120" y="250" width="180" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="wc_d1" value="&lt;b&gt;PT: &lt;font color=&quot;#16a34a&quot;&gt;2 Menit&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Operator: 1 Mandiri/Kasir&lt;br&gt;Batch: 1 Customer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;strokeWidth=1;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="wc_1">
+          <mxGeometry x="120" y="340" width="180" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- FIFO LANE: PENGHUBUNG KIOSK KE WORKCELL -->
+        <mxCell id="wc_fifo" value="&lt;b&gt;FIFO Lane (Max 3)&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;Wait: 1m&lt;/font&gt;" style="shape=mxgraph.vsm.fifo_sequence_flow;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#059669;strokeWidth=2;fontSize=10;fontColor=#047857;" vertex="1" parent="wc_1">
+          <mxGeometry x="320" y="275" width="120" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- TAHAP 2: THE WORKCELL (NOTASI RESMI U-SHAPED WORKCELL) -->
+        <mxCell id="wc_main" value="&lt;b&gt;Workcell&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#2563eb&quot;&gt;&lt;b&gt;Sel Dapur &amp;amp; Penyajian Terpadu&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Racik 1m + Goreng 5m + Plating 1m)&lt;/font&gt;" style="shape=mxgraph.vsm.work_cell;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e293b;strokeWidth=2.5;fontSize=13;verticalAlign=top;spacingTop=10;" vertex="1" parent="wc_1">
+          <mxGeometry x="460" y="230" width="400" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wc_d2" value="&lt;b&gt;DATA BOX: INTEGRATED KITCHEN WORKCELL&lt;/b&gt;&lt;br&gt;&lt;b&gt;Cycle Time (C/T): &lt;font color=&quot;#16a34a&quot;&gt;7 Menit&lt;/font&gt;&lt;/b&gt; | C/O: 0m | Uptime: 100%&lt;br&gt;Operators: 2 Staf Multi-Skilled (Koki &amp;amp; Server Saling Bantu)&lt;br&gt;Batch Size: 1 Porsi (One-Piece Flow Kontinu)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;strokeWidth=1;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="wc_1">
+          <mxGeometry x="460" y="385" width="400" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- DELIVERY TO CUSTOMER -->
+        <mxCell id="wc_delivery" value="&lt;b&gt;Makanan Segar Langsung Diterima&lt;/b&gt;&lt;br&gt;(Wait Saji = 0 Menit)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16a34a;strokeWidth=3;fontSize=10;fontColor=#16a34a;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="wc_1" source="wc_main" target="wc_cust">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="305" />
+              <mxPoint x="930" y="160" />
+              <mxPoint x="1070" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- TIMELINE LADDER FUTURE STATE -->
+        <mxCell id="wc_tl_wait1" value="&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;1 min&lt;/b&gt; [Wait/NVA]&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#ef4444;strokeWidth=3;fontSize=10;" vertex="1" parent="wc_1">
+          <mxGeometry x="50" y="480" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wc_tl_proc1" value="&lt;font color=&quot;#16a34a&quot;&gt;&lt;b&gt;2 min&lt;/b&gt; [Process/VA]&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#16a34a;strokeWidth=3;fontSize=10;" vertex="1" parent="wc_1">
+          <mxGeometry x="120" y="520" width="180" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wc_tl_wait2" value="&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;1 min&lt;/b&gt; [Wait/NVA]&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#ef4444;strokeWidth=3;fontSize=10;" vertex="1" parent="wc_1">
+          <mxGeometry x="300" y="480" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wc_tl_proc2" value="&lt;font color=&quot;#64748b&quot;&gt;0 min [Transport Dieliminasi]&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#94a3b8;strokeWidth=2;fontSize=10;" vertex="1" parent="wc_1">
+          <mxGeometry x="300" y="520" width="160" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="wc_tl_wait3" value="&lt;font color=&quot;#16a34a&quot;&gt;&lt;b&gt;0 min&lt;/b&gt; [One-Piece Flow]&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#16a34a;strokeWidth=3;fontSize=10;" vertex="1" parent="wc_1">
+          <mxGeometry x="460" y="480" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wc_tl_proc3" value="&lt;font color=&quot;#16a34a&quot;&gt;&lt;b&gt;7 min&lt;/b&gt; [Process/VA: Workcell]&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#16a34a;strokeWidth=3;fontSize=10;" vertex="1" parent="wc_1">
+          <mxGeometry x="460" y="520" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- SUMMARY TOTAL BOX FUTURE STATE -->
+        <mxCell id="wc_tl_summary" value="&lt;b&gt;RINGKASAN TOTAL FUTURE STATE (WORKCELL)&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Total Wait (NVA): 2 Menit (18.2%)&lt;/b&gt;&lt;/font&gt; &lt;font color=&quot;#16a34a&quot;&gt;[-91%]&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#16a34a&quot;&gt;&lt;b&gt;Total Process (VA): 9 Menit (81.8%)&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;hr&gt;&lt;b&gt;Production Lead Time: 11 Menit&lt;/b&gt; &lt;font color=&quot;#16a34a&quot;&gt;[-68%]&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#2563eb&quot;&gt;&lt;b&gt;Siklus Efisiensi (PCE): 81.8%&lt;/b&gt;&lt;/font&gt; &lt;font color=&quot;#16a34a&quot;&gt;[World-Class]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#16a34a;strokeWidth=2.5;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="wc_1">
+          <mxGeometry x="960" y="455" width="350" height="110" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
 </mxfile>

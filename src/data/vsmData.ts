@@ -95,3 +95,62 @@ export const vsmSummaryData: VsmSummary = {
   conclusion:
     'Waktu tunggu (Wait Time) mendominasi hampir 65% dari total waktu keseluruhan layanan (34 menit). Pemborosan terbesar (waste) terjadi karena sistem penumpukan nota fisik (batching delay 5 menit) dan antrean manual yang lambat di awal (10 menit). Hal ini membuktikan bahwa proses manual saat ini sangat tidak efisien dan membutuhkan digitalisasi (To-Be).',
 };
+
+export const vsmWorkcellStepsData: VsmStep[] = [
+  {
+    id: 1,
+    name: 'Pemesanan Digital (QR Code / Kiosk)',
+    activity: 'Mahasiswa memesan via Self-Service Kiosk atau Scan QR meja. Pembayaran otomatis via e-wallet/QRIS.',
+    waitTime: 1,
+    processTime: 2,
+    waitReason: 'Antrean sangat minim (1 menit) karena tersedia multi-kiosk dan QR di setiap meja makan.',
+    processDetails: 'Pelanggan memilih menu digital, bayar cashless, tiket digital otomatis terbit.',
+    operator: 'Pelanggan Mandiri / 1 Kasir Standby',
+    batchSize: '1 Customer (One-Piece Flow)',
+    kaizenBurst: {
+      title: 'Digital Ordering & QRIS',
+      description: 'Menghilangkan nota fisik dan antrean manual.',
+    },
+  },
+  {
+    id: 2,
+    name: 'Aliran FIFO Antrean Dapur (KDS)',
+    activity: 'Tiket pesanan masuk secara real-time ke Kitchen Display System (KDS) di dalam sel kerja dengan batas buffer maksimal 3 pesanan.',
+    waitTime: 1,
+    processTime: 0,
+    waitReason: 'Buffer antrean digital FIFO (maksimal 3 pesanan antre).',
+    processDetails: 'KDS memvisualisasikan urutan pesanan secara otomatis tanpa kertas dan tanpa kurir jalan kaki.',
+    operator: 'Sistem Terotomasi (KDS)',
+    batchSize: '1 Pesanan (FIFO)',
+    kaizenBurst: {
+      title: 'Eliminasi Antar Nota',
+      description: 'Tahap 2 tradisional (antar nota 5 menit) 100% DIHAPUS.',
+    },
+  },
+  {
+    id: 3,
+    name: 'Workcell Dapur & Penyajian Terpadu',
+    activity: 'Di dalam sel kerja tapal kuda (U-Shape), 2 staf multi-skilled meracik, menggoreng di fryer, melakukan plating, dan langsung menyerahkan makanan ke pelanggan.',
+    waitTime: 0,
+    processTime: 7,
+    waitReason: 'Zero Wait: Aliran One-Piece Flow kontinu di dalam sel. Dari wajan langsung ke piring dan diserahkan di counter terpadu.',
+    processDetails: 'Integrasi 3 sub-proses: 1. Racik bahan (1m) -> 2. Penggorengan cepat (5m) -> 3. Plating & Serah Terima (1m).',
+    operator: '2 Staf Multi-Skilled (Koki & Server)',
+    batchSize: '1 Porsi (Continuous Flow)',
+    kaizenBurst: {
+      title: 'U-Shaped Workcell Layout',
+      description: 'Jarak antar alat hanya 1 langkah. Staf dapat saling membantu saat beban tinggi.',
+    },
+  },
+];
+
+export const vsmWorkcellSummaryData: VsmSummary = {
+  totalWaitTime: 2,
+  totalProcessTime: 9,
+  totalLeadTime: 11,
+  efficiency: +( (9 / 11) * 100 ).toFixed(1), // 81.8%
+  wasteRatio: +( (2 / 11) * 100 ).toFixed(1), // 18.2%
+  conclusion:
+    'Penerapan Sel Kerja (U-Shaped Workcell) dan aliran One-Piece Flow memangkas Lead Time dari 34 menit menjadi hanya 11 menit (pengurangan 68%). Waktu pemborosan (Wait Time) anjlok 91% dari 22 menit menjadi 2 menit. Efisiensi siklus (PCE) melonjak drastis dari 35.3% ke 81.8%, mencapai standar kelas dunia!',
+};
+

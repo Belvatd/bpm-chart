@@ -52,10 +52,13 @@ function VsmSymbolIcon({ shapeType }: { shapeType: string }) {
     case 'vsm-workcell':
       return (
         <svg width="56" height="42" viewBox="0 0 56 42">
-          <rect x="3" y="3" width="50" height="36" fill="#eff6ff" stroke="#1d4ed8" strokeWidth="2" rx="3" />
-          <rect x="8" y="10" width="17" height="16" fill="#ffffff" stroke="#1d4ed8" strokeWidth="1.5" rx="2" />
-          <rect x="31" y="10" width="17" height="16" fill="#ffffff" stroke="#1d4ed8" strokeWidth="1.5" rx="2" />
-          <text x="28" y="36" textAnchor="middle" fontSize="5.5" fontWeight="bold" fill="#1e3a8a">WORKCELL</text>
+          <path
+            d="M 6,4 H 50 A 4,4 0 0 1 54,8 V 36 A 4,4 0 0 1 50,40 H 40 A 3,3 0 0 1 37,37 V 20 A 3,3 0 0 0 34,17 H 22 A 3,3 0 0 0 19,20 V 37 A 3,3 0 0 1 16,40 H 6 A 4,4 0 0 1 2,36 V 8 A 4,4 0 0 1 6,4 Z"
+            fill="#eff6ff"
+            stroke="#1d4ed8"
+            strokeWidth="1.8"
+          />
+          <text x="28" y="13" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#1e3a8a">Workcell</text>
         </svg>
       );
 
