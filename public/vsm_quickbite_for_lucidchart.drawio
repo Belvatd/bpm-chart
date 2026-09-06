@@ -5,9 +5,9 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <!-- KASIR (TOP-LEFT, SEJAJAR DI ATAS TAHAP 1) -->
-        <mxCell id="kasir_top" value="&lt;b&gt;Kasir&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Tenant QuickBite)&lt;/font&gt;" style="shape=mxgraph.vsm.enterprise;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e293b;strokeWidth=2;fontSize=13;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="140" y="40" width="140" height="75" as="geometry" />
+        <!-- PRODUCTION CONTROL: KASIR TENANT (TOP-LEFT, SEJAJAR DI ATAS TAHAP 1 - KOTAK PERSEGI PANJANG STANDAR VSM) -->
+        <mxCell id="kasir_top" value="&lt;b&gt;PRODUCTION CONTROL&lt;/b&gt;&lt;br&gt;&lt;b&gt;Kasir Tenant&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Kendali Pesanan Internal)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#1e293b;strokeWidth=2;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="135" y="40" width="150" height="75" as="geometry" />
         </mxCell>
 
         <!-- CUSTOMER: MAHASISWA KAMPUS (TOP-RIGHT) -->

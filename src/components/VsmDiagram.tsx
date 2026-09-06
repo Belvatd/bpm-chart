@@ -55,6 +55,7 @@ function PushArrow({
 export function VsmDiagram() {
   const [selectedStep, setSelectedStep] = useState<VsmStep | null>(null);
   const [showKaizen, setShowKaizen] = useState<boolean>(true);
+  const [showSupplier, setShowSupplier] = useState<boolean>(true);
 
   // Koordinat layout VSM SVG
   const svgWidth = 1300;
@@ -103,6 +104,14 @@ export function VsmDiagram() {
           <label className="toggle-label">
             <input
               type="checkbox"
+              checked={showSupplier}
+              onChange={(e) => setShowSupplier(e.target.checked)}
+            />
+            <span>🏭 Rantai Pasok Penuh (Supplier, Kasir &amp; Customer)</span>
+          </label>
+          <label className="toggle-label">
+            <input
+              type="checkbox"
               checked={showKaizen}
               onChange={(e) => setShowKaizen(e.target.checked)}
             />
@@ -136,6 +145,34 @@ export function VsmDiagram() {
           <span className="kpi-value text-primary">{vsmSummaryData.efficiency}%</span>
           <span className="kpi-sub">Target Lean Kelas Dunia: &gt; 25%</span>
         </div>
+      </div>
+
+      {/* Alert Edukatif Notasi Lean VSM */}
+      <div style={{
+        background: '#f8fafc',
+        border: '1px solid #cbd5e1',
+        borderLeft: '4px solid #0284c7',
+        borderRadius: '8px',
+        padding: '10px 16px',
+        marginBottom: '16px',
+        fontSize: '0.86rem',
+        color: '#334155',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '8px'
+      }}>
+        <div>
+          <strong style={{ color: '#0369a1' }}>📘 Kaidah Baku Notasi Lean VSM (Koreksi Entitas):</strong>
+          <span style={{ marginLeft: '6px' }}>
+            Ikon <strong>Gerigi Pabrik</strong> khusus mewakili <em>Pihak Eksternal</em> (<strong>Supplier</strong> di kiri atas &amp; <strong>Customer</strong> di kanan atas).
+            <strong> Kasir</strong> adalah fungsi internal (<em>Production Control</em>), sehingga wajib digambarkan dengan <strong>Kotak Persegi Panjang</strong>.
+          </span>
+        </div>
+        <span style={{ fontSize: '0.78rem', color: '#64748b', background: '#e2e8f0', padding: '3px 8px', borderRadius: '4px', fontWeight: 600 }}>
+          {showSupplier ? 'Mode: Rantai Pasok Penuh (3 Entitas)' : 'Mode: Simplifikasi Kasir & Customer (2 Entitas)'}
+        </span>
       </div>
 
       {/* Diagram SVG Canvas VSM */}
@@ -187,100 +224,241 @@ export function VsmDiagram() {
           </defs>
 
           {/* ============================================================ */}
-          {/* SECTION 1: PELANGGAN (CUSTOMER), KASIR & ALUR INFORMASI LISAN */}
+          {/* SECTION 1: ENTITAS EKSTERNAL (SUPPLIER/CUSTOMER) & KONTROL   */}
           {/* ============================================================ */}
 
-          {/* Kotak Kasir (Top-Left, sejajar vertikal langsung di atas Tahap 1) */}
-          <g transform="translate(135, 25)">
-            {/* Bentuk Pabrik Bergerigi (Sawtooth Factory Icon khas VSM) */}
-            <path
-              d="M 0,18 L 25,0 L 50,18 L 75,0 L 100,18 L 125,0 L 150,18 L 150,75 L 0,75 Z"
-              fill="#ffffff"
-              stroke="#334155"
-              strokeWidth="2"
-              filter="url(#vsm-shadow)"
-            />
-            <text x="75" y="48" textAnchor="middle" fontWeight="bold" fill="#0f172a" fontSize="15">
-              Kasir
-            </text>
-            <text x="75" y="65" textAnchor="middle" fill="#64748b" fontSize="9.5">
-              (Tenant QuickBite)
-            </text>
-          </g>
+          {showSupplier ? (
+            /* MODE 1: STANDAR BAKU LEAN VSM (3 PILAR: SUPPLIER - KASIR - CUSTOMER) */
+            <g className="vsm-3-pillar-flow">
+              {/* 1. Supplier Bahan Baku (Top-Left: Gerigi Pabrik Eksternal) */}
+              <g transform="translate(40, 25)">
+                <title>Supplier (Pemasok Eksternal): Distributor pengirim pasokan bahan baku segar (ayam, telur, beras)</title>
+                <path
+                  d="M 0,18 L 25,0 L 50,18 L 75,0 L 100,18 L 125,0 L 150,18 L 150,75 L 0,75 Z"
+                  fill="#ffffff"
+                  stroke="#334155"
+                  strokeWidth="2"
+                  filter="url(#vsm-shadow)"
+                />
+                <text x="75" y="46" textAnchor="middle" fontWeight="bold" fill="#0f172a" fontSize="13">
+                  SUPPLIER
+                </text>
+                <text x="75" y="60" textAnchor="middle" fill="#475569" fontSize="9">
+                  Distributor Bahan Segar
+                </text>
+                <text x="75" y="70" textAnchor="middle" fill="#64748b" fontSize="8">
+                  (Ayam, Telur, Sayur)
+                </text>
+              </g>
 
-          {/* Kotak Customer / Mahasiswa (Top-Right) */}
-          <g transform="translate(975, 25)">
-            {/* Bentuk Pabrik Bergerigi (Sawtooth Factory Icon khas VSM) */}
-            <path
-              d="M 0,18 L 25,0 L 50,18 L 75,0 L 100,18 L 125,0 L 150,18 L 150,75 L 0,75 Z"
-              fill="#ffffff"
-              stroke="#334155"
-              strokeWidth="2"
-              filter="url(#vsm-shadow)"
-            />
-            <text x="75" y="48" textAnchor="middle" fontWeight="bold" fill="#0f172a" fontSize="15">
-              Customer
-            </text>
-            <text x="75" y="65" textAnchor="middle" fill="#2563eb" fontSize="9.5" fontWeight="600">
-              (Mahasiswa Kampus)
-            </text>
-          </g>
+              {/* Alur Pengiriman Bahan Baku dari Supplier ke Antrean / Tenant */}
+              <path
+                d="M 115,100 L 115,195 L 45,195 L 45,270"
+                fill="none"
+                stroke="#64748b"
+                strokeWidth="1.8"
+                markerEnd="url(#vsm-arrow)"
+              />
+              <g transform="translate(55, 175)">
+                <rect x="-4" y="-10" width="80" height="20" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1" rx="3" />
+                <text x="36" y="4" textAnchor="middle" fill="#475569" fontSize="8" fontWeight="600">
+                  🚚 Pasokan Harian
+                </text>
+              </g>
 
-          {/* Alur Informasi Lisan: Garis Horizontal Lurus dari Customer ke Kasir */}
-          <path
-            d="M 975,65 L 285,65"
-            fill="none"
-            stroke="#334155"
-            strokeWidth="1.8"
-            markerEnd="url(#vsm-arrow)"
-          />
+              {/* 2. Production Control: Pengelola Kasir Tenant (Top-Center: Kotak Persegi Panjang Standar VSM) */}
+              <g transform="translate(490, 25)">
+                <title>Production Control (Pusat Kendali Operasional): Pengelola kasir internal yang menerima pesanan dan menerbitkan nota fisik</title>
+                <rect
+                  width="220"
+                  height="75"
+                  fill="#f8fafc"
+                  stroke="#334155"
+                  strokeWidth="2"
+                  rx="4"
+                  filter="url(#vsm-shadow)"
+                />
+                <rect x="0" y="0" width="220" height="20" fill="#e2e8f0" rx="4" />
+                <text x="110" y="14" textAnchor="middle" fontWeight="bold" fill="#334155" fontSize="8.5">
+                  PRODUCTION CONTROL (KENDALI INTERNAL)
+                </text>
+                <text x="110" y="45" textAnchor="middle" fontWeight="bold" fill="#0f172a" fontSize="13">
+                  PENGELOLA KASIR TENANT
+                </text>
+                <text x="110" y="62" textAnchor="middle" fill="#dc2626" fontSize="9" fontWeight="600">
+                  Sistem Kertas &amp; Nota Rangkap 2
+                </text>
+              </g>
 
-          {/* Ikon Verbal Information (Orang / Stick Figure) di Tengah Garis */}
-          <g transform="translate(630, 65)">
-            <title>Alur Informasi Lisan (Verbal Information Flow): Mahasiswa menyampaikan pesanan secara langsung dengan berbicara ke kasir</title>
-            {/* Kepala */}
-            <circle cx="0" cy="-24" r="8" fill="#ffffff" stroke="#334155" strokeWidth="1.8" />
-            <circle cx="-2.5" cy="-25" r="1" fill="#334155" />
-            <circle cx="2.5" cy="-25" r="1" fill="#334155" />
-            <path d="M -3,-21 Q 0,-18 3,-21" fill="none" stroke="#334155" strokeWidth="1.2" />
-            {/* Badan / Torso */}
-            <line x1="0" y1="-16" x2="0" y2="0" stroke="#334155" strokeWidth="2" />
-            {/* Tangan / Arms */}
-            <line x1="-14" y1="-8" x2="14" y2="-8" stroke="#334155" strokeWidth="1.8" />
-            {/* Kaki / Legs */}
-            <line x1="0" y1="0" x2="-9" y2="15" stroke="#334155" strokeWidth="1.8" />
-            <line x1="0" y1="0" x2="9" y2="15" stroke="#334155" strokeWidth="1.8" />
+              {/* Alur Informasi Pengadaan: Kasir ke Supplier (PO Mingguan) */}
+              <path
+                d="M 490,62 L 190,62"
+                fill="none"
+                stroke="#64748b"
+                strokeWidth="1.5"
+                markerEnd="url(#vsm-arrow)"
+              />
+              <text x="340" y="54" textAnchor="middle" fill="#64748b" fontSize="9" fontWeight="500">
+                PO Bahan Baku Mingguan
+              </text>
 
-            {/* Label Informasi Lisan */}
-            <text x="0" y="-37" textAnchor="middle" fill="#0f172a" fontSize="10.5" fontWeight="bold">
-              Alur Informasi Lisan (Verbal Flow)
-            </text>
-            <text x="0" y="30" textAnchor="middle" fill="#64748b" fontSize="9">
-              Pesanan Lisan &amp; Uang Tunai
-            </text>
-          </g>
+              {/* 3. Customer: Mahasiswa Kampus (Top-Right: Gerigi Pabrik Eksternal) */}
+              <g transform="translate(1000, 25)">
+                <title>Customer (Pelanggan Eksternal): Mahasiswa kampus yang datang membeli makan siang</title>
+                <path
+                  d="M 0,18 L 25,0 L 50,18 L 75,0 L 100,18 L 125,0 L 150,18 L 150,75 L 0,75 Z"
+                  fill="#ffffff"
+                  stroke="#2563eb"
+                  strokeWidth="2"
+                  filter="url(#vsm-shadow)"
+                />
+                <text x="75" y="46" textAnchor="middle" fontWeight="bold" fill="#1e3a8a" fontSize="13">
+                  CUSTOMER
+                </text>
+                <text x="75" y="60" textAnchor="middle" fill="#2563eb" fontSize="9.5" fontWeight="600">
+                  Mahasiswa Kampus
+                </text>
+                <text x="75" y="70" textAnchor="middle" fill="#64748b" fontSize="8">
+                  (Jam Sibuk Siang)
+                </text>
+              </g>
 
-          {/* Alur Informasi Manual: Garis Vertikal Lurus Kasir ke Tahap 1 */}
-          <path
-            d="M 210,100 L 210,270"
-            fill="none"
-            stroke="#334155"
-            strokeWidth="1.8"
-            markerEnd="url(#vsm-arrow)"
-          />
-          <text x="218" y="185" fill="#64748b" fontSize="10" fontWeight="500">
-            Instruksi Nota Fisik
-          </text>
+              {/* Alur Informasi Lisan: Customer ke Kasir */}
+              <path
+                d="M 1000,62 L 710,62"
+                fill="none"
+                stroke="#334155"
+                strokeWidth="1.8"
+                markerEnd="url(#vsm-arrow)"
+              />
+
+              {/* Ikon Verbal Flow (Stick Figure) di Tengah Garis Customer-Kasir */}
+              <g transform="translate(855, 62)">
+                <title>Alur Informasi Lisan (Verbal Flow): Mahasiswa memesan makanan secara lisan di depan kasir</title>
+                <circle cx="0" cy="-22" r="7.5" fill="#ffffff" stroke="#334155" strokeWidth="1.8" />
+                <circle cx="-2" cy="-23" r="1" fill="#334155" />
+                <circle cx="2" cy="-23" r="1" fill="#334155" />
+                <path d="M -3,-19 Q 0,-16 3,-19" fill="none" stroke="#334155" strokeWidth="1" />
+                <line x1="0" y1="-14" x2="0" y2="0" stroke="#334155" strokeWidth="1.8" />
+                <line x1="-12" y1="-7" x2="12" y2="-7" stroke="#334155" strokeWidth="1.8" />
+                <line x1="0" y1="0" x2="-8" y2="14" stroke="#334155" strokeWidth="1.8" />
+                <line x1="0" y1="0" x2="8" y2="14" stroke="#334155" strokeWidth="1.8" />
+                <text x="0" y="-34" textAnchor="middle" fill="#0f172a" fontSize="9.5" fontWeight="bold">
+                  Verbal Flow
+                </text>
+                <text x="0" y="27" textAnchor="middle" fill="#64748b" fontSize="8.5">
+                  Pesanan Lisan &amp; Tunai
+                </text>
+              </g>
+
+              {/* Alur Instruksi Kerja Kasir ke Tahap 1 */}
+              <path
+                d="M 530,100 L 530,180 L 210,180 L 210,270"
+                fill="none"
+                stroke="#64748b"
+                strokeWidth="1.6"
+                markerEnd="url(#vsm-arrow)"
+              />
+              <text x="360" y="172" textAnchor="middle" fill="#64748b" fontSize="9.5">
+                Instruksi Nota Fisik Manual
+              </text>
+            </g>
+          ) : (
+            /* MODE 2: SIMPLIFIKASI MODUL (2 ENTITAS: KASIR PERSEGI PANJANG & CUSTOMER PABRIK) */
+            <g className="vsm-2-pillar-flow">
+              {/* Kotak Kasir (Top-Left, di atas Tahap 1: KOTAK PERSEGI PANJANG, BUKAN GERIGI PABRIK) */}
+              <g transform="translate(135, 25)">
+                <title>Production Control (Kasir): Entitas internal pengendali pesanan menggunakan kotak persegi panjang standar VSM</title>
+                <rect
+                  width="150"
+                  height="75"
+                  fill="#f8fafc"
+                  stroke="#334155"
+                  strokeWidth="2"
+                  rx="4"
+                  filter="url(#vsm-shadow)"
+                />
+                <rect x="0" y="0" width="150" height="18" fill="#e2e8f0" rx="4" />
+                <text x="75" y="13" textAnchor="middle" fontWeight="bold" fill="#334155" fontSize="8">
+                  PRODUCTION CONTROL
+                </text>
+                <text x="75" y="44" textAnchor="middle" fontWeight="bold" fill="#0f172a" fontSize="14">
+                  Kasir
+                </text>
+                <text x="75" y="62" textAnchor="middle" fill="#64748b" fontSize="9">
+                  (Kendali Pesanan Internal)
+                </text>
+              </g>
+
+              {/* Kotak Customer / Mahasiswa (Top-Right: Ikon Gerigi Pabrik Eksternal) */}
+              <g transform="translate(975, 25)">
+                <title>Customer (Pelanggan Eksternal): Mahasiswa kampus dengan ikon gerigi pabrik resmi VSM</title>
+                <path
+                  d="M 0,18 L 25,0 L 50,18 L 75,0 L 100,18 L 125,0 L 150,18 L 150,75 L 0,75 Z"
+                  fill="#ffffff"
+                  stroke="#334155"
+                  strokeWidth="2"
+                  filter="url(#vsm-shadow)"
+                />
+                <text x="75" y="48" textAnchor="middle" fontWeight="bold" fill="#0f172a" fontSize="14">
+                  Customer
+                </text>
+                <text x="75" y="65" textAnchor="middle" fill="#2563eb" fontSize="9.5" fontWeight="600">
+                  (Mahasiswa Kampus)
+                </text>
+              </g>
+
+              {/* Alur Informasi Lisan: Garis Horizontal Lurus dari Customer ke Kasir */}
+              <path
+                d="M 975,65 L 285,65"
+                fill="none"
+                stroke="#334155"
+                strokeWidth="1.8"
+                markerEnd="url(#vsm-arrow)"
+              />
+
+              {/* Ikon Verbal Information (Orang / Stick Figure) di Tengah Garis */}
+              <g transform="translate(630, 65)">
+                <title>Alur Informasi Lisan (Verbal Information Flow): Mahasiswa memesan lisan ke kasir</title>
+                <circle cx="0" cy="-24" r="8" fill="#ffffff" stroke="#334155" strokeWidth="1.8" />
+                <circle cx="-2.5" cy="-25" r="1" fill="#334155" />
+                <circle cx="2.5" cy="-25" r="1" fill="#334155" />
+                <path d="M -3,-21 Q 0,-18 3,-21" fill="none" stroke="#334155" strokeWidth="1.2" />
+                <line x1="0" y1="-16" x2="0" y2="0" stroke="#334155" strokeWidth="2" />
+                <line x1="-14" y1="-8" x2="14" y2="-8" stroke="#334155" strokeWidth="1.8" />
+                <line x1="0" y1="0" x2="-9" y2="15" stroke="#334155" strokeWidth="1.8" />
+                <line x1="0" y1="0" x2="9" y2="15" stroke="#334155" strokeWidth="1.8" />
+                <text x="0" y="-37" textAnchor="middle" fill="#0f172a" fontSize="10" fontWeight="bold">
+                  Alur Informasi Lisan (Verbal Flow)
+                </text>
+                <text x="0" y="30" textAnchor="middle" fill="#64748b" fontSize="9">
+                  Pesanan Lisan &amp; Uang Tunai
+                </text>
+              </g>
+
+              {/* Alur Instruksi Kerja: Garis Vertikal Lurus Kasir ke Tahap 1 */}
+              <path
+                d="M 210,100 L 210,270"
+                fill="none"
+                stroke="#334155"
+                strokeWidth="1.8"
+                markerEnd="url(#vsm-arrow)"
+              />
+              <text x="218" y="185" fill="#64748b" fontSize="10" fontWeight="500">
+                Instruksi Nota Fisik
+              </text>
+            </g>
+          )}
 
           {/* Alur Penyerahan Fisik / Makanan Jadi ke Mahasiswa (Finished Goods Delivery to Customer) */}
           <path
-            d="M 1140,325 L 1170,325 L 1170,65 L 1125,65"
+            d={showSupplier ? "M 1140,325 L 1180,325 L 1180,62 L 1150,62" : "M 1140,325 L 1170,325 L 1170,65 L 1125,65"}
             fill="none"
             stroke="#16a34a"
             strokeWidth="2.5"
             markerEnd="url(#vsm-arrow-green)"
           />
-          <g transform="translate(1178, 195)">
+          <g transform={showSupplier ? "translate(1185, 195)" : "translate(1178, 195)"}>
             <rect
               x="-4"
               y="-14"
