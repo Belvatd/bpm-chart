@@ -187,82 +187,94 @@ export function VsmDiagram() {
           </defs>
 
           {/* ============================================================ */}
-          {/* SECTION 1: PELANGGAN (CUSTOMER) & KONTROL INFORMASI MANUAL   */}
+          {/* SECTION 1: PELANGGAN (CUSTOMER), KASIR & ALUR INFORMASI LISAN */}
           {/* ============================================================ */}
 
-          {/* Customer Box (Mahasiswa Kantin) */}
-          <g transform="translate(1000, 30)">
-            <rect
-              width="200"
-              height="80"
-              fill="#eff6ff"
-              stroke="#2563eb"
+          {/* Kotak Kasir (Top-Left, sejajar vertikal langsung di atas Tahap 1) */}
+          <g transform="translate(135, 25)">
+            {/* Bentuk Pabrik Bergerigi (Sawtooth Factory Icon khas VSM) */}
+            <path
+              d="M 0,18 L 25,0 L 50,18 L 75,0 L 100,18 L 125,0 L 150,18 L 150,75 L 0,75 Z"
+              fill="#ffffff"
+              stroke="#334155"
               strokeWidth="2"
-              rx="6"
               filter="url(#vsm-shadow)"
             />
-            {/* Ikon Pabrik / Pelanggan Bentuk Gerigi Khas VSM */}
-            <polygon points="10,0 25,-12 40,0 55,-12 70,0" fill="#2563eb" />
-            <text x="100" y="32" textAnchor="middle" fontWeight="bold" fill="#1e3a8a" fontSize="13">
-              MAHASISWA KAMPUS
+            <text x="75" y="48" textAnchor="middle" fontWeight="bold" fill="#0f172a" fontSize="15">
+              Kasir
             </text>
-            <text x="100" y="52" textAnchor="middle" fill="#475569" fontSize="11">
-              (Customer Demand)
-            </text>
-            <text x="100" y="68" textAnchor="middle" fill="#2563eb" fontWeight="600" fontSize="11">
-              Jam Sibuk Makan Siang
+            <text x="75" y="65" textAnchor="middle" fill="#64748b" fontSize="9.5">
+              (Tenant QuickBite)
             </text>
           </g>
 
-          {/* Production Control / Tenant Management Box */}
-          <g transform="translate(480, 30)">
-            <rect
-              width="240"
-              height="80"
-              fill="#f8fafc"
-              stroke="#64748b"
+          {/* Kotak Customer / Mahasiswa (Top-Right) */}
+          <g transform="translate(975, 25)">
+            {/* Bentuk Pabrik Bergerigi (Sawtooth Factory Icon khas VSM) */}
+            <path
+              d="M 0,18 L 25,0 L 50,18 L 75,0 L 100,18 L 125,0 L 150,18 L 150,75 L 0,75 Z"
+              fill="#ffffff"
+              stroke="#334155"
               strokeWidth="2"
-              rx="6"
               filter="url(#vsm-shadow)"
             />
-            <text x="120" y="30" textAnchor="middle" fontWeight="bold" fill="#0f172a" fontSize="13">
-              PENGELOLA KASIR TENANT
+            <text x="75" y="48" textAnchor="middle" fontWeight="bold" fill="#0f172a" fontSize="15">
+              Customer
             </text>
-            <text x="120" y="50" textAnchor="middle" fill="#64748b" fontSize="11">
-              (Kontrol Operasional Manual)
-            </text>
-            <text x="120" y="68" textAnchor="middle" fill="#ef4444" fontWeight="600" fontSize="10">
-              Sistem Kertas &amp; Nota Rangkap 2
+            <text x="75" y="65" textAnchor="middle" fill="#2563eb" fontSize="9.5" fontWeight="600">
+              (Mahasiswa Kampus)
             </text>
           </g>
 
-          {/* Alur Informasi Manual: Pesanan Mahasiswa ke Kasir */}
+          {/* Alur Informasi Lisan: Garis Horizontal Lurus dari Customer ke Kasir */}
           <path
-            d="M 1000,70 L 720,70"
+            d="M 975,65 L 285,65"
             fill="none"
-            stroke="#2563eb"
+            stroke="#334155"
             strokeWidth="1.8"
-            markerEnd="url(#vsm-arrow-blue)"
-          />
-          <text x="860" y="60" textAnchor="middle" fill="#2563eb" fontSize="10" fontWeight="600">
-            Pesanan Lisan &amp; Uang Tunai
-          </text>
-
-          {/* Alur Informasi Manual: Kasir ke Tahap 1 */}
-          <path
-            d="M 520,110 L 520,180 L 210,180 L 210,270"
-            fill="none"
-            stroke="#64748b"
-            strokeWidth="1.5"
             markerEnd="url(#vsm-arrow)"
           />
-          <text x="350" y="172" textAnchor="middle" fill="#64748b" fontSize="10">
-            Instruksi Nota Fisik Manual
+
+          {/* Ikon Verbal Information (Orang / Stick Figure) di Tengah Garis */}
+          <g transform="translate(630, 65)">
+            <title>Alur Informasi Lisan (Verbal Information Flow): Mahasiswa menyampaikan pesanan secara langsung dengan berbicara ke kasir</title>
+            {/* Kepala */}
+            <circle cx="0" cy="-24" r="8" fill="#ffffff" stroke="#334155" strokeWidth="1.8" />
+            <circle cx="-2.5" cy="-25" r="1" fill="#334155" />
+            <circle cx="2.5" cy="-25" r="1" fill="#334155" />
+            <path d="M -3,-21 Q 0,-18 3,-21" fill="none" stroke="#334155" strokeWidth="1.2" />
+            {/* Badan / Torso */}
+            <line x1="0" y1="-16" x2="0" y2="0" stroke="#334155" strokeWidth="2" />
+            {/* Tangan / Arms */}
+            <line x1="-14" y1="-8" x2="14" y2="-8" stroke="#334155" strokeWidth="1.8" />
+            {/* Kaki / Legs */}
+            <line x1="0" y1="0" x2="-9" y2="15" stroke="#334155" strokeWidth="1.8" />
+            <line x1="0" y1="0" x2="9" y2="15" stroke="#334155" strokeWidth="1.8" />
+
+            {/* Label Informasi Lisan */}
+            <text x="0" y="-37" textAnchor="middle" fill="#0f172a" fontSize="10.5" fontWeight="bold">
+              Alur Informasi Lisan (Verbal Flow)
+            </text>
+            <text x="0" y="30" textAnchor="middle" fill="#64748b" fontSize="9">
+              Pesanan Lisan &amp; Uang Tunai
+            </text>
+          </g>
+
+          {/* Alur Informasi Manual: Garis Vertikal Lurus Kasir ke Tahap 1 */}
+          <path
+            d="M 210,100 L 210,270"
+            fill="none"
+            stroke="#334155"
+            strokeWidth="1.8"
+            markerEnd="url(#vsm-arrow)"
+          />
+          <text x="218" y="185" fill="#64748b" fontSize="10" fontWeight="500">
+            Instruksi Nota Fisik
           </text>
 
           {/* Alur Penyerahan Fisik / Makanan Jadi ke Mahasiswa (Finished Goods Delivery to Customer) */}
           <path
-            d="M 1140,325 L 1170,325 L 1170,110"
+            d="M 1140,325 L 1170,325 L 1170,65 L 1125,65"
             fill="none"
             stroke="#16a34a"
             strokeWidth="2.5"

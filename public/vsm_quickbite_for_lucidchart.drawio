@@ -5,23 +5,23 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <!-- CUSTOMER: MAHASISWA KAMPUS -->
-        <mxCell id="customer" value="&lt;b&gt;MAHASISWA KAMPUS&lt;/b&gt;&lt;br&gt;(Customer Demand)&lt;br&gt;&lt;font color=&quot;#2563eb&quot;&gt;&lt;b&gt;Jam Sibuk Makan Siang&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#2563eb;strokeWidth=2;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="40" width="200" height="80" as="geometry" />
+        <!-- KASIR (TOP-LEFT, SEJAJAR DI ATAS TAHAP 1) -->
+        <mxCell id="kasir_top" value="&lt;b&gt;Kasir&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Tenant QuickBite)&lt;/font&gt;" style="shape=mxgraph.vsm.enterprise;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e293b;strokeWidth=2;fontSize=13;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="140" y="40" width="140" height="75" as="geometry" />
         </mxCell>
 
-        <!-- PRODUCTION CONTROL: KASIR TENANT -->
-        <mxCell id="control" value="&lt;b&gt;PENGELOLA KASIR TENANT&lt;/b&gt;&lt;br&gt;(Kontrol Operasional Manual)&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;Sistem Kertas &amp;amp; Nota Rangkap 2&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#64748b;strokeWidth=2;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="480" y="40" width="240" height="80" as="geometry" />
+        <!-- CUSTOMER: MAHASISWA KAMPUS (TOP-RIGHT) -->
+        <mxCell id="customer" value="&lt;b&gt;Customer&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#2563eb&quot;&gt;&lt;b&gt;(Mahasiswa Kampus)&lt;/b&gt;&lt;/font&gt;" style="shape=mxgraph.vsm.enterprise;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e293b;strokeWidth=2;fontSize=13;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="40" width="140" height="75" as="geometry" />
         </mxCell>
 
-        <!-- INFO FLOW: MAHASISWA KE KASIR -->
-        <mxCell id="info_cust_ctrl" value="Pesanan Lisan &amp;amp; Tunai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563eb;strokeWidth=1.5;fontSize=10;fontColor=#2563eb;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="customer" target="control">
+        <!-- VERBAL INFO FLOW: CUSTOMER KE KASIR (GARIS LURUS HORIZONTAL) -->
+        <mxCell id="info_cust_ctrl" value="&lt;b&gt;Alur Informasi Lisan (Verbal Flow)&lt;/b&gt;&lt;br&gt;Pesanan Lisan &amp;amp; Uang Tunai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e293b;strokeWidth=2;fontSize=10;fontColor=#1e293b;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="customer" target="kasir_top">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- INFO FLOW: KASIR KE PROSES 1 -->
-        <mxCell id="info_ctrl_p1" value="Instruksi Nota Manual" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=1.5;fontSize=10;fontColor=#64748b;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="control" target="p1">
+        <!-- INFO FLOW: KASIR LANGSUNG KE TAHAP 1 (GARIS LURUS VERTIKAL) -->
+        <mxCell id="info_ctrl_p1" value="Instruksi Nota Fisik" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1e293b;strokeWidth=2;fontSize=10;fontColor=#64748b;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="kasir_top" target="p1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
