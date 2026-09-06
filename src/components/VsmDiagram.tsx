@@ -718,6 +718,170 @@ export function VsmDiagram() {
           <p className="conclusion-text">{vsmSummaryData.conclusion}</p>
         </div>
 
+        {/* Tabel Analisis Aktivitas Lean (VA / BNVA / Waste) - Sesuai Template Praktikum */}
+        <div className="vsm-table-card" style={{ borderLeft: '4px solid #4338ca' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px', marginBottom: '14px' }}>
+            <div>
+              <h3 style={{ margin: 0, color: '#1e1b4b', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                📋 Tabel Klasifikasi Aktivitas Lean (VA / BNVA / Waste)
+              </h3>
+              <p style={{ margin: '4px 0 0 0', fontSize: '0.85rem', color: '#64748b' }}>
+                Pemetaan 4 langkah proses operasional QuickBite berdasarkan Value Added (VA), Business Non-Value Added (BNVA), dan Waste (NVA).
+              </p>
+            </div>
+            <span style={{ background: '#e0e7ff', color: '#3730a3', padding: '4px 10px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>
+              4 Langkah Proses
+            </span>
+          </div>
+
+          <table className="vsm-table">
+            <thead>
+              <tr>
+                <th style={{ width: '28%' }}>Langkah Proses</th>
+                <th style={{ width: '16%' }}>Waktu Proses</th>
+                <th style={{ width: '16%' }}>Waktu Tunggu</th>
+                <th style={{ width: '40%' }}>Keterangan (VA / BNVA / Waste)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong style={{ color: '#4338ca' }}>Langkah 1:</strong>
+                  <div style={{ fontWeight: 600, color: '#0f172a' }}>Pemesanan &amp; Pembayaran di Kasir</div>
+                  <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Mahasiswa pesan lisan, kasir tulis nota fisik &amp; terima uang tunai</div>
+                </td>
+                <td>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span className="text-success font-bold" style={{ fontSize: '1rem' }}>2 Menit</span>
+                    <span className="badge-bnva">BNVA</span>
+                  </div>
+                </td>
+                <td>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span className="text-danger font-bold" style={{ fontSize: '1rem' }}>10 Menit</span>
+                    <span className="badge-waste">Waste</span>
+                  </div>
+                </td>
+                <td>
+                  <div style={{ fontSize: '0.82rem', lineHeight: '1.4' }}>
+                    <div><span className="badge-bnva" style={{ marginRight: '4px' }}>BNVA</span> <strong>Proses Transaksi:</strong> Diperlukan untuk pencatatan keuangan bisnis &amp; tanda terima.</div>
+                    <div style={{ marginTop: '3px' }}><span className="badge-waste" style={{ marginRight: '4px' }}>Waste</span> <strong>Waktu Tunggu:</strong> Antrean berdiri mahasiswa di depan loket (Waiting Waste).</div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <strong style={{ color: '#4338ca' }}>Langkah 2:</strong>
+                  <div style={{ fontWeight: 600, color: '#0f172a' }}>Serah Terima Nota ke Dapur</div>
+                  <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Kasir berjalan kaki membawa kumpulan nota kertas ke meja dapur</div>
+                </td>
+                <td>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span className="text-success font-bold" style={{ fontSize: '1rem' }}>1 Menit</span>
+                    <span className="badge-bnva">BNVA</span>
+                  </div>
+                </td>
+                <td>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span className="text-danger font-bold" style={{ fontSize: '1rem' }}>5 Menit</span>
+                    <span className="badge-waste">Waste</span>
+                  </div>
+                </td>
+                <td>
+                  <div style={{ fontSize: '0.82rem', lineHeight: '1.4' }}>
+                    <div><span className="badge-bnva" style={{ marginRight: '4px' }}>BNVA</span> <strong>Informasi Pesanan:</strong> Nota wajib sampai ke koki (keterbatasan operasional manual).</div>
+                    <div style={{ marginTop: '3px' }}><span className="badge-waste" style={{ marginRight: '4px' }}>Waste</span> <strong>Waktu Tunggu:</strong> Penumpukan batch 5 nota di meja kasir (Batching Waste).</div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <strong style={{ color: '#4338ca' }}>Langkah 3:</strong>
+                  <div style={{ fontWeight: 600, color: '#0f172a' }}>Persiapan &amp; Memasak di Dapur</div>
+                  <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Koki memasak pesanan makanan di atas wajan/kompor</div>
+                </td>
+                <td>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span className="text-success font-bold" style={{ fontSize: '1rem' }}>8 Menit</span>
+                    <span className="badge-va">VA Murni</span>
+                  </div>
+                </td>
+                <td>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span className="text-danger font-bold" style={{ fontSize: '1rem' }}>3 Menit</span>
+                    <span className="badge-waste">Waste</span>
+                  </div>
+                </td>
+                <td>
+                  <div style={{ fontSize: '0.82rem', lineHeight: '1.4' }}>
+                    <div><span className="badge-va" style={{ marginRight: '4px' }}>VA Murni</span> <strong>Proses Memasak:</strong> Mentransformasi bahan mentah jadi makanan jadi yang dibeli pelanggan.</div>
+                    <div style={{ marginTop: '3px' }}><span className="badge-waste" style={{ marginRight: '4px' }}>Waste</span> <strong>Waktu Tunggu:</strong> Delay koki baca tulisan buram &amp; antrean kompor (Correction Waste).</div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <strong style={{ color: '#4338ca' }}>Langkah 4:</strong>
+                  <div style={{ fontWeight: 600, color: '#0f172a' }}>Penyerahan Makanan ke Mahasiswa</div>
+                  <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Serah terima fisik makanan jadi di loket/meja saji</div>
+                </td>
+                <td>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span className="text-success font-bold" style={{ fontSize: '1rem' }}>1 Menit</span>
+                    <span className="badge-bnva">BNVA</span>
+                  </div>
+                </td>
+                <td>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span className="text-danger font-bold" style={{ fontSize: '1rem' }}>4 Menit</span>
+                    <span className="badge-waste">Waste</span>
+                  </div>
+                </td>
+                <td>
+                  <div style={{ fontSize: '0.82rem', lineHeight: '1.4' }}>
+                    <div><span className="badge-bnva" style={{ marginRight: '4px' }}>BNVA</span> <strong>Serah Terima:</strong> Penyerahan fisik makanan agar sampai ke tangan pemesan.</div>
+                    <div style={{ marginTop: '3px' }}><span className="badge-waste" style={{ marginRight: '4px' }}>Waste</span> <strong>Waktu Tunggu:</strong> Makanan dingin menganggur di meja saji karena panggilan kalah bising (Inventory Waste).</div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><strong>TOTAL KESELURUHAN (Lead Time)</strong></td>
+                <td><strong className="text-success" style={{ fontSize: '1rem' }}>12 Menit (VA + BNVA)</strong></td>
+                <td><strong className="text-danger" style={{ fontSize: '1rem' }}>22 Menit (Waste)</strong></td>
+                <td>
+                  <strong style={{ color: '#0f172a' }}>Total Lead Time: 34 Menit | Efisiensi Siklus: 35.3%</strong>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+
+          {/* Rangkuman 3 Kategori Lean */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', marginTop: '16px' }}>
+            <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '12px 14px' }}>
+              <div style={{ fontSize: '0.8rem', color: '#166534', fontWeight: 700 }}>🟢 VA (Value Added):</div>
+              <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#15803d', margin: '2px 0' }}>8 Menit <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>(23.5%)</span></div>
+              <div style={{ fontSize: '0.78rem', color: '#166534', lineHeight: '1.4' }}>Hanya proses memasak di dapur yang bernilai tambah murni bagi pelanggan.</div>
+            </div>
+
+            <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '12px 14px' }}>
+              <div style={{ fontSize: '0.8rem', color: '#1e40af', fontWeight: 700 }}>🔵 BNVA (Business Non-Value Added):</div>
+              <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#1d4ed8', margin: '2px 0' }}>4 Menit <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>(11.8%)</span></div>
+              <div style={{ fontSize: '0.78rem', color: '#1e40af', lineHeight: '1.4' }}>Kasir (2m) + Antar Nota (1m) + Serah Terima (1m). Wajib operasional, tapi dapat diefisienkan.</div>
+            </div>
+
+            <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '12px 14px' }}>
+              <div style={{ fontSize: '0.8rem', color: '#991b1b', fontWeight: 700 }}>🔴 NVA / Waste (Pemborosan Murni):</div>
+              <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#b91c1c', margin: '2px 0' }}>22 Menit <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>(64.7%)</span></div>
+              <div style={{ fontSize: '0.78rem', color: '#991b1b', lineHeight: '1.4' }}>Antrean (10m) + Batching (5m) + Delay Koki (3m) + Delay Saji (4m). Target eliminasi Kaizen!</div>
+            </div>
+          </div>
+        </div>
+
         {/* Tabel Rincian 4 Tahapan */}
         <div className="vsm-table-card">
           <h3>Tabel Rincian Alur Nilai &amp; Pemborosan per Tahapan</h3>
