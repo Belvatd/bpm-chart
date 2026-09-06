@@ -150,6 +150,131 @@ function VsmSymbolIcon({ shapeType }: { shapeType: string }) {
           <text x="24" y="36" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#16a34a">12m (VA)</text>
         </svg>
       );
+    case 'vsm-material-pull':
+      return (
+        <svg width="56" height="30" viewBox="0 0 56 30">
+          <path d="M 4,15 L 38,15 L 38,8 L 52,15 L 38,22 L 38,15 Z" fill="#ffffff" stroke="#0d9488" strokeWidth="2.2" />
+        </svg>
+      );
+    case 'vsm-safety-stock':
+      return (
+        <svg width="48" height="42" viewBox="0 0 48 42">
+          <path d="M 24,6 Q 26,3 29,8 L 40,31 Q 42,36 36,36 L 12,36 Q 6,36 8,31 L 19,8 Q 22,3 24,6 Z" fill="#fef3c7" stroke="#d97706" strokeWidth="2" strokeLinejoin="round" />
+          <text x="24" y="31" textAnchor="middle" fontWeight="bold" fontSize="16" fill="#92400e">S</text>
+        </svg>
+      );
+    case 'vsm-external-shipment':
+      return (
+        <svg width="56" height="34" viewBox="0 0 56 34">
+          <path d="M 4,10 L 34,10 L 34,24 L 4,24 Z" fill="#e2e8f0" stroke="#475569" strokeWidth="2" />
+          <path d="M 34,13 L 42,13 L 46,19 L 46,24 L 34,24 Z" fill="#cbd5e1" stroke="#475569" strokeWidth="2" />
+          <circle cx="12" cy="26" r="4" fill="#ffffff" stroke="#475569" strokeWidth="1.8" />
+          <circle cx="40" cy="26" r="4" fill="#ffffff" stroke="#475569" strokeWidth="1.8" />
+        </svg>
+      );
+    case 'vsm-workcell':
+      return (
+        <svg width="56" height="42" viewBox="0 0 56 42">
+          <rect x="3" y="3" width="50" height="36" fill="#eff6ff" stroke="#1d4ed8" strokeWidth="2" rx="3" />
+          <rect x="8" y="10" width="17" height="16" fill="#ffffff" stroke="#1d4ed8" strokeWidth="1.5" rx="2" />
+          <rect x="31" y="10" width="17" height="16" fill="#ffffff" stroke="#1d4ed8" strokeWidth="1.5" rx="2" />
+          <text x="28" y="36" textAnchor="middle" fontSize="5.5" fontWeight="bold" fill="#1e3a8a">WORKCELL</text>
+        </svg>
+      );
+    case 'vsm-production-kanban':
+      return (
+        <svg width="40" height="44" viewBox="0 0 40 44">
+          <rect x="6" y="4" width="28" height="36" fill="#fffbeb" stroke="#f59e0b" strokeWidth="2" rx="3" />
+          <line x1="6" y1="14" x2="34" y2="14" stroke="#f59e0b" strokeWidth="1.5" />
+          <text x="20" y="31" textAnchor="middle" fontWeight="bold" fontSize="11" fill="#b45309">P</text>
+        </svg>
+      );
+    case 'vsm-withdrawal-kanban':
+      return (
+        <svg width="40" height="44" viewBox="0 0 40 44">
+          <rect x="6" y="4" width="28" height="36" fill="#fff7ed" stroke="#ea580c" strokeWidth="2" rx="3" />
+          <line x1="6" y1="14" x2="34" y2="14" stroke="#ea580c" strokeWidth="1.5" />
+          <text x="20" y="31" textAnchor="middle" fontWeight="bold" fontSize="11" fill="#c2410c">W</text>
+        </svg>
+      );
+    case 'vsm-signal-kanban':
+      return (
+        <svg width="40" height="44" viewBox="0 0 40 44">
+          <rect x="6" y="4" width="28" height="36" fill="#fef2f2" stroke="#dc2626" strokeWidth="2" rx="3" />
+          <polygon points="20,12 28,26 12,26" fill="#dc2626" />
+          <text x="20" y="35" textAnchor="middle" fontWeight="bold" fontSize="6" fill="#991b1b">MIN</text>
+        </svg>
+      );
+    case 'vsm-kanban-post':
+      return (
+        <svg width="48" height="42" viewBox="0 0 48 42">
+          <rect x="4" y="22" width="40" height="16" fill="#fefce8" stroke="#ca8a04" strokeWidth="2" rx="2" />
+          <rect x="10" y="10" width="10" height="14" fill="#ffffff" stroke="#ca8a04" strokeWidth="1.6" rx="1" />
+          <rect x="24" y="6" width="10" height="18" fill="#ffffff" stroke="#ca8a04" strokeWidth="1.6" rx="1" />
+        </svg>
+      );
+    case 'vsm-sequenced-pull':
+      return (
+        <svg width="52" height="34" viewBox="0 0 52 34">
+          <rect x="4" y="4" width="14" height="14" fill="#f0fdf4" stroke="#16a34a" strokeWidth="1.8" rx="2" />
+          <text x="11" y="15" textAnchor="middle" fontWeight="bold" fontSize="9" fill="#15803d">1</text>
+          <rect x="24" y="4" width="14" height="14" fill="#f0fdf4" stroke="#16a34a" strokeWidth="1.8" rx="2" />
+          <text x="31" y="15" textAnchor="middle" fontWeight="bold" fontSize="9" fill="#15803d">2</text>
+          <line x1="18" y1="11" x2="24" y2="11" stroke="#16a34a" strokeWidth="1.6" />
+          <line x1="38" y1="11" x2="48" y2="11" stroke="#16a34a" strokeWidth="2" />
+          <polygon points="48,6 52,11 48,16" fill="#16a34a" />
+        </svg>
+      );
+    case 'vsm-load-leveling':
+      return (
+        <svg width="52" height="42" viewBox="0 0 52 42">
+          <rect x="4" y="6" width="44" height="30" fill="#eef2ff" stroke="#6366f1" strokeWidth="2" rx="2" />
+          <line x1="15" y1="6" x2="15" y2="36" stroke="#6366f1" strokeWidth="1.2" />
+          <line x1="26" y1="6" x2="26" y2="36" stroke="#6366f1" strokeWidth="1.2" />
+          <line x1="37" y1="6" x2="37" y2="36" stroke="#6366f1" strokeWidth="1.2" />
+          <rect x="7" y="12" width="6" height="10" fill="#6366f1" />
+          <rect x="18" y="12" width="6" height="14" fill="#818cf8" />
+          <rect x="29" y="12" width="6" height="8" fill="#a5b4fc" />
+        </svg>
+      );
+    case 'vsm-mrp-erp':
+      return (
+        <svg width="52" height="40" viewBox="0 0 52 40">
+          <rect x="6" y="4" width="40" height="26" fill="#f5f3ff" stroke="#7c3aed" strokeWidth="2" rx="3" />
+          <rect x="10" y="8" width="32" height="17" fill="#ffffff" stroke="#7c3aed" strokeWidth="1.2" />
+          <line x1="10" y1="13" x2="42" y2="13" stroke="#c4b5fd" strokeWidth="6" />
+          <line x1="10" y1="19" x2="34" y2="19" stroke="#ddd6fe" strokeWidth="4" />
+          <rect x="18" y="32" width="16" height="3" fill="#7c3aed" />
+          <rect x="22" y="35" width="8" height="3" fill="#7c3aed" />
+        </svg>
+      );
+    case 'vsm-go-see':
+      return (
+        <svg width="48" height="30" viewBox="0 0 48 30">
+          <circle cx="12" cy="15" r="8" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2.5" />
+          <circle cx="36" cy="15" r="8" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2.5" />
+          <line x1="20" y1="15" x2="28" y2="15" stroke="#0284c7" strokeWidth="2.5" />
+          <line x1="4" y1="13" x2="4" y2="8" stroke="#0284c7" strokeWidth="2.5" />
+          <line x1="44" y1="13" x2="44" y2="8" stroke="#0284c7" strokeWidth="2.5" />
+        </svg>
+      );
+    case 'vsm-verbal-info':
+      return (
+        <svg width="56" height="32" viewBox="0 0 56 32">
+          <path d="M 4,22 Q 16,8 30,22 Q 38,30 48,22" fill="none" stroke="#db2777" strokeWidth="2" strokeDasharray="4 3" />
+          <circle cx="42" cy="8" r="3.5" fill="#db2777" />
+          <path d="M 36,20 Q 42,13 48,20" fill="none" stroke="#db2777" strokeWidth="2" />
+        </svg>
+      );
+    case 'vsm-takt-time':
+      return (
+        <svg width="48" height="44" viewBox="0 0 48 44">
+          <circle cx="24" cy="22" r="14" fill="#f0fdfa" stroke="#0f766e" strokeWidth="2.2" />
+          <line x1="24" y1="22" x2="24" y2="12" stroke="#0f766e" strokeWidth="2" />
+          <line x1="24" y1="22" x2="31" y2="26" stroke="#0f766e" strokeWidth="2" />
+          <text x="24" y="42" textAnchor="middle" fontSize="5.5" fontWeight="bold" fill="#0f766e">TAKT</text>
+        </svg>
+      );
     default:
       return (
         <svg width="44" height="40" viewBox="0 0 44 40">
