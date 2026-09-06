@@ -6,7 +6,7 @@ export function VsmDiagram() {
   const [showKaizen, setShowKaizen] = useState<boolean>(true);
 
   // Koordinat layout VSM SVG
-  const svgWidth = 1250;
+  const svgWidth = 1300;
   const svgHeight = 720;
 
   // 4 Proses X positions
@@ -96,6 +96,17 @@ export function VsmDiagram() {
             >
               <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb" />
             </marker>
+            <marker
+              id="vsm-arrow-green"
+              viewBox="0 0 10 10"
+              refX="6"
+              refY="5"
+              markerWidth="6"
+              markerHeight="6"
+              orient="auto"
+            >
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a" />
+            </marker>
             {/* Filter Bayangan */}
             <filter id="vsm-shadow" x="-5%" y="-5%" width="115%" height="115%">
               <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.08" />
@@ -177,6 +188,37 @@ export function VsmDiagram() {
           <text x="350" y="172" textAnchor="middle" fill="#64748b" fontSize="10">
             Instruksi Nota Fisik Manual
           </text>
+
+          {/* Alur Penyerahan Fisik / Makanan Jadi ke Mahasiswa (Finished Goods Delivery to Customer) */}
+          <path
+            d="M 1140,325 L 1170,325 L 1170,110"
+            fill="none"
+            stroke="#16a34a"
+            strokeWidth="2.5"
+            markerEnd="url(#vsm-arrow-green)"
+          />
+          <g transform="translate(1178, 195)">
+            <rect
+              x="-4"
+              y="-14"
+              width="96"
+              height="44"
+              fill="#f0fdf4"
+              stroke="#86efac"
+              strokeWidth="1.2"
+              rx="4"
+              filter="url(#vsm-shadow)"
+            />
+            <text x="44" y="2" textAnchor="middle" fill="#15803d" fontSize="8.5" fontWeight="bold">
+              DELIVERY
+            </text>
+            <text x="44" y="15" textAnchor="middle" fill="#166534" fontSize="8">
+              Serah Terima
+            </text>
+            <text x="44" y="25" textAnchor="middle" fill="#166534" fontSize="8">
+              Makanan Jadi
+            </text>
+          </g>
 
           {/* ============================================================ */}
           {/* SECTION 2: PROCESS BOXES & DATA BOXES (4 TAHAPAN PROSES)     */}
