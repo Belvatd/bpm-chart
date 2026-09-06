@@ -6,16 +6,16 @@ import {
   type VsmSymbolItem,
 } from '../data/vsmSymbolsData';
 
-// Miniatur Simbol SVG Standar Lean VSM
+// Miniatur Simbol SVG Standar VSM Lucidchart & Lean
 function VsmSymbolIcon({ shapeType }: { shapeType: string }) {
   switch (shapeType) {
+    // 1. Process Symbols
     case 'vsm-customer-box':
       return (
         <svg width="56" height="42" viewBox="0 0 56 42">
-          {/* Atap Pabrik Bergigi VSM */}
           <polygon points="6,12 14,4 22,12 30,4 38,12 46,4 54,12" fill="#2563eb" />
           <rect x="6" y="12" width="48" height="26" fill="#eff6ff" stroke="#2563eb" strokeWidth="2" rx="2" />
-          <text x="30" y="28" textAnchor="middle" fontSize="7.5" fontWeight="bold" fill="#1e3a8a">CUSTOMER</text>
+          <text x="30" y="28" textAnchor="middle" fontSize="7" fontWeight="bold" fill="#1e3a8a">CUST/SUPP</text>
         </svg>
       );
     case 'vsm-process-box':
@@ -23,8 +23,19 @@ function VsmSymbolIcon({ shapeType }: { shapeType: string }) {
         <svg width="56" height="42" viewBox="0 0 56 42">
           <rect x="4" y="4" width="48" height="34" fill="#ffffff" stroke="#1e293b" strokeWidth="2" rx="3" />
           <rect x="4" y="4" width="48" height="11" fill="#1e293b" rx="2" />
-          <text x="28" y="12" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#ffffff">PROSES</text>
+          <text x="28" y="12" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#ffffff">PROCESS</text>
           <text x="28" y="27" textAnchor="middle" fontSize="7" fill="#475569">Operasi</text>
+        </svg>
+      );
+    case 'vsm-shared-process':
+      return (
+        <svg width="56" height="42" viewBox="0 0 56 42">
+          <rect x="2" y="3" width="52" height="36" fill="#ffffff" stroke="#475569" strokeWidth="2" rx="3" />
+          <line x1="2" y1="12" x2="54" y2="12" stroke="#475569" strokeWidth="1.5" />
+          <line x1="12" y1="3" x2="12" y2="39" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="2 1" />
+          <line x1="44" y1="3" x2="44" y2="39" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="2 1" />
+          <text x="28" y="10" textAnchor="middle" fontSize="6" fontWeight="bold" fill="#334155">SHARED</text>
+          <text x="28" y="27" textAnchor="middle" fontSize="6.5" fill="#64748b">Bersama</text>
         </svg>
       );
     case 'vsm-data-box':
@@ -38,6 +49,17 @@ function VsmSymbolIcon({ shapeType }: { shapeType: string }) {
           <text x="7" y="35" fontSize="6" fill="#64748b">1 Shift</text>
         </svg>
       );
+    case 'vsm-workcell':
+      return (
+        <svg width="56" height="42" viewBox="0 0 56 42">
+          <rect x="3" y="3" width="50" height="36" fill="#eff6ff" stroke="#1d4ed8" strokeWidth="2" rx="3" />
+          <rect x="8" y="10" width="17" height="16" fill="#ffffff" stroke="#1d4ed8" strokeWidth="1.5" rx="2" />
+          <rect x="31" y="10" width="17" height="16" fill="#ffffff" stroke="#1d4ed8" strokeWidth="1.5" rx="2" />
+          <text x="28" y="36" textAnchor="middle" fontSize="5.5" fontWeight="bold" fill="#1e3a8a">WORKCELL</text>
+        </svg>
+      );
+
+    // 2. Material Symbols
     case 'vsm-inventory-triangle':
       return (
         <svg width="48" height="42" viewBox="0 0 48 42">
@@ -45,15 +67,34 @@ function VsmSymbolIcon({ shapeType }: { shapeType: string }) {
           <text x="24" y="31" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="16">I</text>
         </svg>
       );
+    case 'vsm-shipments':
+      return (
+        <svg width="56" height="34" viewBox="0 0 56 34">
+          <path d="M 4,12 L 36,12 L 36,6 L 52,17 L 36,28 L 36,22 L 4,22 Z" fill="#22c55e" stroke="#15803d" strokeWidth="1.5" />
+          <text x="22" y="10" textAnchor="middle" fontSize="6" fontWeight="bold" fill="#15803d">SHIP</text>
+        </svg>
+      );
     case 'vsm-push-arrow':
       return (
         <svg width="56" height="32" viewBox="0 0 56 32">
-          {/* Panah Push Belang-Belang Khas VSM */}
           <path d="M 4,11 L 36,11 L 36,5 L 52,16 L 36,27 L 36,21 L 4,21 Z" fill="#f1f5f9" stroke="#475569" strokeWidth="1.5" />
-          {/* Garis-garis belang */}
           <line x1="12" y1="11" x2="12" y2="21" stroke="#475569" strokeWidth="1.8" />
           <line x1="20" y1="11" x2="20" y2="21" stroke="#475569" strokeWidth="1.8" />
           <line x1="28" y1="11" x2="28" y2="21" stroke="#475569" strokeWidth="1.8" />
+        </svg>
+      );
+    case 'vsm-supermarket':
+      return (
+        <svg width="48" height="40" viewBox="0 0 48 40">
+          <path d="M 6,36 L 6,6 L 42,6 L 42,36" fill="none" stroke="#0d9488" strokeWidth="3" />
+          <line x1="6" y1="16" x2="36" y2="16" stroke="#0d9488" strokeWidth="2.5" />
+          <line x1="6" y1="26" x2="36" y2="26" stroke="#0d9488" strokeWidth="2.5" />
+        </svg>
+      );
+    case 'vsm-material-pull':
+      return (
+        <svg width="56" height="30" viewBox="0 0 56 30">
+          <path d="M 4,15 L 38,15 L 38,8 L 52,15 L 38,22 L 38,15 Z" fill="#ffffff" stroke="#0d9488" strokeWidth="2.2" />
         </svg>
       );
     case 'vsm-fifo-lane':
@@ -63,97 +104,6 @@ function VsmSymbolIcon({ shapeType }: { shapeType: string }) {
           <line x1="4" y1="24" x2="42" y2="24" stroke="#059669" strokeWidth="2" />
           <polygon points="42,4 52,16 42,28" fill="#059669" />
           <text x="22" y="19" textAnchor="middle" fontSize="7.5" fontWeight="bold" fill="#047857">FIFO</text>
-        </svg>
-      );
-    case 'vsm-supermarket':
-      return (
-        <svg width="48" height="40" viewBox="0 0 48 40">
-          {/* Rak Supermarket Lean */}
-          <path d="M 6,36 L 6,6 L 42,6 L 42,36" fill="none" stroke="#0d9488" strokeWidth="3" />
-          <line x1="6" y1="16" x2="36" y2="16" stroke="#0d9488" strokeWidth="2.5" />
-          <line x1="6" y1="26" x2="36" y2="26" stroke="#0d9488" strokeWidth="2.5" />
-        </svg>
-      );
-    case 'vsm-manual-info':
-      return (
-        <svg width="56" height="30" viewBox="0 0 56 30">
-          <line x1="4" y1="15" x2="44" y2="15" stroke="#64748b" strokeWidth="2" />
-          <polygon points="44,10 52,15 44,20" fill="#64748b" />
-          <text x="25" y="11" textAnchor="middle" fontSize="6.5" fill="#64748b">Nota / Lisan</text>
-        </svg>
-      );
-    case 'vsm-electronic-info':
-      return (
-        <svg width="56" height="32" viewBox="0 0 56 32">
-          {/* Panah Kilat / Lightning Bolt Informasi Digital */}
-          <polyline points="4,16 16,8 24,24 36,8 44,18" fill="none" stroke="#2563eb" strokeWidth="2.2" />
-          <polygon points="43,13 52,21 41,23" fill="#2563eb" />
-          <text x="26" y="30" textAnchor="middle" fontSize="6" fontWeight="bold" fill="#2563eb">Digital/KDS</text>
-        </svg>
-      );
-    case 'vsm-control-box':
-      return (
-        <svg width="56" height="42" viewBox="0 0 56 42">
-          <rect x="4" y="4" width="48" height="34" fill="#f8fafc" stroke="#4f46e5" strokeWidth="2" rx="3" />
-          <text x="28" y="18" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#312e81">CONTROL</text>
-          <text x="28" y="30" textAnchor="middle" fontSize="6" fill="#6366f1">Pusat Jadwal</text>
-        </svg>
-      );
-    case 'vsm-kanban-card':
-      return (
-        <svg width="48" height="38" viewBox="0 0 48 38">
-          <rect x="6" y="5" width="36" height="28" fill="#fffbeb" stroke="#f59e0b" strokeWidth="1.8" rx="2" />
-          <line x1="12" y1="13" x2="36" y2="13" stroke="#d97706" strokeWidth="1.5" />
-          <line x1="12" y1="20" x2="30" y2="20" stroke="#d97706" strokeWidth="1.5" />
-          <line x1="12" y1="26" x2="24" y2="26" stroke="#d97706" strokeWidth="1.5" />
-        </svg>
-      );
-    case 'vsm-kaizen-burst':
-      return (
-        <svg width="52" height="42" viewBox="0 0 52 42">
-          <polygon
-            points="26,2 32,13 44,8 39,20 50,28 37,31 36,41 26,33 16,41 15,31 2,28 13,20 8,8 20,13"
-            fill="#ea580c"
-            stroke="#c2410c"
-            strokeWidth="1.5"
-          />
-          <text x="26" y="24" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#ffffff">KAIZEN</text>
-        </svg>
-      );
-    case 'vsm-operator':
-      return (
-        <svg width="44" height="42" viewBox="0 0 44 42">
-          <circle cx="22" cy="13" r="7" fill="#f1f5f9" stroke="#475569" strokeWidth="2" />
-          <path d="M 8,36 C 8,25 36,25 36,36" fill="#f1f5f9" stroke="#475569" strokeWidth="2" />
-        </svg>
-      );
-    case 'vsm-timeline-ladder':
-      return (
-        <svg width="56" height="36" viewBox="0 0 56 36">
-          {/* Garis tangga NVA (atas) vs VA (bawah) */}
-          <line x1="4" y1="8" x2="22" y2="8" stroke="#dc2626" strokeWidth="2.5" />
-          <line x1="22" y1="8" x2="22" y2="26" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="2 1" />
-          <line x1="22" y1="26" x2="44" y2="26" stroke="#16a34a" strokeWidth="2.5" />
-          <line x1="44" y1="26" x2="44" y2="8" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="2 1" />
-          <line x1="44" y1="8" x2="54" y2="8" stroke="#dc2626" strokeWidth="2.5" />
-          <text x="13" y="6" textAnchor="middle" fontSize="5" fill="#dc2626" fontWeight="bold">NVA</text>
-          <text x="33" y="34" textAnchor="middle" fontSize="5" fill="#16a34a" fontWeight="bold">VA</text>
-        </svg>
-      );
-    case 'vsm-summary-box':
-      return (
-        <svg width="48" height="44" viewBox="0 0 48 44">
-          <rect x="4" y="3" width="40" height="38" fill="#f1f5f9" stroke="#4338ca" strokeWidth="1.8" rx="3" />
-          <text x="24" y="13" textAnchor="middle" fontSize="5.5" fontWeight="bold" fill="#4338ca">LEAD TIME</text>
-          <line x1="4" y1="16" x2="44" y2="16" stroke="#cbd5e1" />
-          <text x="24" y="26" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#dc2626">22m (NVA)</text>
-          <text x="24" y="36" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#16a34a">12m (VA)</text>
-        </svg>
-      );
-    case 'vsm-material-pull':
-      return (
-        <svg width="56" height="30" viewBox="0 0 56 30">
-          <path d="M 4,15 L 38,15 L 38,8 L 52,15 L 38,22 L 38,15 Z" fill="#ffffff" stroke="#0d9488" strokeWidth="2.2" />
         </svg>
       );
     case 'vsm-safety-stock':
@@ -172,13 +122,30 @@ function VsmSymbolIcon({ shapeType }: { shapeType: string }) {
           <circle cx="40" cy="26" r="4" fill="#ffffff" stroke="#475569" strokeWidth="1.8" />
         </svg>
       );
-    case 'vsm-workcell':
+
+    // 3. Information Symbols
+    case 'vsm-control-box':
       return (
         <svg width="56" height="42" viewBox="0 0 56 42">
-          <rect x="3" y="3" width="50" height="36" fill="#eff6ff" stroke="#1d4ed8" strokeWidth="2" rx="3" />
-          <rect x="8" y="10" width="17" height="16" fill="#ffffff" stroke="#1d4ed8" strokeWidth="1.5" rx="2" />
-          <rect x="31" y="10" width="17" height="16" fill="#ffffff" stroke="#1d4ed8" strokeWidth="1.5" rx="2" />
-          <text x="28" y="36" textAnchor="middle" fontSize="5.5" fontWeight="bold" fill="#1e3a8a">WORKCELL</text>
+          <rect x="4" y="4" width="48" height="34" fill="#f8fafc" stroke="#4f46e5" strokeWidth="2" rx="3" />
+          <text x="28" y="18" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#312e81">CONTROL</text>
+          <text x="28" y="30" textAnchor="middle" fontSize="6" fill="#6366f1">Pusat Jadwal</text>
+        </svg>
+      );
+    case 'vsm-manual-info':
+      return (
+        <svg width="56" height="30" viewBox="0 0 56 30">
+          <line x1="4" y1="15" x2="44" y2="15" stroke="#64748b" strokeWidth="2" />
+          <polygon points="44,10 52,15 44,20" fill="#64748b" />
+          <text x="25" y="11" textAnchor="middle" fontSize="6.5" fill="#64748b">Nota / Memo</text>
+        </svg>
+      );
+    case 'vsm-electronic-info':
+      return (
+        <svg width="56" height="32" viewBox="0 0 56 32">
+          <polyline points="4,16 16,8 24,24 36,8 44,18" fill="none" stroke="#2563eb" strokeWidth="2.2" />
+          <polygon points="43,13 52,21 41,23" fill="#2563eb" />
+          <text x="26" y="30" textAnchor="middle" fontSize="6" fontWeight="bold" fill="#2563eb">EDI / Data</text>
         </svg>
       );
     case 'vsm-production-kanban':
@@ -266,13 +233,156 @@ function VsmSymbolIcon({ shapeType }: { shapeType: string }) {
           <path d="M 36,20 Q 42,13 48,20" fill="none" stroke="#db2777" strokeWidth="2" />
         </svg>
       );
-    case 'vsm-takt-time':
+
+    // 4. General Symbols
+    case 'vsm-kaizen-burst':
       return (
-        <svg width="48" height="44" viewBox="0 0 48 44">
-          <circle cx="24" cy="22" r="14" fill="#f0fdfa" stroke="#0f766e" strokeWidth="2.2" />
-          <line x1="24" y1="22" x2="24" y2="12" stroke="#0f766e" strokeWidth="2" />
-          <line x1="24" y1="22" x2="31" y2="26" stroke="#0f766e" strokeWidth="2" />
-          <text x="24" y="42" textAnchor="middle" fontSize="5.5" fontWeight="bold" fill="#0f766e">TAKT</text>
+        <svg width="52" height="42" viewBox="0 0 52 42">
+          <polygon
+            points="26,2 32,13 44,8 39,20 50,28 37,31 36,41 26,33 16,41 15,31 2,28 13,20 8,8 20,13"
+            fill="#ea580c"
+            stroke="#c2410c"
+            strokeWidth="1.5"
+          />
+          <text x="26" y="24" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#ffffff">KAIZEN</text>
+        </svg>
+      );
+    case 'vsm-operator':
+      return (
+        <svg width="44" height="42" viewBox="0 0 44 42">
+          <circle cx="22" cy="13" r="7" fill="#f1f5f9" stroke="#0f766e" strokeWidth="2" />
+          <path d="M 8,36 C 8,25 36,25 36,36" fill="#f1f5f9" stroke="#0f766e" strokeWidth="2" />
+        </svg>
+      );
+    case 'vsm-timeline':
+    case 'vsm-timeline-ladder':
+      return (
+        <svg width="56" height="36" viewBox="0 0 56 36">
+          <line x1="4" y1="8" x2="22" y2="8" stroke="#dc2626" strokeWidth="2.5" />
+          <line x1="22" y1="8" x2="22" y2="26" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="2 1" />
+          <line x1="22" y1="26" x2="44" y2="26" stroke="#16a34a" strokeWidth="2.5" />
+          <line x1="44" y1="26" x2="44" y2="8" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="2 1" />
+          <line x1="44" y1="8" x2="54" y2="8" stroke="#dc2626" strokeWidth="2.5" />
+          <text x="13" y="6" textAnchor="middle" fontSize="5" fill="#dc2626" fontWeight="bold">NVA</text>
+          <text x="33" y="34" textAnchor="middle" fontSize="5" fill="#16a34a" fontWeight="bold">VA</text>
+        </svg>
+      );
+    case 'vsm-transportation':
+      return (
+        <svg width="56" height="36" viewBox="0 0 56 36">
+          <rect x="6" y="10" width="44" height="18" fill="#e0f2fe" stroke="#0284c7" strokeWidth="1.8" rx="3" />
+          <circle cx="16" cy="28" r="3.5" fill="#0284c7" />
+          <circle cx="40" cy="28" r="3.5" fill="#0284c7" />
+          <rect x="12" y="14" width="8" height="6" fill="#bae6fd" />
+          <rect x="24" y="14" width="8" height="6" fill="#bae6fd" />
+          <rect x="36" y="14" width="8" height="6" fill="#bae6fd" />
+        </svg>
+      );
+    case 'vsm-forklift':
+      return (
+        <svg width="52" height="38" viewBox="0 0 52 38">
+          <circle cx="14" cy="30" r="4" fill="#334155" />
+          <circle cx="28" cy="30" r="4" fill="#334155" />
+          <path d="M 8,26 L 8,16 L 22,16 L 30,26 Z" fill="#ffedd5" stroke="#ea580c" strokeWidth="1.8" />
+          <line x1="36" y1="6" x2="36" y2="30" stroke="#334155" strokeWidth="2.5" />
+          <line x1="36" y1="28" x2="48" y2="28" stroke="#334155" strokeWidth="2.5" />
+        </svg>
+      );
+    case 'vsm-expedited':
+      return (
+        <svg width="56" height="32" viewBox="0 0 56 32">
+          <path d="M 4,16 L 34,16 M 26,8 L 36,16 L 26,24" stroke="#e11d48" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 12,8 L 22,16 L 12,24" stroke="#fda4af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="44" y="20" fontSize="7" fontWeight="bold" fill="#e11d48">EXP</text>
+        </svg>
+      );
+    case 'vsm-milk-run':
+      return (
+        <svg width="52" height="38" viewBox="0 0 52 38">
+          <circle cx="26" cy="19" r="14" fill="none" stroke="#0891b2" strokeWidth="2" strokeDasharray="4 2" />
+          <polygon points="38,12 43,19 35,21" fill="#0891b2" />
+          <rect x="18" y="14" width="16" height="10" fill="#cffafe" stroke="#0891b2" strokeWidth="1.5" rx="2" />
+        </svg>
+      );
+    case 'vsm-warehouse':
+      return (
+        <svg width="52" height="42" viewBox="0 0 52 42">
+          <polygon points="26,4 4,18 48,18" fill="#f1f5f9" stroke="#64748b" strokeWidth="1.8" />
+          <rect x="6" y="18" width="40" height="20" fill="#f8fafc" stroke="#64748b" strokeWidth="1.8" />
+          <rect x="20" y="24" width="12" height="14" fill="#cbd5e1" stroke="#64748b" strokeWidth="1.2" />
+        </svg>
+      );
+    case 'vsm-cross-dock':
+      return (
+        <svg width="52" height="38" viewBox="0 0 52 38">
+          <rect x="18" y="6" width="16" height="26" fill="#ccfbf1" stroke="#0d9488" strokeWidth="1.8" rx="2" />
+          <line x1="4" y1="14" x2="18" y2="14" stroke="#0d9488" strokeWidth="2" />
+          <polygon points="18,10 22,14 18,18" fill="#0d9488" />
+          <line x1="34" y1="24" x2="48" y2="24" stroke="#0d9488" strokeWidth="2" />
+          <polygon points="44,20 48,24 44,28" fill="#0d9488" />
+        </svg>
+      );
+    case 'vsm-orders':
+      return (
+        <svg width="44" height="42" viewBox="0 0 44 42">
+          <path d="M 8,4 L 28,4 L 36,12 L 36,38 L 8,38 Z" fill="#eef2ff" stroke="#6366f1" strokeWidth="1.8" />
+          <polygon points="28,4 28,12 36,12" fill="#c7d2fe" />
+          <line x1="14" y1="18" x2="30" y2="18" stroke="#6366f1" strokeWidth="1.5" />
+          <line x1="14" y1="24" x2="30" y2="24" stroke="#6366f1" strokeWidth="1.5" />
+          <line x1="14" y1="30" x2="24" y2="30" stroke="#6366f1" strokeWidth="1.5" />
+        </svg>
+      );
+    case 'vsm-phone':
+      return (
+        <svg width="48" height="42" viewBox="0 0 48 42">
+          <circle cx="24" cy="21" r="16" fill="#f3e8ff" stroke="#8b5cf6" strokeWidth="1.8" />
+          <path d="M 17,14 C 18,17 21,21 24,24 C 27,27 31,28 32,27 L 30,23 L 26,22 L 24,24 C 22,22 20,20 18,18 L 20,16 L 19,12 Z" fill="#8b5cf6" />
+        </svg>
+      );
+    case 'vsm-batched-kanban':
+      return (
+        <svg width="50" height="42" viewBox="0 0 50 42">
+          <rect x="14" y="4" width="28" height="24" fill="#fef3c7" stroke="#d97706" strokeWidth="1.5" rx="2" />
+          <rect x="9" y="9" width="28" height="24" fill="#fde68a" stroke="#d97706" strokeWidth="1.5" rx="2" />
+          <rect x="4" y="14" width="28" height="24" fill="#fffbeb" stroke="#f59e0b" strokeWidth="1.8" rx="2" />
+          <text x="18" y="29" textAnchor="middle" fontWeight="bold" fontSize="10" fill="#b45309">B</text>
+        </svg>
+      );
+    case 'vsm-control-center':
+      return (
+        <svg width="52" height="42" viewBox="0 0 52 42">
+          <polygon points="26,3 46,14 46,32 26,39 6,32 6,14" fill="#eff6ff" stroke="#3b82f6" strokeWidth="2" />
+          <line x1="26" y1="3" x2="26" y2="39" stroke="#93c5fd" strokeWidth="1.2" />
+          <text x="26" y="24" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#1d4ed8">CTRL</text>
+        </svg>
+      );
+    case 'vsm-quality-problem':
+      return (
+        <svg width="48" height="42" viewBox="0 0 48 42">
+          <circle cx="24" cy="21" r="16" fill="#fef2f2" stroke="#ef4444" strokeWidth="2.2" />
+          <line x1="16" y1="13" x2="32" y2="29" stroke="#dc2626" strokeWidth="3" strokeLinecap="round" />
+          <line x1="32" y1="13" x2="16" y2="29" stroke="#dc2626" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      );
+    case 'vsm-solution-improvement':
+      return (
+        <svg width="56" height="40" viewBox="0 0 56 40">
+          <path
+            d="M 12,28 C 8,28 4,24 4,19 C 4,14 8,11 13,11 C 15,6 20,3 27,3 C 34,3 39,7 41,12 C 46,12 50,16 50,21 C 50,26 46,29 41,29 Z"
+            fill="#ecfdf5"
+            stroke="#10b981"
+            strokeWidth="2"
+          />
+          <text x="26" y="20" textAnchor="middle" fontSize="6.5" fontWeight="bold" fill="#047857">IDEA</text>
+        </svg>
+      );
+    case 'vsm-other-info':
+      return (
+        <svg width="48" height="40" viewBox="0 0 48 40">
+          <rect x="4" y="4" width="40" height="32" fill="#f8fafc" stroke="#64748b" strokeWidth="1.8" strokeDasharray="3 2" rx="3" />
+          <circle cx="24" cy="9" r="2.5" fill="#ef4444" />
+          <line x1="10" y1="17" x2="38" y2="17" stroke="#94a3b8" strokeWidth="1.5" />
+          <line x1="10" y1="24" x2="32" y2="24" stroke="#94a3b8" strokeWidth="1.5" />
         </svg>
       );
     default:
@@ -295,6 +405,7 @@ export function VsmReference() {
     const matchKeyword =
       item.name.toLowerCase().includes(searchKeyword.toLowerCase()) ||
       item.officialName.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+      item.lucidDefinition.toLowerCase().includes(searchKeyword.toLowerCase()) ||
       item.simpleExplanation.toLowerCase().includes(searchKeyword.toLowerCase()) ||
       item.example.toLowerCase().includes(searchKeyword.toLowerCase()) ||
       item.leanSignificance.toLowerCase().includes(searchKeyword.toLowerCase());
@@ -307,7 +418,16 @@ export function VsmReference() {
         <div>
           <h2>Kamus Notasi &amp; Simbol Value Stream Mapping (VSM)</h2>
           <p>
-            Panduan lengkap memahami simbol-simbol standar Lean Manufacturing &amp; Service VSM untuk memetakan alur nilai, mengidentifikasi pemborosan (waste), dan menghitung lead time.
+            Panduan lengkap <strong>41 Simbol Standar VSM</strong> yang diselaraskan langsung dengan{' '}
+            <a
+              href="https://lucid.co/diagram/vsm/value-stream-mapping-tutorial"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: '#0284c7', textDecoration: 'underline', fontWeight: 600 }}
+            >
+              Panduan Resmi Lucidchart VSM Tutorial &amp; Symbols
+            </a>
+            . Dikelompokkan ke dalam 4 kategori resmi: <em>Process, Material, Information,</em> dan <em>General</em>.
           </p>
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '8px' }}>
@@ -331,7 +451,7 @@ export function VsmReference() {
             onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#0369a1')}
             onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#0284c7')}
           >
-            📥 Download CSV (Import ke Lucidchart / Excel)
+            📥 Download CSV (41 Simbol untuk Lucidchart / Excel)
           </a>
         </div>
       </header>
@@ -343,7 +463,7 @@ export function VsmReference() {
           <input
             type="text"
             className="search-input"
-            placeholder="Cari simbol VSM, nama, atau istilah Lean (cth: inventory, kaizen, push, supermarket, tangga, lead time)..."
+            placeholder="Cari simbol VSM Lucidchart (cth: customer, dedicated process, shared, supermarket, kanban, milk run)..."
             value={searchKeyword}
             onChange={(e) => setSearchKeyword(e.target.value)}
           />
@@ -372,12 +492,12 @@ export function VsmReference() {
         <table className="bpmn-table">
           <thead>
             <tr>
-              <th style={{ width: '80px', textAlign: 'center' }}>Bentuk Simbol</th>
-              <th style={{ width: '220px' }}>Nama Notasi VSM</th>
-              <th style={{ width: '150px' }}>Kategori</th>
-              <th>Penjelasan Mudah Dipahami &amp; Analogi</th>
-              <th>Contoh Nyata (Tenant QuickBite)</th>
-              <th style={{ width: '80px', textAlign: 'center' }}>Makna Lean</th>
+              <th style={{ width: '80px', textAlign: 'center' }}>Simbol</th>
+              <th style={{ width: '220px' }}>Nama Simbol Lucidchart</th>
+              <th style={{ width: '170px' }}>Kategori Lucidchart</th>
+              <th>Definisi Resmi Lucidchart &amp; Penjelasan</th>
+              <th>Contoh Kasus (QuickBite / Layanan)</th>
+              <th style={{ width: '90px', textAlign: 'center' }}>Makna Lean</th>
             </tr>
           </thead>
           <tbody>
@@ -394,7 +514,9 @@ export function VsmReference() {
                   {/* Kolom 2: Nama Notasi */}
                   <td>
                     <strong className="symbol-title">{item.name}</strong>
-                    <span className="symbol-official"><code>{item.officialName}</code></span>
+                    <span className="symbol-official">
+                      Library Lucidchart: <code>{item.officialName}</code>
+                    </span>
                   </td>
 
                   {/* Kolom 3: Kategori Badge */}
@@ -411,8 +533,33 @@ export function VsmReference() {
                     </span>
                   </td>
 
-                  {/* Kolom 4: Penjelasan Mudah & Analogi */}
+                  {/* Kolom 4: Definisi Resmi Lucidchart & Penjelasan Sederhana */}
                   <td>
+                    <div
+                      style={{
+                        marginBottom: '8px',
+                        padding: '8px 10px',
+                        background: '#f8fafc',
+                        borderLeft: `3px solid ${item.badgeColor}`,
+                        borderRadius: '0 6px 6px 0',
+                        fontSize: '12px',
+                        color: '#334155',
+                      }}
+                    >
+                      <strong
+                        style={{
+                          display: 'block',
+                          fontSize: '10.5px',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.4px',
+                          color: '#64748b',
+                          marginBottom: '2px',
+                        }}
+                      >
+                        📖 Definisi Resmi Lucidchart:
+                      </strong>
+                      <em>"{item.lucidDefinition}"</em>
+                    </div>
                     <p className="explanation-text">{item.simpleExplanation}</p>
                     <div className="analogy-box">
                       <span className="analogy-tag">💡 Analogi:</span> {item.analogy}
@@ -434,7 +581,7 @@ export function VsmReference() {
                       onClick={() => setActiveItem(item)}
                       title="Lihat peran simbol dalam Lean Thinking"
                     >
-                      Peran Lean ⚡
+                      Detail ⚡
                     </button>
                   </td>
                 </tr>
@@ -472,23 +619,38 @@ export function VsmReference() {
               <VsmSymbolIcon shapeType={activeItem.shapeType} />
               <div>
                 <h3>{activeItem.name}</h3>
-                <code>{activeItem.officialName}</code>
+                <code>Bentuk Resmi Lucidchart: {activeItem.officialName}</code>
               </div>
             </div>
 
+            <div
+              className="modal-section"
+              style={{
+                background: '#f8fafc',
+                borderLeft: `4px solid ${activeItem.badgeColor}`,
+                padding: '12px 14px',
+                borderRadius: '0 8px 8px 0',
+              }}
+            >
+              <h4 style={{ color: '#0f172a', margin: '0 0 6px 0' }}>📖 Definisi Resmi Panduan Lucidchart:</h4>
+              <p style={{ fontStyle: 'italic', color: '#334155', margin: 0, fontSize: '0.9rem' }}>
+                "{activeItem.lucidDefinition}"
+              </p>
+            </div>
+
             <div className="modal-section">
-              <h4>🎯 Peran Kunci dalam Metodologi Lean:</h4>
+              <h4>🎯 Peran Kunci dalam Metodologi Lean (Waste vs VA):</h4>
               <p>{activeItem.leanSignificance}</p>
             </div>
 
             <div className="modal-section">
-              <h4>🔍 Contoh Kasus di QuickBite:</h4>
+              <h4>🔍 Penerapan pada Kasus QuickBite:</h4>
               <p>{activeItem.example}</p>
             </div>
 
             {activeItem.tips && (
               <div className="modal-tips-box">
-                <strong>💡 Panduan Praktis Menggambar VSM:</strong>
+                <strong>💡 Panduan Praktis di Lucidchart:</strong>
                 <p>{activeItem.tips}</p>
               </div>
             )}

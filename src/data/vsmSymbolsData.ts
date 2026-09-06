@@ -1,522 +1,652 @@
+// Data Kamus Notasi & Simbol Value Stream Mapping (VSM)
+// Sumber Referensi Resmi: Lucidchart VSM Tutorial & Symbol Guide
+// https://lucid.co/diagram/vsm/value-stream-mapping-tutorial
+// https://lucid.co/diagram/vsm/value-stream-mapping-symbols
+
 export type VsmCategory =
-  | 'Material Flow'
-  | 'Information Flow'
-  | 'General & Kaizen'
-  | 'Timeline & Metrics';
+  | 'Process Symbols'
+  | 'Material Symbols'
+  | 'Information Symbols'
+  | 'General Symbols';
 
 export interface VsmSymbolItem {
   id: string;
-  name: string;
-  officialName: string;
+  name: string; // Judul Bahasa Indonesia + Nama Asli
+  officialName: string; // Nama Resmi di Library Lucidchart
   category: VsmCategory;
   categoryLabel: string;
   badgeColor: string;
   shapeType: string;
-  simpleExplanation: string;
-  analogy: string;
-  example: string;
-  leanSignificance: string;
-  tips?: string;
+  lucidDefinition: string; // Definisi Resmi dari Dokumentasi Lucidchart
+  simpleExplanation: string; // Penjelasan Praktis Bahasa Indonesia
+  analogy: string; // Analogi Sehari-hari
+  example: string; // Contoh Nyata Kasus QuickBite / Layanan
+  leanSignificance: string; // Peran Nilai Tambah / Pemborosan (Waste vs VA)
+  tips?: string; // Tips Penggunaan di Kanvas Lucidchart
 }
 
 export const vsmCategoriesList: { id: VsmCategory | 'All'; label: string }[] = [
-  { id: 'All', label: 'Semua Simbol VSM' },
-  { id: 'Material Flow', label: 'Alur Fisik / Material' },
-  { id: 'Information Flow', label: 'Alur Informasi' },
-  { id: 'General & Kaizen', label: 'Umum & Kaizen' },
-  { id: 'Timeline & Metrics', label: 'Garis Waktu & Metrik' },
+  { id: 'All', label: 'Semua Simbol VSM (41 Notasi Lucidchart)' },
+  { id: 'Process Symbols', label: '1. Simbol Proses (Process)' },
+  { id: 'Material Symbols', label: '2. Simbol Material (Material)' },
+  { id: 'Information Symbols', label: '3. Simbol Informasi (Information)' },
+  { id: 'General Symbols', label: '4. Simbol Umum (General)' },
 ];
 
 export const vsmSymbolsList: VsmSymbolItem[] = [
-  // ==========================================
-  // 1. MATERIAL FLOW (ALUR FISIK / BARANG)
-  // ==========================================
   {
-    id: 'customer-supplier-box',
-    name: 'Pelanggan / Pemasok Luar (Customer / Supplier)',
-    officialName: 'Customer / Supplier Box',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#2563eb', // blue
-    shapeType: 'vsm-customer-box',
-    simpleExplanation:
-      'Kotak bergigi atap pabrik yang mewakili pihak luar sistem: entitas pemesan (Customer/Pelanggan) atau penyedia bahan baku (Supplier/Pemasok).',
-    analogy: 'Pelanggan yang memesan di kasir atau mobil boks distributor telur yang mengirim pasokan.',
-    example: 'Mahasiswa kampus yang memesan makan siang di tenant QuickBite (Demand: 120 pesanan/hari).',
-    leanSignificance:
-      'Menjadi titik tolak penentu Takt Time (kecepatan permintaan pelanggan yang harus dipenuhi pabrik/layanan).',
-    tips: 'Biasanya diletakkan di sudut kiri atas (Supplier) dan kanan atas (Customer).',
+    "id": "customer-supplier-box",
+    "name": "Pelanggan / Pemasok Luar (Customer / Supplier)",
+    "officialName": "Customer/Supplier",
+    "category": "Process Symbols",
+    "categoryLabel": "Simbol Proses (Process)",
+    "badgeColor": "#2563eb",
+    "shapeType": "vsm-customer-box",
+    "lucidDefinition": "When placed in the upper left corner of a value stream map, the typical starting place for material flow, this icon represents the supplier. When placed in the upper right corner, it represents the customer.",
+    "simpleExplanation": "Kotak beratap gerigi pabrik yang mewakili pihak eksternal sistem: pemasok bahan baku (Supplier) di kiri atas atau pelanggan pemesan (Customer) di kanan atas.",
+    "analogy": "Pelanggan yang memesan di kasir atau mobil boks distributor telur yang mengirim pasokan.",
+    "example": "Mahasiswa kampus memesan makan siang di tenant QuickBite (Demand: 120 pesanan/hari, Takt Time = 2 Menit/pesanan).",
+    "leanSignificance": "Menjadi titik tolak penentu Takt Time (kecepatan permintaan pelanggan yang harus dipenuhi pabrik/layanan).",
+    "tips": "Di Lucidchart: Tempatkan Supplier di sudut kiri atas dan Customer di sudut kanan atas kanvas."
   },
   {
-    id: 'process-box',
-    name: 'Kotak Tahapan Proses (Dedicated Process Box)',
-    officialName: 'Process Box',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#1e293b', // slate
-    shapeType: 'vsm-process-box',
-    simpleExplanation:
-      'Satu blok tahapan kerja di mana suatu aktivitas fisik atau layanan sedang aktif dikerjakan secara berkelanjutan.',
-    analogy: 'Meja penggorengan di dapur tempat koki aktif memasak makanan.',
-    example: 'Tahap 3: Persiapan & Memasak pesanan makanan oleh koki di dapur tenant.',
-    leanSignificance:
-      'Tempat terjadinya aktivitas bernilai tambah (Value-Added) dan waktu siklus proses (Process Time).',
-    tips: 'Hanya mewakili satu area kerja atau sel produksi berkelanjutan, bukan langkah mikro.',
+    "id": "dedicated-process-flow",
+    "name": "Kotak Alur Proses Terdedikasi (Dedicated Process Flow)",
+    "officialName": "Dedicated Process Flow",
+    "category": "Process Symbols",
+    "categoryLabel": "Simbol Proses (Process)",
+    "badgeColor": "#1e293b",
+    "shapeType": "vsm-process-box",
+    "lucidDefinition": "This icon represents a single department, process operation or machine with a fixed and continuous internal material flow.",
+    "simpleExplanation": "Satu blok tahapan kerja terdedikasi di mana suatu aktivitas fisik atau layanan sedang aktif dikerjakan secara berkelanjutan oleh staf atau mesin tertentu.",
+    "analogy": "Meja penggorengan di dapur tempat koki aktif memasak makanan pesanan.",
+    "example": "Tahap 3 QuickBite: Memasak pesanan makanan oleh koki di dapur tenant.",
+    "leanSignificance": "Tempat terjadinya aktivitas bernilai tambah (Value-Added) dan pengukuran Process Time (PT/CT).",
+    "tips": "Di Lucidchart: Tarik kotak Process Box dan sambungkan dengan panah alur material di bagian bawah."
   },
   {
-    id: 'data-box',
-    name: 'Kotak Metrik Operasional (Data Box)',
-    officialName: 'Data Box',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#0284c7', // sky
-    shapeType: 'vsm-data-box',
-    simpleExplanation:
-      'Tabel data kecil tepat di bawah kotak proses yang mencatat parameter kinerja terukur seperti waktu kerja, jumlah staf, dan ukuran batch.',
-    analogy: 'Dashboard speedometer mobil yang memperlihatkan kecepatan, jarak, dan sisa bahan bakar.',
-    example: 'PT (Process Time) = 8 Menit, Operator = 1 Koki, Ukuran Batch = 1 Porsi.',
-    leanSignificance:
-      'Dasar perhitungan kuantitatif untuk membandingkan kapasitas tiap stasiun kerja dan menemukan bottleneck.',
-    tips: 'Berisi metrik kunci: PT (Process Time), C/O (Changeover Time), Uptime, Shift, dan Defect Rate.',
+    "id": "shared-process",
+    "name": "Proses Bersama / Terbagi (Shared Process)",
+    "officialName": "Shared Process",
+    "category": "Process Symbols",
+    "categoryLabel": "Simbol Proses (Process)",
+    "badgeColor": "#475569",
+    "shapeType": "vsm-shared-process",
+    "lucidDefinition": "This icon indicates a process, department, operation or workcenter that is shared by other value stream families.",
+    "simpleExplanation": "Kotak proses dengan garis ganda yang menandakan departemen, operasi, atau fasilitas kerja tersebut digunakan bersama oleh beberapa lini produk/rantai nilai yang berbeda.",
+    "analogy": "Kasir sentral food court kampus yang melayani pembayaran pesanan untuk 10 tenant makanan sekaligus.",
+    "example": "Dapur persiapan pusat kantin yang memotong sayuran untuk tenant QuickBite dan tenant sekitarnya.",
+    "leanSignificance": "Titik rawan antrean (bottleneck) karena kapasitas dibagi bersama, membutuhkan perataan jadwal (Heijunka).",
+    "tips": "Di Lucidchart: Gunakan ikon Shared Process dengan garis ganda untuk membedakannya dari proses tunggal."
   },
   {
-    id: 'inventory-triangle',
-    name: 'Segitiga Tumpukan / Waktu Tunggu (Inventory / Queue)',
-    officialName: 'Inventory Triangle (WIP)',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#dc2626', // red/danger
-    shapeType: 'vsm-inventory-triangle',
-    simpleExplanation:
-      'Segitiga kuning bersimbol "I" yang menandakan adanya barang, dokumen, atau orang yang menganggur/tertahan menunggu giliran diproses.',
-    analogy: 'Mobil-mobil yang macet mengular di depan gerbang tol yang sempit.',
-    example: 'Tumpukan 5 lembar nota fisik yang dibiarkan menunggu di meja kasir sebelum diantar ke dapur (Wait Time = 5 Menit).',
-    leanSignificance:
-      'Simbol utama pemborosan (Waste of Inventory & Waiting). Menyumbang porsi terbesar keterlambatan Lead Time.',
-    tips: 'Di bawah segitiga wajib dicantumkan jumlah tumpukan dan estimasi hari/menit waktu tunggu.',
+    "id": "data-box",
+    "name": "Kotak Metrik Operasional (Data Box)",
+    "officialName": "Data Box",
+    "category": "Process Symbols",
+    "categoryLabel": "Simbol Proses (Process)",
+    "badgeColor": "#0284c7",
+    "shapeType": "vsm-data-box",
+    "lucidDefinition": "The data box is placed under other icons that require data to analyze the system. For example, a data box could go below a factory icon to show shipping frequency, product handling data, batch size or other information.",
+    "simpleExplanation": "Tabel data kecil tepat di bawah kotak proses yang mencatat parameter kinerja terukur seperti waktu kerja (C/T), changeover (C/O), jumlah staf, dan ukuran batch.",
+    "analogy": "Dashboard speedometer mobil yang memperlihatkan kecepatan, jarak, dan sisa bahan bakar.",
+    "example": "Data Box Tahap Memasak: PT = 8 Menit, Operator = 1 Koki, Batch Size = 1 Porsi, Uptime = 98%.",
+    "leanSignificance": "Dasar kuantitatif analisis kapasitas, perbandingan Cycle Time terhadap Takt Time, dan penemuan bottleneck.",
+    "tips": "Di Lucidchart: Posisikan tepat menempel di bagian bawah Process Box agar sejajar rapi."
   },
   {
-    id: 'push-arrow',
-    name: 'Panah Dorong Hasil (Push Arrow / Movement)',
-    officialName: 'Push Arrow (Material Movement)',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#475569',
-    shapeType: 'vsm-push-arrow',
-    simpleExplanation:
-      'Panah tebal bergaris belang-belang yang menandakan bahwa hasil kerja dipindahkan secara sepihak ke tahap berikutnya tanpa menunggu sinyal kebutuhan (Push System).',
-    analogy: 'Memasak 50 porsi nasi goreng sekaligus dan menumpuknya di etalase, berharap ada yang beli.',
-    example: 'Kasir menumpuk nota dan langsung melemparnya ke meja dapur secara sepihak (Overproduction Push).',
-    leanSignificance:
-      'Mengindikasikan sistem kerja tradisional "Push" yang rentan memicu penumpukan barang berlebih (Work-In-Process).',
-    tips: 'Lawan dari sistem "Pull" (tarik). Dalam Lean, panah push diupayakan diubah menjadi sistem tarik.',
+    "id": "workcell",
+    "name": "Sel Kerja Terintegrasi (Workcell)",
+    "officialName": "Workcell",
+    "category": "Process Symbols",
+    "categoryLabel": "Simbol Proses (Process)",
+    "badgeColor": "#1d4ed8",
+    "shapeType": "vsm-workcell",
+    "lucidDefinition": "Use this icon to show that multiple processes are integrated into a manufacturing workcell.",
+    "simpleExplanation": "Kotak sel kerja berbentuk tapal kuda (U-shape) yang mengintegrasikan beberapa tahapan kerja agar diselesaikan satu per satu tanpa transit (Continuous Flow).",
+    "analogy": "Meja barista pembuat kopi: penggilingan biji kopi, ekstraksi espresso, dan penyajian minuman dalam satu jangkauan tangan.",
+    "example": "Stasiun perakitan burger dan pembungkusan kantong kertas disatukan dalam satu meja kerja meja saji QuickBite.",
+    "leanSignificance": "Melenyapkan tumpukan Work-in-Progress (WIP) antartahap dan memangkas jarak transportasi gerakan operator (Waste of Motion).",
+    "tips": "Di Lucidchart: Gunakan ikon sel kerja U-shape untuk menunjukkan penggabungan beberapa langkah kerja."
   },
   {
-    id: 'fifo-lane',
-    name: 'Jalur Antrean Teratur (FIFO Lane)',
-    officialName: 'First-In-First-Out (FIFO) Lane',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#059669', // green
-    shapeType: 'vsm-fifo-lane',
-    simpleExplanation:
-      'Jalur penyimpanan terbatas dengan aturan siapa yang masuk duluan harus diproses duluan, dan memiliki kapasitas maksimal tertentu.',
-    analogy: 'Antrean kasir tol otomatis: mobil yang masuk pertama harus keluar pertama.',
-    example: 'Rel jepitan nota pesanan di atas kompor koki dengan kapasitas maksimal 10 nota berurutan.',
-    leanSignificance:
-      'Mencegah kekacauan urutan pesanan dan membatasi jumlah penumpukan agar tidak melebihi batas toleransi.',
-    tips: 'Digambarkan sebagai pipa panah dengan tulisan FIFO dan batas kapasitas maksimal (Max: X unit).',
+    "id": "inventory",
+    "name": "Tumpukan Persediaan / Waktu Tunggu (Inventory)",
+    "officialName": "Inventory",
+    "category": "Material Symbols",
+    "categoryLabel": "Simbol Material (Material)",
+    "badgeColor": "#ca8a04",
+    "shapeType": "vsm-inventory-triangle",
+    "lucidDefinition": "Inventory between two processes is represented by these icons. If you need to include an inventory count, add it below the triangle icon. This symbol can also represent stored inventory.",
+    "simpleExplanation": "Segitiga kuning bersimbol 'I' yang menandakan adanya barang, dokumen, atau pesanan yang menganggur/tertahan menunggu giliran diproses.",
+    "analogy": "Mobil-mobil yang macet mengular di depan gerbang tol yang sempit.",
+    "example": "Tumpukan 5 lembar nota fisik yang dibiarkan menunggu di meja kasir sebelum diantar ke dapur (Wait Time = 5 Menit).",
+    "leanSignificance": "Simbol utama pemborosan (Waste of Inventory & Waiting). Menyumbang porsi terbesar keterlambatan Lead Time.",
+    "tips": "Di Lucidchart: Tuliskan jumlah antrean (pieces) atau waktu tunggu (minutes/days) tepat di bawah segitiga."
   },
   {
-    id: 'supermarket',
-    name: 'Rak Penampung Tarik (Supermarket Pull)',
-    officialName: 'Supermarket',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#0d9488',
-    shapeType: 'vsm-supermarket',
-    simpleExplanation:
-      'Tempat penyimpanan sementara berskala kecil di mana tahap berikutnya hanya mengambil barang jika memang dibutuhkan, lalu segera diisi kembali.',
-    analogy: 'Rak minuman di minimarket: kasir hanya mengisi rak ketika stok di rak mulai kosong diambil pembeli.',
-    example: 'Wadah potongan ayam tepung yang sudah dimarinasi; koki hanya mengambil sesuai pesanan yang masuk.',
-    leanSignificance:
-      'Jantung dari sistem Lean Pull (Just-In-Time) untuk menjaga persediaan tetap minimum dan terhindar dari pemborosan stok.',
-    tips: 'Bentuk kotak terbuka tiga sisi menyerupai huruf [E] yang menghadap ke bawah.',
-  },
-
-  // ==========================================
-  // 2. INFORMATION FLOW (ALUR INFORMASI)
-  // ==========================================
-  {
-    id: 'manual-info-arrow',
-    name: 'Alur Informasi Manual (Kertas / Lisan)',
-    officialName: 'Manual Information Flow',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#64748b',
-    shapeType: 'vsm-manual-info',
-    simpleExplanation:
-      'Garis panah tipis lurus yang menunjukkan aliran instruksi jadwal atau pesanan yang dikomunikasikan secara manual melalui kertas atau lisan.',
-    analogy: 'Menyampaikan pesan dengan memo tempel Post-It atau berbicara tatap muka.',
-    example: 'Mahasiswa menyebutkan menu pesanan secara lisan ke kasir di konter.',
-    leanSignificance:
-      'Rentan terhadap salah dengar, salah baca tulisan tangan, serta keterlambatan fisik pengantaran.',
-    tips: 'Garis lurus tunggal berujung mata panah tipis.',
+    "id": "shipments",
+    "name": "Alur Pengiriman Barang (Shipments)",
+    "officialName": "Shipments",
+    "category": "Material Symbols",
+    "categoryLabel": "Simbol Material (Material)",
+    "badgeColor": "#16a34a",
+    "shapeType": "vsm-shipments",
+    "lucidDefinition": "This symbol shows materials coming from suppliers or finished goods going from factory to customers.",
+    "simpleExplanation": "Simbol alur pergerakan material besar yang masuk dari pemasok luar atau barang jadi yang dikirimkan ke pelanggan.",
+    "analogy": "Paket kiriman kurir ekspedisi dari gudang pusat ke gerai pembeli.",
+    "example": "Pengiriman bahan baku telur & daging dari supplier ke QuickBite, serta penyerahan makanan jadi ke mahasiswa.",
+    "leanSignificance": "Menghubungkan rantai pasok eksternal dengan batas awal dan akhir peta aliran nilai.",
+    "tips": "Di Lucidchart: Gabungkan dengan garis panah tebal berorientasi horizontal atau panah truk."
   },
   {
-    id: 'electronic-info-arrow',
-    name: 'Alur Informasi Digital (Sistem / Elektronik)',
-    officialName: 'Electronic Information Flow',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#2563eb',
-    shapeType: 'vsm-electronic-info',
-    simpleExplanation:
-      'Garis panah zig-zag berbentuk sambaran petir yang melambangkan transmisi data secara instan melalui sistem digital, LAN, internet, atau API.',
-    analogy: 'Pesan chat instan WhatsApp atau transaksi pembayaran kartu kredit.',
-    example: 'Pesanan dari aplikasi QR menu langsung terkirim secara instan ke layar monitor dapur (KDS).',
-    leanSignificance:
-      'Solusi utama Lean To-Be untuk melenyapkan waktu tunggu (zero delay communication) dan memangkas waktu kirim informasi.',
-    tips: 'Garis patah-patah petir (lightning bolt) berpanah.',
+    "id": "push-arrow",
+    "name": "Panah Dorong Hasil Kerja (Push Arrow)",
+    "officialName": "Push Arrow",
+    "category": "Material Symbols",
+    "categoryLabel": "Simbol Material (Material)",
+    "badgeColor": "#475569",
+    "shapeType": "vsm-push-arrow",
+    "lucidDefinition": "This icon shows material being pushed downstream from one process to the next.",
+    "simpleExplanation": "Panah besar bergaris-garis belang tebal yang menandakan barang/pesanan dipindahkan ke tahap berikutnya berdasarkan jadwal sepihak, bukan tarikan kebutuhan proses hilir.",
+    "analogy": "Memasak 50 porsi nasi goreng sekaligus lalu menumpuknya di etalase, berharap ada yang membelinya.",
+    "example": "Kasir menumpuk 5 nota lalu melemparnya sekaligus ke meja dapur koki.",
+    "leanSignificance": "Ciri khas Push System tradisional yang memicu penumpukan barang dan pemborosan Overproduction.",
+    "tips": "Di Lucidchart: Gunakan panah bergaris belang (striped arrow) di antara dua kotak proses."
   },
   {
-    id: 'production-control-box',
-    name: 'Kotak Pusat Kendali (Production Control / Central)',
-    officialName: 'Production Control Box',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#4f46e5',
-    shapeType: 'vsm-control-box',
-    simpleExplanation:
-      'Kotak kontrol pusat yang bertugas merencanakan jadwal kerja, mengelola pesanan, dan menginstruksikan operasional harian.',
-    analogy: 'Menara kontrol bandara (ATC) yang memandu jadwal lepas landas dan mendarat pesawat.',
-    example: 'Pengelola Kasir QuickBite yang menerima pesanan mahasiswa dan mendistribusikan nota ke staf dapur.',
-    leanSignificance:
-      'Pusat kendali aliran nilai; menentukan apakah sistem berjalan lambat berbasis batch atau lincah berbasis arus satuan.',
-    tips: 'Biasanya diletakkan di tengah bagian atas peta VSM, terhubung ke Customer, Supplier, dan tiap tahapan.',
+    "id": "supermarket",
+    "name": "Supermarket Persediaan Terkontrol (Supermarket)",
+    "officialName": "Supermarket",
+    "category": "Material Symbols",
+    "categoryLabel": "Simbol Material (Material)",
+    "badgeColor": "#0d9488",
+    "shapeType": "vsm-supermarket",
+    "lucidDefinition": "This icon represents a Kanban stockpoint where downstream customers can get the inventory they need as it is replenished by the upstream supplier.",
+    "simpleExplanation": "Rak terbuka 3 sisi tempat penyimpanan persediaan terbatas di mana proses hilir mengambil barang sesuai kebutuhan dan proses hulu mengisi ulang sejumlah yang diambil.",
+    "analogy": "Rak minuman dingin di minimarket: pembeli mengambil 2 botol teh, pegawai toko mengisinya kembali dari gudang sebanyak 2 botol.",
+    "example": "Wadah penyimpanan potongan ayam bumbu siap goreng yang diisi ulang koki pendukung saat sisa 3 porsi.",
+    "leanSignificance": "Jantung sistem tarik Lean (Pull System) yang membatasi persediaan maksimum dan mencegah penumpukan liar.",
+    "tips": "Di Lucidchart: Pasang ikon rak supermarket di antara stasiun kerja yang tidak dapat dihubungkan langsung secara continuous flow."
   },
   {
-    id: 'kanban-card',
-    name: 'Kartu Perintah Kerja (Kanban Card)',
-    officialName: 'Production / Withdrawal Kanban',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#f59e0b',
-    shapeType: 'vsm-kanban-card',
-    simpleExplanation:
-      'Kartu fisik atau sinyal visual yang menginstruksikan staf untuk "Hanya memproduksi atau mengambil 1 unit lagi sekarang".',
-    analogy: 'Kupon nomor antrean cuci mobil atau kartu giliran donor darah.',
-    example: 'Tiket pesanan digital nomor #042 yang muncul di layar koki sebagai perintah untuk mulai menggoreng burger.',
-    leanSignificance:
-      'Alat visual pengendali kelebihan produksi (anti-overproduction); jika tidak ada kartu kanban, staf tidak boleh bekerja membuat barang.',
-    tips: 'Bentuk persegi panjang kecil dengan sudut terpotong atau simbol kartu kecil.',
-  },
-
-  // ==========================================
-  // 3. GENERAL & KAIZEN (UMUM & PERBAIKAN)
-  // ==========================================
-  {
-    id: 'kaizen-burst',
-    name: 'Bintang Ledakan Peluang Kaizen (Kaizen Burst)',
-    officialName: 'Kaizen Burst (Kaizen Opportunity)',
-    category: 'General & Kaizen',
-    categoryLabel: 'Umum & Kaizen',
-    badgeColor: '#ea580c', // orange/burst
-    shapeType: 'vsm-kaizen-burst',
-    simpleExplanation:
-      'Bentuk bintang ledakan tajam yang menyorot titik terjadinya pemborosan parah dan membutuhkan lokakarya perbaikan cepat (Kaizen workshop).',
-    analogy: 'Tanda seru bahaya atau lingkaran merah pada peta bencana yang menandai titik krisis darurat.',
-    example: 'Kaizen: "Ganti penumpukan nota manual dengan Kitchen Display System (KDS) untuk memangkas delay 5 menit."',
-    leanSignificance:
-      'Pilar penghubung antara peta kondisi saat ini (Current State) menuju peta masa depan yang efisien (Future State).',
-    tips: 'Diisi dengan kalimat singkat ide perbaikan spesifik dan terukur.',
+    "id": "material-pull",
+    "name": "Penarikan Material Fisik (Material Pull)",
+    "officialName": "Material Pull",
+    "category": "Material Symbols",
+    "categoryLabel": "Simbol Material (Material)",
+    "badgeColor": "#059669",
+    "shapeType": "vsm-material-pull",
+    "lucidDefinition": "This pull symbol represents physical removal of stored inventory from supermarkets.",
+    "simpleExplanation": "Panah melengkung berbalik arah yang menunjukkan pengambilan fisik bahan/barang dari supermarket oleh proses hilir.",
+    "analogy": "Koki mengambil satu wadah ayam marinasi dari pendingin tepat saat pesanan baru masuk.",
+    "example": "Koki mengambil 1 porsi ayam marinasi dari cooler begitu pesanan burger ayam mulai dimasak.",
+    "leanSignificance": "Menegaskan prinsip Just-In-Time (JIT): material hanya bergerak saat ada tarikan kebutuhan nyata.",
+    "tips": "Di Lucidchart: Hubungkan panah lengkung dari rak supermarket menuju kotak proses pemakai."
   },
   {
-    id: 'operator-symbol',
-    name: 'Ikon Petugas / Pekerja (Operator)',
-    officialName: 'Operator Symbol',
-    category: 'General & Kaizen',
-    categoryLabel: 'Umum & Kaizen',
-    badgeColor: '#6b7280',
-    shapeType: 'vsm-operator',
-    simpleExplanation:
-      'Simbol miniatur kepala dan bahu orang yang menunjukkan berapa jumlah staf manusia yang ditugaskan penuh pada stasiun kerja tersebut.',
-    analogy: 'Ikon profil pengguna di aplikasi handphone.',
-    example: '1 Kasir di loket depan dan 1 Koki di meja penggorengan dapur.',
-    leanSignificance:
-      'Digunakan untuk analisis beban kerja (Line Balancing) dan efisiensi produktivitas tenaga kerja (Full-Time Equivalent/FTE).',
-    tips: 'Bentuk lingkaran kepala dengan setengah lingkaran badan di bawahnya.',
-  },
-
-  // ==========================================
-  // 4. TIMELINE & METRICS (GARIS WAKTU & METRIK)
-  // ==========================================
-  {
-    id: 'timeline-ladder',
-    name: 'Tangga Garis Waktu Lean (Timeline Ladder)',
-    officialName: 'Timeline Ladder (Step Wave)',
-    category: 'Timeline & Metrics',
-    categoryLabel: 'Garis Waktu & Metrik',
-    badgeColor: '#0f172a',
-    shapeType: 'vsm-timeline-ladder',
-    simpleExplanation:
-      'Garis berundak seperti tangga di dasar diagram yang memisahkan waktu menganggur/menunggu (garis atas) dengan waktu kerja produktif (garis bawah).',
-    analogy: 'Jadwal dokter: waktu 40 menit menunggu di ruang tunggu (atas) vs waktu 10 menit pemeriksaan dokter (bawah).',
-    example: 'Undakan atas: Wait Time 10m, 5m, 3m, 4m (Total 22m). Undakan bawah: Process Time 2m, 1m, 8m, 1m (Total 12m).',
-    leanSignificance:
-      'Jantung pengukuran VSM! Memperlihatkan secara visual betapa waktu pemborosan jauh lebih panjang daripada waktu kerja nyata.',
-    tips: 'Garis atas selalu mewakili Non-Value Added (NVA), garis bawah selalu mewakili Value-Added (VA).',
+    "id": "fifo-lane",
+    "name": "Jalur Antrean Teratur Terbatas (FIFO Lane)",
+    "officialName": "FIFO Lane",
+    "category": "Material Symbols",
+    "categoryLabel": "Simbol Material (Material)",
+    "badgeColor": "#047857",
+    "shapeType": "vsm-fifo-lane",
+    "lucidDefinition": "This icon represents a First-In-First-Out system that limits inventory input. The maximum inventory capacity can be written below the lane.",
+    "simpleExplanation": "Jalur pipa antrean teratur dengan aturan ketat First-In-First-Out dan batas kapasitas maksimal yang tertera di bawah jalur.",
+    "analogy": "Antrean mobil di gerbang tol otomatis: yang pertama masuk gerbang adalah yang pertama keluar gerbang.",
+    "example": "Rel gantung nota pesanan di atas kompor koki dengan kapasitas maksimal 10 nota.",
+    "leanSignificance": "Mencegah persediaan membengkak melebihi kapasitas dan menjamin urutan pengerjaan pesanan tidak tertukar.",
+    "tips": "Di Lucidchart: Tuliskan kapasitas batas (cth: 'Max = 10 pcs') di bawah jalur FIFO."
   },
   {
-    id: 'lead-time-summary-box',
-    name: 'Kotak Ringkasan Lead Time (Total Summary Box)',
-    officialName: 'Lead Time Summary Box',
-    category: 'Timeline & Metrics',
-    categoryLabel: 'Garis Waktu & Metrik',
-    badgeColor: '#4338ca',
-    shapeType: 'vsm-summary-box',
-    simpleExplanation:
-      'Kotak kalkulasi di ujung kanan bawah tangga waktu yang menjumlahkan Total Waktu Tunggu, Total Waktu Proses, serta Efisiensi Siklus.',
-    analogy: 'Struk nilai rapor akhir yang menyajikan persentase kehadiran produktif siswa.',
-    example: 'Total Wait Time = 22m, Total Process Time = 12m, Total Lead Time = 34m, Efisiensi Siklus (PCE) = 35.3%.',
-    leanSignificance:
-      'Menghitung Process Cycle Efficiency (PCE) = (Value-Added Time / Total Lead Time) x 100%.',
-    tips: 'Tolok ukur keberhasilan proyek perbaikan Lean Six Sigma dari As-Is ke To-Be.',
-  },
-
-  // ==========================================
-  // 5. SIMBOL TAMBAHAN (LUCIDCHART) - MATERIAL FLOW
-  // ==========================================
-  {
-    id: 'material-pull',
-    name: 'Panah Tarik Material (Material Pull)',
-    officialName: 'Material Pull Arrow',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#0d9488',
-    shapeType: 'vsm-material-pull',
-    simpleExplanation:
-      'Panah tipis berlubang yang menandakan barang hanya ditarik/diambil oleh proses hilir saat benar-benar dibutuhkan, bukan didorong oleh proses hulu.',
-    analogy: 'Seperti mengambil satu sendok es krim dari cone hanya saat lidah siap menjilat, bukan menuang semua isi toples dulu.',
-    example: 'Koki mengambil 1 porsi ayam tepung dari wadah marinasi hanya saat ada pesanan masuk, lalu wadah diisi ulang.',
-    leanSignificance:
-      'Inti sistem Pull (Just-In-Time): produksi dipicu permintaan nyata, menekan overproduction dan penumpukan WIP.',
-    tips: 'Digambar sebagai panah outline (tanpa isi) dari supermarket menuju proses hilir.',
+    "id": "safety-stock",
+    "name": "Stok Pengaman / Cadangan Sementara (Safety Stock)",
+    "officialName": "Safety Stock",
+    "category": "Material Symbols",
+    "categoryLabel": "Simbol Material (Material)",
+    "badgeColor": "#b45309",
+    "shapeType": "vsm-safety-stock",
+    "lucidDefinition": "Rather than permanent storage, this icon indicates temporary safety stock to prevent problems in the event of system failures or other issues.",
+    "simpleExplanation": "Simbol pagar persediaan penyangga cadangan sementara untuk mengantisipasi lonjakan permintaan mendadak atau keterlambatan pasokan mesin/supplier.",
+    "analogy": "Ban serep di bagasi mobil yang disiapkan jika terjadi ban bocor darurat.",
+    "example": "Cadangan 20 porsi bumbu saus siap pakai di chiller cadangan untuk antisipasi jam makan siang melonjak.",
+    "leanSignificance": "Mencegah berhentinya proses (Line Stop) akibat variasi tak terduga, dihitung terpisah dari buffer persediaan reguler.",
+    "tips": "Di Lucidchart: Ikon bergambar segitiga bertutup pagar pengaman."
   },
   {
-    id: 'safety-stock',
-    name: 'Stok Pengaman (Safety Stock)',
-    officialName: 'Safety Stock',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#d97706',
-    shapeType: 'vsm-safety-stock',
-    simpleExplanation:
-      'Segitiga dengan sudut membulat yang melambangkan persediaan cadangan (buffer) untuk menjaga produksi tetap jalan saat ada gangguan.',
-    analogy: 'Tabungan darurat di rekening: tidak dipakai sehari-hari, tapi siap dipakai kalau gaji telat.',
-    example: 'Stok cadangan 2 dus gelas plastik di dapur QuickBite agar tidak kehabisan saat supplier telat antar.',
-    leanSignificance:
-      'Menjamin kelancaran aliran saat terjadi fluktuasi permintaan atau gangguan pasokan, namun jumlahnya harus dikelola agar tidak jadi pemborosan.',
-    tips: 'Berbeda dengan segitiga inventory biasa karena sudutnya membulat dan biasanya diberi label S.',
+    "id": "external-shipment",
+    "name": "Pengiriman Truk Eksternal (External Shipment)",
+    "officialName": "External Shipment",
+    "category": "Material Symbols",
+    "categoryLabel": "Simbol Material (Material)",
+    "badgeColor": "#475569",
+    "shapeType": "vsm-external-shipment",
+    "lucidDefinition": "The truck icon represents external shipment to customers or from suppliers.",
+    "simpleExplanation": "Ikon truk kargo yang mewakili pengiriman barang logistik lewat jalur darat antara pemasok, pabrik, atau pelanggan.",
+    "analogy": "Truk boks pendingin distributor mengantar pasokan telur dan daging ke restoran.",
+    "example": "Truk distributor bahan makanan segar mengantar pasokan harian setiap jam 07.00 pagi ke gerai QuickBite.",
+    "leanSignificance": "Titik batas hulu/hilir rantai pasok eksternal yang menentukan waktu tiba (Lead Time pengadaan).",
+    "tips": "Di Lucidchart: Letakkan ikon truk di antara Supplier dan Process 1, atau antara Proses Terakhir dan Customer."
   },
   {
-    id: 'external-shipment',
-    name: 'Pengiriman Eksternal (External Shipment)',
-    officialName: 'External Shipment',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#475569',
-    shapeType: 'vsm-external-shipment',
-    simpleExplanation:
-      'Ikon truk yang menandakan pengiriman barang dari supplier ke pabrik atau dari pabrik ke customer.',
-    analogy: 'Mobil box yang mengantar bahan baku ke dapur dan armada kurir yang mengantar pesanan ke pelanggan.',
-    example: 'Truk distributor telur dan ayam tiba setiap pagi pukul 07.00 di loading dock QuickBite.',
-    leanSignificance:
-      'Menandai titik perpindahan barang melintasi batas sistem (masuk dari pemasok, keluar ke pelanggan).',
-    tips: 'Biasanya digambar dengan anak panah besar berisi ikon truk, arah panah sesuai alur pengiriman.',
+    "id": "production-control",
+    "name": "Kotak Pusat Kendali Operasional (Production Control)",
+    "officialName": "Production Control",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#4f46e5",
+    "shapeType": "vsm-control-box",
+    "lucidDefinition": "A centralized production scheduling or control department is represented by this simple box symbol.",
+    "simpleExplanation": "Kotak di bagian tengah atas peta yang mewakili departemen perencanaan dan pengendalian operasional (PPIC / Manajer Toko).",
+    "analogy": "Menara pengawas lalu lintas udara (Air Traffic Controller) di bandara.",
+    "example": "Kasir/Manajer tenant QuickBite yang menerima pesanan mahasiswa dan mendistribusikan instruksi kerja ke dapur.",
+    "leanSignificance": "Pusat transmisi informasi yang mengatur irama kerja seluruh aliran rantai nilai.",
+    "tips": "Di Lucidchart: Posisikan di bagian tengah atas kanvas di antara Supplier dan Customer."
   },
   {
-    id: 'workcell',
-    name: 'Sel Kerja Terintegrasi (Workcell)',
-    officialName: 'Workcell',
-    category: 'Material Flow',
-    categoryLabel: 'Alur Fisik / Material',
-    badgeColor: '#1d4ed8',
-    shapeType: 'vsm-workcell',
-    simpleExplanation:
-      'Kotak proses besar yang menggabungkan beberapa proses kecil dalam satu sel produksi yang saling berdekatan.',
-    analogy: 'Satu dapur compact yang punya kompor, wastafel, dan meja potong dalam satu baris, sehingga koki tidak perlu bolak-balik jauh.',
-    example: 'Sel kerja penataan topping: roti diiris, dioles saus, dan ditabur keju dalam satu area tanpa jeda.',
-    leanSignificance:
-      'Mengurangi jarak dan waktu transport antar proses, mendorong aliran satu unit (one-piece flow).',
-    tips: 'Digambar sebagai kotak besar dengan beberapa kotak proses kecil di dalamnya.',
-  },
-
-  // ==========================================
-  // 6. SIMBOL TAMBAHAN (LUCIDCHART) - INFORMATION FLOW
-  // ==========================================
-  {
-    id: 'production-kanban',
-    name: 'Kanban Produksi (Production Kanban)',
-    officialName: 'Production Kanban',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#f59e0b',
-    shapeType: 'vsm-production-kanban',
-    simpleExplanation:
-      'Kartu perintah yang memberi tahu proses pemasok untuk memproduksi sejumlah barang tertentu bagi proses hilir.',
-    analogy: 'Struk dapur "buat 10 burger" yang ditempel di depan koki sebelum mulai memasak.',
-    example: 'Kartu "produksi 5 porsi nasi ayam" muncul begitu stok di rak ambil tersisa 5 porsi.',
-    leanSignificance:
-      'Mengendalikan produksi agar jumlahnya selalu sesuai permintaan turun, mencegah membuat barang lebih dulu tanpa perintah.',
-    tips: 'Bentuknya kartu persegi kecil; sering digabung dalam satu jalur dengan withdrawal kanban.',
+    "id": "manual-info",
+    "name": "Alur Informasi Manual (Manual Info)",
+    "officialName": "Manual Info",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#64748b",
+    "shapeType": "vsm-manual-info",
+    "lucidDefinition": "Manual information flow from memos, reports or conversation. Indicate the type of information if needed.",
+    "simpleExplanation": "Panah garis lurus tipis yang menunjukkan instruksi, jadwal kerja, atau pesanan yang dikomunikasikan secara manual (kertas memo atau laporan cetak).",
+    "analogy": "Menyerahkan secarik kertas nota belanja belanjaan ke kasir.",
+    "example": "Kasir membawa lembaran kertas nota pesanan secara manual dan menaruhnya di meja koki.",
+    "leanSignificance": "Sumber risiko kesalahan baca, kehilangan nota fisik, dan delay penyampaian informasi.",
+    "tips": "Di Lucidchart: Gunakan panah garis tipis (lurus / orthogonal) dengan teks label jenis dokumen."
   },
   {
-    id: 'withdrawal-kanban',
-    name: 'Kanban Penarikan (Withdrawal Kanban)',
-    officialName: 'Withdrawal Kanban',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#ea580c',
-    shapeType: 'vsm-withdrawal-kanban',
-    simpleExplanation:
-      'Kartu atau perangkat yang memerintahkan petugas material untuk memindahkan barang dari supermarket ke proses penerima.',
-    analogy: 'Bon permintaan "tolong ambilkan gula 2 kg dari gudang" yang dibawa petugas saat stok di dapur menipis.',
-    example: 'Petugas dapur membawa kartu tarik untuk mengambil 1 kotak bumbu dari rak penyimpanan ke meja koki.',
-    leanSignificance:
-      'Menggerakkan barang hanya saat dibutuhkan proses hilir, menjaga arus material tetap pull-based.',
-    tips: 'Biasanya dicetak pada kartu berbeda warna dari production kanban agar mudah dibedakan.',
+    "id": "electronic-info",
+    "name": "Alur Informasi Elektronik / Digital (Electronic Info)",
+    "officialName": "Electronic Info",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#2563eb",
+    "shapeType": "vsm-electronic-info",
+    "lucidDefinition": "Digital information flow, such as the Internet, Intranets, Electronic Data Interchange, etc. Frequency, type of data and the media used can all be recorded.",
+    "simpleExplanation": "Panah petir zig-zag berbelok yang menunjukkan transmisi data instan lewat jaringan internet, software POS, KDS, atau EDI.",
+    "analogy": "Pesan WhatsApp centang dua biru yang terkirim dalam sepersekian detik.",
+    "example": "Pesanan dari aplikasi ponsel atau scan QR kasir langsung tampil di layar Kitchen Display System (KDS) koki.",
+    "leanSignificance": "Penyelesaian Lean To-Be untuk melenyapkan waktu tunggu komunikasi dan mencegah salah catat.",
+    "tips": "Di Lucidchart: Gunakan panah kilat (lightning arrow) warna biru untuk alur data digital."
   },
   {
-    id: 'signal-kanban',
-    name: 'Kanban Sinyal (Signal Kanban)',
-    officialName: 'Signal Kanban',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#dc2626',
-    shapeType: 'vsm-signal-kanban',
-    simpleExplanation:
-      'Kanban yang dipakai saat stok antara dua proses sudah turun ke titik minimum, memberi sinyal untuk produksi ulang.',
-    analogy: 'Lampu minyak di dashboard mobil menyala saat bensin tinggal sedikit, menandakan harus segera isi.',
-    example: 'Saat stok gelas di rak tinggal 1 dus, sinyal kanban menempel di tiang agar segera dipesan ulang.',
-    leanSignificance:
-      'Mencegah stockout pada barang yang diproduksi dalam batch besar atau yang tidak diambil satu-satu.',
-    tips: 'Sering digambar sebagai kartu dengan segitiga/tanda sinyal di tengahnya.',
+    "id": "production-kanban",
+    "name": "Kartu Kanban Produksi (Production Kanban)",
+    "officialName": "Production Kanban",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#b45309",
+    "shapeType": "vsm-production-kanban",
+    "lucidDefinition": "Indicates the production needed to supply parts to a downstream process.",
+    "simpleExplanation": "Kartu instruksi kerja bersimbol 'P' yang memberi perintah stasiun hulu untuk memproduksi kembali sejumlah unit barang yang telah dikonsumsi.",
+    "analogy": "Tiket pesanan digital di layar koki yang menginstruksikan 'Goreng 1 Burger Crispy'.",
+    "example": "Tiket digital di monitor koki yang berbunyi 'Buat 1 Porsi Paket Hemat #2'.",
+    "leanSignificance": "Mencegah overproduksi dengan memastikan stasiun hulu hanya bekerja bila ada otorisasi resmi.",
+    "tips": "Di Lucidchart: Kotak persegi panjang kecil dengan header bar dan huruf 'P' di dalamnya."
   },
   {
-    id: 'kanban-post',
-    name: 'Papan Kanban (Kanban Post)',
-    officialName: 'Kanban Post',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#ca8a04',
-    shapeType: 'vsm-kanban-post',
-    simpleExplanation:
-      'Lokasi atau papan tempat kartu kanban disimpan dan menunggu untuk diambil oleh proses hilir.',
-    analogy: 'Kotak masuk surat di kantor: surat (kanban) menumpuk di sana sampai kurir (proses hilir) mengambilnya.',
-    example: 'Papan gantung di dinding dapur tempat kartu pesanan menunggu diambil koki.',
-    leanSignificance:
-      'Menjadi titik kontrol visual: jika kartu menumpuk berarti ada hambatan aliran yang perlu dievaluasi.',
-    tips: 'Digambar sebagai kotak/meja kecil dengan beberapa kartu berdiri di atasnya.',
+    "id": "withdrawal-kanban",
+    "name": "Kartu Kanban Pengambilan (Withdrawal Kanban)",
+    "officialName": "Withdrawal Kanban",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#c2410c",
+    "shapeType": "vsm-withdrawal-kanban",
+    "lucidDefinition": "This symbol represents a card instructing an operator or material handler to move parts from a supermarket to a process.",
+    "simpleExplanation": "Kartu bersimbol 'W' yang menginstruksikan petugas pemindah bahan untuk mengambil sejumlah komponen dari supermarket ke lini perakitan.",
+    "analogy": "Daftar belanjaan yang dibawa staf gudang untuk mengambil kotak roti dari gudang ke dapur.",
+    "example": "Kartu penarik stok yang meminta asisten dapur mengambil 5 bungkus patty burger beku dari freezer.",
+    "leanSignificance": "Mengatur transportasi material secara terukur sehingga tidak terjadi penumpukan komponen di meja kerja.",
+    "tips": "Di Lucidchart: Kotak kartu bersimbol 'W' yang dihubungkan ke supermarket."
   },
   {
-    id: 'sequenced-pull',
-    name: 'Penarikan Berurutan (Sequenced Pull)',
-    officialName: 'Sequenced Pull',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#16a34a',
-    shapeType: 'vsm-sequenced-pull',
-    simpleExplanation:
-      'Sistem yang memberi perintah langsung ke proses sub-rakitan untuk membuat barang dalam urutan tertentu, tanpa perantara supermarket.',
-    analogy: 'Konveyor sushi di restoran Jepang: setiap piring diisi sesuai urutan pesanan pelanggan tanpa stok perantara.',
-    example: 'Urutan pesanan #042, #043, #044 langsung diteruskan ke dapur dalam antrean tetap sesuai nomor.',
-    leanSignificance:
-      'Memangkas waktu tunggu supermarket untuk produk dengan permintaan yang sudah terprediksi dan relatif stabil.',
-    tips: 'Digambar sebagai kotak kecil berlabel urutan (1,2,3) yang terhubung langsung ke proses.',
+    "id": "signal-kanban",
+    "name": "Kanban Sinyal Segitiga (Signal Kanban)",
+    "officialName": "Signal Kanban",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#dc2626",
+    "shapeType": "vsm-signal-kanban",
+    "lucidDefinition": "This Kanban symbol is used when inventory levels in a supermarket drop to a minimum, and signals the production of a specified number of parts.",
+    "simpleExplanation": "Simbol kartu segitiga penanda batas minimum stok di rak batch (reorder point) yang memicu produksi 1 batch baru.",
+    "analogy": "Lampu indikator bensin mobil menyala merah saat tangki tersisa 5 liter sebagai sinyal harus segera isi bensin.",
+    "example": "Sinyal wadah minyak goreng: jika tinggi minyak di penggorengan menyentuh garis merah, sinyal pengisian batch baru aktif.",
+    "leanSignificance": "Mencegah kehabisan stok kritis (stockout) pada proses yang membutuhkan waktu setup (Changeover).",
+    "tips": "Di Lucidchart: Kartu dengan ikon segitiga terbalik di dalamnya untuk proses ber-batch besar."
   },
   {
-    id: 'load-leveling',
-    name: 'Kotak Perata Beban (Load Leveling / Heijunka)',
-    officialName: 'Load Leveling (Heijunka Box)',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#6366f1',
-    shapeType: 'vsm-load-leveling',
-    simpleExplanation:
-      'Kotak berkolom yang meratakan volume dan jenis produksi dengan membagi kartu kanban ke slot waktu agar beban kerja rata.',
-    analogy: 'Jadwal piket dapur yang diatur bergiliran agar semua anggota tim kebagian beban merata tiap hari.',
-    example: 'Slot 10.00-11.00 diisi 4 kartu burger, 11.00-12.00 diisi 3 kartu burger dan 1 nasi ayam, dst.',
-    leanSignificance:
-      'Menghaluskan lonjakan permintaan sehingga proses hulu tidak kewalahan dan kapasitas terpakai efisien.',
-    tips: 'Digambar sebagai kotak persegi dengan garis kolom vertikal (slot waktu) berisi kartu.',
+    "id": "kanban-post",
+    "name": "Pos Penampung Kartu Kanban (Kanban Post)",
+    "officialName": "Kanban Post",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#ca8a04",
+    "shapeType": "vsm-kanban-post",
+    "lucidDefinition": "This icon indicates a location for collecting Kanban signals, typically located near a supermarket. In a two-card system it can be used to exchange withdrawal and production Kanban.",
+    "simpleExplanation": "Kotak penampung atau slot rak tempat kartu Kanban dikumpulkan dan diurutkan sebelum diambil oleh operator produksi.",
+    "analogy": "Kotak pos surat keluar di kantor tempat surat dikumpulkan sebelum dikirim kurir pos.",
+    "example": "Slot gantung kartu pesanan di sebelah loket dapur QuickBite tempat nota antrean disusun rapi.",
+    "leanSignificance": "Titik temu komunikasi visual antardua proses berbeda yang mengoordinasikan penukaran kartu kanban.",
+    "tips": "Di Lucidchart: Digunakan untuk memodelkan sistem kanban 2 kartu (two-card kanban system)."
   },
   {
-    id: 'mrp-erp',
-    name: 'Penjadwalan MRP/ERP',
-    officialName: 'MRP / ERP Scheduling',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#7c3aed',
-    shapeType: 'vsm-mrp-erp',
-    simpleExplanation:
-      'Kotak berisi ikon komputer yang menandakan perencanaan kebutuhan material dan jadwal produksi dihitung oleh sistem ERP/MRP terpusat.',
-    analogy: 'Aplikasi kasir yang otomatis menghitung: stok habis dikurangi, otomatis muncul daftar belanja ke supplier.',
-    example: 'Sistem POS QuickBite menghitung kebutuhan bahan baku harian dari data penjualan kemarin.',
-    leanSignificance:
-      'Pusat data terintegrasi untuk forecast, namun tetap perlu divalidasi dengan kondisi nyata di lantai produksi.',
-    tips: 'Digambar sebagai kotak dengan ikon monitor atau tulisan MRP/ERP di dalamnya.',
+    "id": "sequenced-pull",
+    "name": "Penarikan Berurutan (Sequenced Pull)",
+    "officialName": "Sequenced Pull",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#15803d",
+    "shapeType": "vsm-sequenced-pull",
+    "lucidDefinition": "This pull process removes the need for supermarket storage of inventory between processes by providing instruction to a subassembly process to quickly produce a specified customer order.",
+    "simpleExplanation": "Alur penarikan di mana komponen dirakit secara berurutan sesuai urutan pesanan pelanggan tanpa memerlukan penyimpanan supermarket di tengah.",
+    "analogy": "Perakitan sandwich Subway di mana roti langsung diteruskan ke staf sayur dan saus sesuai urutan pemesan yang antre.",
+    "example": "Setelah burger selesai digoreng, piring langsung digeser berurutan ke staf pengemas saus dan minuman sesuai nomor struk.",
+    "leanSignificance": "Mendekati konsep One-Piece Flow (aliran satu unit) yang menghilangkan buffer persediaan perantara.",
+    "tips": "Di Lucidchart: Ikon kotak berurutan dengan panah instruksi langsung."
   },
   {
-    id: 'go-see',
-    name: 'Langsung Lihat (Go See)',
-    officialName: 'Go See',
-    category: 'General & Kaizen',
-    categoryLabel: 'Umum & Kaizen',
-    badgeColor: '#0284c7',
-    shapeType: 'vsm-go-see',
-    simpleExplanation:
-      'Ikon kacamata yang berarti manajer/pelaku proses mengamati langsung kondisi nyata di lapangan, bukan hanya membaca laporan.',
-    analogy: 'Koki senior mencicipi langsung kuah di dapur daripada hanya membaca resep tertulis.',
-    example: 'Pengelola QuickBite berdiri 15 menit di depan antrean untuk melihat sendiri bottleneck di jam sibuk.',
-    leanSignificance:
-      'Prinsip Genchi Genbutsu (go and see): keputusan perbaikan berbasis fakta lapangan, bukan asumsi.',
-    tips: 'Digambar sebagai ikon kacamata; sering dipakai pada peta future state untuk titik observasi.',
+    "id": "load-leveling",
+    "name": "Kotak Perataan Beban (Load Leveling / Heijunka)",
+    "officialName": "Load Leveling",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#6366f1",
+    "shapeType": "vsm-load-leveling",
+    "lucidDefinition": "A tool that batches Kanbans in order to level out the variety and volume of production.",
+    "simpleExplanation": "Simbol kotak partisi Heijunka Box yang meratakan volume dan variasi produksi agar terhindar dari gelombang kelebihan atau kekurangan beban kerja.",
+    "analogy": "Mengatur jadwal antrean dokter spesialis: 1 pasien umum, 1 pasien rujukan bergantian tiap 15 menit agar dokter tidak kewalahan.",
+    "example": "Koki mengatur penggorengan: selang-seling menggoreng 2 burger ayam dan 1 kentang agar minyak dan staf bekerja stabil seimbang.",
+    "leanSignificance": "Menghilangkan Muri (beban berlebih) dan Mura (ketimpangan ritme kerja) pada lini produksi.",
+    "tips": "Di Lucidchart: Kotak berpetak-petak matriks waktu vs jenis produk."
   },
   {
-    id: 'verbal-info',
-    name: 'Informasi Lisan (Verbal Information)',
-    officialName: 'Verbal Information',
-    category: 'Information Flow',
-    categoryLabel: 'Alur Informasi',
-    badgeColor: '#db2777',
-    shapeType: 'vsm-verbal-info',
-    simpleExplanation:
-      'Alur informasi yang disampaikan secara lisan atau personal, digambar sebagai panah dengan ikon orang kecil.',
-    analogy: 'Teriak "satu es teh, Bu!" dari meja ke dapur tanpa tulisan.',
-    example: 'Mahasiswa di kasir menyebut langsung menu favoritnya, dan kasir meneruskannya secara lisan ke koki.',
-    leanSignificance:
-      'Rentan salah dengar dan tidak terdokumentasi; pada future state biasanya diganti dengan sinyal visual atau digital.',
-    tips: 'Panah bergelombang/tipis dengan simbol kepala-badan kecil di atasnya.',
+    "id": "mrp-erp",
+    "name": "Sistem Terkomputerisasi MRP/ERP (MRP/ERP)",
+    "officialName": "MRP/ERP",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#7c3aed",
+    "shapeType": "vsm-mrp-erp",
+    "lucidDefinition": "Scheduling using an inventory control system such as material requirements planning (MRP).",
+    "simpleExplanation": "Simbol komputer/database untuk perangkat lunak ERP (Enterprise Resource Planning) atau MRP yang mengkalkulasi kebutuhan material secara otomatis.",
+    "analogy": "Sistem kasir cerdas Moka POS / SAP yang otomatis mencatat sisa stok ayam potong tiap struk keluar.",
+    "example": "Sistem cloud POS QuickBite yang otomatis membuat purchase order ke supplier ayam jika stok harian kurang dari 20 porsi.",
+    "leanSignificance": "Mengotomatisasi penjadwalan rantai pasok berbasis data permintaan agregat terkomputerisasi.",
+    "tips": "Di Lucidchart: Ikon komputer/server bertuliskan MRP/ERP di area informasi atas."
   },
-
-  // ==========================================
-  // 7. SIMBOL TAMBAHAN (LUCIDCHART) - TIMELINE & METRICS
-  // ==========================================
   {
-    id: 'takt-time',
-    name: 'Waktu Takt (Takt Time)',
-    officialName: 'Takt Time',
-    category: 'Timeline & Metrics',
-    categoryLabel: 'Garis Waktu & Metrik',
-    badgeColor: '#0f766e',
-    shapeType: 'vsm-takt-time',
-    simpleExplanation:
-      'Kecepatan produksi yang harus dipenuhi agar selaras dengan permintaan pelanggan, dihitung dari waktu kerja dibagi jumlah permintaan.',
-    analogy: 'Irama metronom pengatur tempo musik: semua alat musik (proses) harus mengikuti birama yang sama.',
-    example: 'Jam buka 8 jam (480 menit) dibagi 120 pesanan/hari = Takt Time 4 menit per pesanan.',
-    leanSignificance:
-      'Patokan sinkronisasi seluruh proses: jika cycle time melebihi takt time, antrean pasti menumpuk.',
-    tips: 'Biasanya ditulis di data box atau dekat kotak ringkasan sebagai angka acuan.',
+    "id": "go-see",
+    "name": "Pemeriksaan Visual Langsung (Go See / Gemba)",
+    "officialName": "Go See",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#0284c7",
+    "shapeType": "vsm-go-see",
+    "lucidDefinition": "Sometimes information is collected through observation, such as when a supervisor makes a production decision after visually checking inventory.",
+    "simpleExplanation": "Ikon kacamata yang menandakan penyesuaian jadwal atau keputusan kerja diambil melalui observasi visual langsung ke lantai kerja (Gemba).",
+    "analogy": "Chef kepala restoran melongok langsung ke etalase display makanan untuk melihat lauk apa yang hampir habis.",
+    "example": "Supervisor tenant QuickBite mengecek langsung panjangnya antrean di depan loket untuk memutuskan membuka kasir kedua.",
+    "leanSignificance": "Penerapan prinsip Lean Gemba Walk: fakta riil di lapangan lebih akurat daripada sekadar asumsi laporan di atas meja.",
+    "tips": "Di Lucidchart: Ikon kacamata dengan garis panah menuju area lantai kerja."
   },
+  {
+    "id": "verbal-info",
+    "name": "Alur Informasi Lisan (Verbal Information)",
+    "officialName": "Verbal Information",
+    "category": "Information Symbols",
+    "categoryLabel": "Simbol Informasi (Information)",
+    "badgeColor": "#db2777",
+    "shapeType": "vsm-verbal-info",
+    "lucidDefinition": "This represents information flow that is passed verbally.",
+    "simpleExplanation": "Simbol garis percakapan atau balon suara yang menandakan instruksi atau koordinasi disampaikan langsung melalui ucapan lisan.",
+    "analogy": "Kasir meneriaki koki: 'Tolong nasi goreng pedas satu bungkus ya!'.",
+    "example": "Kasir meneriakkan nomor nota #14 ke arah dapur saat jam ramai makan siang.",
+    "leanSignificance": "Sangat rawan salah dengar, tidak terdokumentasi, dan memicu kebisingan di lingkungan kerja.",
+    "tips": "Di Lucidchart: Garis panah bergelombang/putus-putus dengan ikon balon suara."
+  },
+  {
+    "id": "kaizen-burst",
+    "name": "Bintang Peluang Kaizen (Kaizen Burst)",
+    "officialName": "Kaizen Burst",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#ea580c",
+    "shapeType": "vsm-kaizen-burst",
+    "lucidDefinition": "This icon is designed to stand out and highlight problem areas. It identifies critical processes for developing a successful future-state map.",
+    "simpleExplanation": "Bintang ledakan oranye menyala yang menyoroti titik kritis pemborosan yang memerlukan workshop Kaizen (perbaikan berkelanjutan).",
+    "analogy": "Tanda seru segitiga merah pada peta jalan yang menandai lokasi rawan macet dan kecelakaan.",
+    "example": "Kaizen #2 QuickBite: Pasang Kitchen Display System (KDS) untuk menghapus delay 5 menit pengantaran nota fisik.",
+    "leanSignificance": "Jembatan transformasi utama dari peta kondisi sekarang (Current State) ke kondisi masa depan (Future State).",
+    "tips": "Di Lucidchart: Bentuk shape 'Kaizen Burst' bintang runcing dengan teks rencana perbaikan di dalamnya."
+  },
+  {
+    "id": "operator",
+    "name": "Simbol Petugas / Pekerja (Operator)",
+    "officialName": "Operator",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#0f766e",
+    "shapeType": "vsm-operator",
+    "lucidDefinition": "This icon is used to show how many operators are needed to process the VSM family at a particular workstation.",
+    "simpleExplanation": "Ikon siluet kepala dan pundak manusia yang menunjukkan jumlah staf/pekerja yang bertugas di stasiun kerja tersebut.",
+    "analogy": "Ikon 1 teller pada loket bank atau 1 pengemudi di balik kemudi taksi.",
+    "example": "1 Kasir di Loket Tahap 1, 1 Koki di Dapur Tahap 3 QuickBite.",
+    "leanSignificance": "Kunci analisis keseimbangan beban kerja (Line Balancing) dan penghitungan produktivitas tenaga kerja.",
+    "tips": "Di Lucidchart: Tempatkan ikon operator di dalam atau di samping kotak proses."
+  },
+  {
+    "id": "timeline",
+    "name": "Tangga Garis Waktu Lean (Timeline)",
+    "officialName": "Timeline",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#4338ca",
+    "shapeType": "vsm-timeline",
+    "lucidDefinition": "On a value stream map, the timeline is placed at the bottom and shows waiting times and processing times. This can be used to calculate Lead Time and Total Cycle Time.",
+    "simpleExplanation": "Garis undakan tangga di bagian dasar peta: undakan atas mencatat waktu tunggu/pemborosan (NVA), undakan bawah mencatat waktu proses bernilai tambah (VA).",
+    "analogy": "Garis waktu rekam jejak paket kurir: transit 2 hari vs diantar ke rumah 30 menit.",
+    "example": "Total Wait Time: 22 Menit (NVA), Total Process Time: 12 Menit (VA), Lead Time: 34 Menit, PCE: 35.3%.",
+    "leanSignificance": "Alat visual terkuat untuk membuktikan bahwa sebagian besar waktu tunggu dalam proses adalah pemborosan (Non-Value-Added).",
+    "tips": "Di Lucidchart: Gambar garis tangga di bagian paling bawah dengan label waktu di setiap undakan."
+  },
+  {
+    "id": "transportation-symbols",
+    "name": "Simbol Moda Transportasi (Transportation Symbols)",
+    "officialName": "Transportation Symbols",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#0284c7",
+    "shapeType": "vsm-transportation",
+    "lucidDefinition": "These symbols are straightforward, showing rail shipment as a train, air freight as an airplane, and boat shipment with a boat icon.",
+    "simpleExplanation": "Ikon kereta api (Rail), pesawat terbang (Air Freight), atau kapal laut (Boat) yang mewakili metode pengiriman material jarak jauh.",
+    "analogy": "Memilih opsi pengiriman di toko online: kargo kereta api vs ekspres udara.",
+    "example": "Pengiriman bumbu kering impor dari luar pulau menggunakan kargo kapal laut mingguan.",
+    "leanSignificance": "Menentukan lead time pengadaan bahan baku jarak jauh dan pertimbangan emisi/biaya logistik.",
+    "tips": "Di Lucidchart: Pilih ikon kereta, pesawat, atau kapal di samping panah pengiriman luar kota."
+  },
+  {
+    "id": "forklift",
+    "name": "Kendaraan Angkut Forklift (Forklift)",
+    "officialName": "Forklift",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#ea580c",
+    "shapeType": "vsm-forklift",
+    "lucidDefinition": "Used when something needs to be moved via forklift.",
+    "simpleExplanation": "Simbol kendaraan forklift yang digunakan untuk memindahkan palet material berat antardepartemen atau gudang.",
+    "analogy": "Troli kargo dorong roda empat pembawa kerdus sayuran di pasar induk.",
+    "example": "Pemindahan palet minyak goreng kemasan kardus dari truk pemasok ke gudang pusat kantin.",
+    "leanSignificance": "Menunjukkan perpindahan material mekanis internal yang memerlukan waktu penanganan (Material Handling Time).",
+    "tips": "Di Lucidchart: Tempatkan ikon forklift di atas alur perpindahan palet internal."
+  },
+  {
+    "id": "expedited",
+    "name": "Pengiriman Jalur Kilat (Expedited)",
+    "officialName": "Expedited",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#e11d48",
+    "shapeType": "vsm-expedited",
+    "lucidDefinition": "Indicates product or information deliveries that are expedited.",
+    "simpleExplanation": "Simbol panah bergaris ganda cepat yang menandai pengiriman produk atau berkas informasi yang diprioritaskan secara darurat (jalur cepat).",
+    "analogy": "Layanan ojek online instan 1 jam sampai untuk dokumen penting yang mendesak.",
+    "example": "Pesanan bumbu darurat yang dikirim kurir instan kilat karena stok tiba-tiba habis di tengah jam makan siang.",
+    "leanSignificance": "Meskipun cepat, pengiriman kilat sering kali berbiaya mahal dan menjadi tanda adanya ketidakakuratan perencanaan stok.",
+    "tips": "Di Lucidchart: Beri tanda garis ganda atau panah melesat cepat dengan label 'EXPEDITE'."
+  },
+  {
+    "id": "milk-run",
+    "name": "Rute Pengambilan Berkeliling (Milk Run)",
+    "officialName": "Milk Run",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#0891b2",
+    "shapeType": "vsm-milk-run",
+    "lucidDefinition": "This icon refers to a vehicle that picks up or delivers items at multiple locations, often following a fixed route.",
+    "simpleExplanation": "Ikon kendaraan yang menempuh rute melingkar tetap secara berkala untuk mengambil atau mengantar material ke beberapa lokasi pemasok/stasiun kerja.",
+    "analogy": "Tukang sayur keliling komplek perumahan yang singgah di tiap gang pada jam yang sama setiap pagi.",
+    "example": "Mobil logistik kampus yang berkeliling mengambil limbah minyak dan mengantar gas tabung ke 12 tenant setiap pagi.",
+    "leanSignificance": "Mengurangi frekuensi pengiriman individu yang boros dan menstabilkan jadwal logistik harian.",
+    "tips": "Di Lucidchart: Ikon mobil dengan loop rute melingkar."
+  },
+  {
+    "id": "warehouse",
+    "name": "Gudang Penyimpanan Terpusat (Warehouse)",
+    "officialName": "Warehouse",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#64748b",
+    "shapeType": "vsm-warehouse",
+    "lucidDefinition": "This symbol indicates an internal or external warehouse.",
+    "simpleExplanation": "Simbol bangunan gudang yang mewakili fasilitas penyimpanan barang mentah terpusat atau produk jadi dalam jangka waktu menengah hingga panjang.",
+    "analogy": "Gudang grosir tempat menyimpan stok beras dan bumbu dalam karung besar.",
+    "example": "Gudang logistik pusat universitas tempat menyimpan persediaan peralatan makan dan tisu sebelum didistribusikan.",
+    "leanSignificance": "Dalam Lean, gudang besar sering kali menyembunyikan pemborosan stok berlebih (Over-inventory) dan biaya sewa ruang.",
+    "tips": "Di Lucidchart: Ikon gedung gudang dengan pintu geser besar."
+  },
+  {
+    "id": "cross-dock",
+    "name": "Dermaga Transit Langsung (Cross-Dock)",
+    "officialName": "Cross-Dock",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#0d9488",
+    "shapeType": "vsm-cross-dock",
+    "lucidDefinition": "This refers to closely coordinated trucks, allowing materials to go directly from inbound to outbound trucks.",
+    "simpleExplanation": "Simbol dermaga transfer cepat di mana muatan truk pemasok yang masuk langsung dipindahkan ke truk distribusi keluar tanpa pernah disimpan di gudang.",
+    "analogy": "Penumpang transit bandara yang langsung pindah gate pesawat tanpa perlu keluar mengambil bagasi.",
+    "example": "Penerimaan sayuran segar di loading dock kantin langsung disortir dan dibagikan ke meja tenant tanpa masuk gudang freezer.",
+    "leanSignificance": "Menghilangkan biaya penanganan pergudangan (Storage Waste) dan memangkas waktu tunggu secara signifikan.",
+    "tips": "Di Lucidchart: Ikon dua panah saling memotong pada dermaga transfer."
+  },
+  {
+    "id": "orders",
+    "name": "Formulir Pesanan (Orders)",
+    "officialName": "Orders",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#6366f1",
+    "shapeType": "vsm-orders",
+    "lucidDefinition": "Sales or purchase orders can be represented by this icon.",
+    "simpleExplanation": "Simbol dokumen formulir pemesanan penjualan dari pelanggan (Sales Order) atau pembelian bahan ke pemasok (Purchase Order).",
+    "analogy": "Formulir PO pembelian barang yang ditandatangani manajer pengadaan.",
+    "example": "Surat pemesanan mingguan 100 kg fillet ayam yang dikirim tenant QuickBite ke peternakan rekanan.",
+    "leanSignificance": "Pemicu awal pengeluaran biaya dan alur komitmen legal dalam rantai nilai bisnis.",
+    "tips": "Di Lucidchart: Ikon lembaran kertas dengan lipatan sudut kanan atas bertuliskan 'Orders'."
+  },
+  {
+    "id": "phone",
+    "name": "Komunikasi Telepon (Phone)",
+    "officialName": "Phone",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#8b5cf6",
+    "shapeType": "vsm-phone",
+    "lucidDefinition": "Telephone orders or other communication by phone.",
+    "simpleExplanation": "Ikon gagang telepon yang mewakili pesanan via telepon atau koordinasi operasional jarak jauh lewat suara.",
+    "analogy": "Menghubungi nomor reservasi restoran untuk memesan 1 meja untuk makan malam.",
+    "example": "Kasir menelepon pemasok telur untuk menanyakan jam berapa pengiriman hari ini akan tiba.",
+    "leanSignificance": "Metode komunikasi langsung semi-manual yang rentan distraksi dan interupsi kerja operator.",
+    "tips": "Di Lucidchart: Tempatkan ikon gagang telepon di atas panah informasi manual/elektronik."
+  },
+  {
+    "id": "batched-kanban",
+    "name": "Kanban Terkumpul Secara Batch (Batched Kanban)",
+    "officialName": "Batched Kanban",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#f59e0b",
+    "shapeType": "vsm-batched-kanban",
+    "lucidDefinition": "This icon represents Kanban cards arriving or being sent in batches.",
+    "simpleExplanation": "Simbol kartu Kanban bertumpuk yang menandakan tiket pesanan atau sinyal kerja dikumpulkan dulu dalam jumlah tertentu (misal per 10 kartu) sebelum dikirimkan.",
+    "analogy": "Menunggu map laporan terkumpul 5 berkas di meja sekretaris sebelum diserahkan ke meja direktur.",
+    "example": "Kasir mengumpulkan nota hingga 5 lembar sebelum berjalan mengantarkannya ke dapur koki.",
+    "leanSignificance": "Menunjukkan adanya pemborosan batching yang menghambat aliran nilai satu unit (Single-Piece Flow).",
+    "tips": "Di Lucidchart: Ikon kartu bertingkat tiga yang menunjukkan sinyal kerja dilepas berkelompok."
+  },
+  {
+    "id": "control-center",
+    "name": "Pusat Kendali Kanban Terpusat (Control Center)",
+    "officialName": "Control Center",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#3b82f6",
+    "shapeType": "vsm-control-center",
+    "lucidDefinition": "Centralized Kanban control.",
+    "simpleExplanation": "Simbol kantor pusat koordinasi visual yang mengatur distribusi dan sirkulasi kartu Kanban di seluruh pabrik atau fasilitas layanan.",
+    "analogy": "Pos komando satpam atau call center layanan darurat terpusat.",
+    "example": "Meja kontrol manajer operasional kantin yang mengatur peredaran nomor antrean buzzer di jam makan siang.",
+    "leanSignificance": "Menjaga transparansi dan mencegah hilangnya kartu Kanban yang mengatur alur tarik (Pull Flow).",
+    "tips": "Di Lucidchart: Ikon pusat kontrol segi enam atau kotak berantena kendali."
+  },
+  {
+    "id": "quality-problem",
+    "name": "Indikator Masalah Kualitas / Cacat (Quality Problem)",
+    "officialName": "Quality Problem",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#ef4444",
+    "shapeType": "vsm-quality-problem",
+    "lucidDefinition": "A quality problem can be indicated at any point on the VSM chain.",
+    "simpleExplanation": "Simbol tanda silang / rambu peringatan yang menandai titik tahapan proses yang memiliki tingkat cacat (defects) atau pengerjaan ulang (rework) tinggi.",
+    "analogy": "Makanan yang gosong di wajan sehingga harus dibuang dan dimasak ulang dari awal.",
+    "example": "Kentang goreng terlalu lembek di Tahap 3 koki sehingga ditolak pembeli dan harus digoreng ulang.",
+    "leanSignificance": "Simbol utama Waste of Defects & Rework yang memboroskan bahan, tenaga kerja, dan waktu pelanggan.",
+    "tips": "Di Lucidchart: Simbol lingkaran silang merah tepat di titik proses bermasalah."
+  },
+  {
+    "id": "solution-improvement",
+    "name": "Awan Usulan Solusi / Ide (Solution/Improvement)",
+    "officialName": "Solution/Improvement",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#10b981",
+    "shapeType": "vsm-solution-improvement",
+    "lucidDefinition": "The cloud symbol is used to highlight proposed ideas, solutions or suggestions.",
+    "simpleExplanation": "Simbol awan ide pemikiran yang menampung usulan perbaikan konkret, inovasi proses, atau solusi rancangan masa depan (Future State).",
+    "analogy": "Balon pemikiran dalam komik yang berisi ide brilian lampu menyala.",
+    "example": "Solusi Usulan: Pasang printer pesanan nirkabel otomatis di dekat kompor koki seharga Rp 400.000.",
+    "leanSignificance": "Inkubator ide perbaikan partisipatif dari tim Kaizen sebelum dieksekusi menjadi standar baru.",
+    "tips": "Di Lucidchart: Bentuk awan (cloud callout) hijau/biru dengan usulan solusi di dalamnya."
+  },
+  {
+    "id": "other-information",
+    "name": "Informasi Tambahan Lainnya (Other Information)",
+    "officialName": "Other Information",
+    "category": "General Symbols",
+    "categoryLabel": "Simbol Umum (General)",
+    "badgeColor": "#64748b",
+    "shapeType": "vsm-other-info",
+    "lucidDefinition": "Other useful information.",
+    "simpleExplanation": "Kotak keterangan tambahan serbaguna untuk mencatat kebijakan operasional, parameter khusus, atau catatan penting di kanvas VSM.",
+    "analogy": "Catatan kaki (footnote) pada laporan kerja resmi.",
+    "example": "Catatan: Jam sibuk makan siang berlangsung pukul 11.30 - 13.00 WIB dengan lonjakan 80% pesanan paket ayam.",
+    "leanSignificance": "Memberikan konteks penting yang tidak tertampung oleh kotak data metrik standar.",
+    "tips": "Di Lucidchart: Gunakan kotak teks bergaris putus-putus atau ikon catatan tempel."
+  }
 ];
