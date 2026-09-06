@@ -44,8 +44,14 @@
         </mxCell>
 
         <!-- PUSH 1 KE 2 -->
+        <mxCell id="push_1_a" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
+          <mxGeometry x="303" y="285" width="18" height="20" as="geometry" />
+        </mxCell>
         <mxCell id="inv_p2" value="I&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 5m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Batch 5 nota)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
           <mxGeometry x="325" y="270" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="push_1_b" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
+          <mxGeometry x="379" y="285" width="18" height="20" as="geometry" />
         </mxCell>
 
         <!-- ========================================== -->
@@ -63,8 +69,14 @@
         </mxCell>
 
         <!-- PUSH 2 KE 3 -->
+        <mxCell id="push_2_a" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
+          <mxGeometry x="583" y="285" width="18" height="20" as="geometry" />
+        </mxCell>
         <mxCell id="inv_p3" value="I&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 3m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Delay Koki)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
           <mxGeometry x="605" y="270" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="push_2_b" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
+          <mxGeometry x="659" y="285" width="18" height="20" as="geometry" />
         </mxCell>
 
         <!-- ========================================== -->
@@ -82,8 +94,14 @@
         </mxCell>
 
         <!-- PUSH 3 KE 4 -->
+        <mxCell id="push_3_a" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
+          <mxGeometry x="863" y="285" width="18" height="20" as="geometry" />
+        </mxCell>
         <mxCell id="inv_p4" value="I&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 4m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Delay Panggil)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
           <mxGeometry x="885" y="270" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="push_3_b" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
+          <mxGeometry x="939" y="285" width="18" height="20" as="geometry" />
         </mxCell>
 
         <!-- ========================================== -->

@@ -1,6 +1,57 @@
 import { useState } from 'react';
 import { vsmStepsData, vsmSummaryData, type VsmStep } from '../data/vsmData';
 
+/**
+ * Komponen Push Arrow (Panah Dorong Lean VSM)
+ * Menampilkan panah bergaris-garis belang (striped arrow) sesuai standar resmi VSM.
+ */
+function PushArrow({
+  x,
+  y,
+  width = 26,
+  height = 18,
+}: {
+  x: number;
+  y: number;
+  width?: number;
+  height?: number;
+}) {
+  const headWidth = 9;
+  const shaftWidth = width - headWidth;
+  const shaftHeight = 10;
+  const headHeight = height;
+
+  const yShaftTop = y + (headHeight - shaftHeight) / 2;
+  const yShaftBottom = yShaftTop + shaftHeight;
+  const yHeadTop = y;
+  const yHeadBottom = y + headHeight;
+  const yCenter = y + headHeight / 2;
+  const xHeadBase = x + shaftWidth;
+  const xTip = x + width;
+
+  const d = `M ${x},${yShaftTop} L ${xHeadBase},${yShaftTop} L ${xHeadBase},${yHeadTop} L ${xTip},${yCenter} L ${xHeadBase},${yHeadBottom} L ${xHeadBase},${yShaftBottom} L ${x},${yShaftBottom} Z`;
+
+  const stripe1 = x + shaftWidth * 0.25;
+  const stripe2 = x + shaftWidth * 0.5;
+  const stripe3 = x + shaftWidth * 0.75;
+
+  return (
+    <g className="vsm-push-arrow">
+      <title>Push Arrow (Panah Dorong): Alur pesanan/material didorong ke tahap berikutnya secara push (tanpa tarikan kanban)</title>
+      <path
+        d={d}
+        fill="#f8fafc"
+        stroke="#334155"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <line x1={stripe1} y1={yShaftTop} x2={stripe1} y2={yShaftBottom} stroke="#334155" strokeWidth="1.5" />
+      <line x1={stripe2} y1={yShaftTop} x2={stripe2} y2={yShaftBottom} stroke="#334155" strokeWidth="1.5" />
+      <line x1={stripe3} y1={yShaftTop} x2={stripe3} y2={yShaftBottom} stroke="#334155" strokeWidth="1.5" />
+    </g>
+  );
+}
+
 export function VsmDiagram() {
   const [selectedStep, setSelectedStep] = useState<VsmStep | null>(null);
   const [showKaizen, setShowKaizen] = useState<boolean>(true);
@@ -345,53 +396,46 @@ export function VsmDiagram() {
                 </g>
 
                 {/* ============================================================ */}
-                {/* INVENTORY / WAIT TIME TRIANGLE (Sebelum Proses atau Antara)  */}
+                {/* INVENTORY / WAIT TIME TRIANGLE & PUSH ARROWS (LEAN VSM)      */}
                 {/* ============================================================ */}
                 {/* Segitiga Antrean / Wait Time di sebelah kiri kotak proses */}
                 {idx === 0 && (
-                  <g transform={`translate(${x - 75}, ${processY + 25})`}>
+                  <g transform={`translate(${x - 85}, ${processY + 25})`}>
                     {/* Segitiga Kuning Lean VSM */}
-                    <polygon points="25,0 0,45 50,45" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.5" />
-                    <text x="25" y="36" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="13">
+                    <polygon points="25,0 8,43 42,43" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.5" />
+                    <text x="25" y="34" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="13">
                       I
                     </text>
-                    <text x="25" y="60" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="10">
+                    <text x="25" y="58" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="10">
                       Wait: {step.waitTime} m
                     </text>
-                    <text x="25" y="73" textAnchor="middle" fill="#64748b" fontSize="8">
+                    <text x="25" y="71" textAnchor="middle" fill="#64748b" fontSize="8.5">
                       (Antrean Mhs)
                     </text>
+                    {/* Push Arrow: Mahasiswa bergerak dari antrean ke Kasir */}
+                    <PushArrow x={48} y={13} width={28} height={18} />
                   </g>
                 )}
 
                 {idx > 0 && (
-                  <g transform={`translate(${processX[idx - 1] + processWidth + 25}, ${processY + 25})`}>
-                    {/* Panah Push antar proses */}
-                    <path
-                      d={`M -15,22 L 10,22`}
-                      fill="none"
-                      stroke="#94a3b8"
-                      strokeWidth="2"
-                      markerEnd="url(#vsm-arrow)"
-                    />
+                  <g transform={`translate(${processX[idx - 1] + processWidth}, ${processY + 25})`}>
+                    {/* Push Arrow 1 (Keluar dari proses sebelumnya menuju antrean/buffer) */}
+                    <PushArrow x={4} y={13} width={26} height={18} />
+
                     {/* Segitiga WIP / Batching Wait */}
-                    <polygon points="35,0 10,45 60,45" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.5" />
-                    <text x="35" y="36" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="13">
+                    <polygon points="50,0 33,43 67,43" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.5" />
+                    <text x="50" y="34" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="13">
                       I
                     </text>
-                    <text x="35" y="60" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="10">
+                    <text x="50" y="58" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="10">
                       Wait: {step.waitTime} m
                     </text>
-                    <text x="35" y="73" textAnchor="middle" fill="#64748b" fontSize="8">
+                    <text x="50" y="71" textAnchor="middle" fill="#64748b" fontSize="8.5">
                       {idx === 1 ? '(Batch 5 nota)' : idx === 2 ? '(Delay koki)' : '(Delay panggil)'}
                     </text>
-                    <path
-                      d={`M 60,22 L 85,22`}
-                      fill="none"
-                      stroke="#94a3b8"
-                      strokeWidth="2"
-                      markerEnd="url(#vsm-arrow)"
-                    />
+
+                    {/* Push Arrow 2 (Keluar dari antrean/buffer menuju proses berikutnya) */}
+                    <PushArrow x={70} y={13} width={26} height={18} />
                   </g>
                 )}
 
@@ -569,6 +613,60 @@ export function VsmDiagram() {
               <line x1="0" y1="90" x2="85" y2="90" stroke="#cbd5e1" />
               <text x="42" y="101" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#0f172a">
                 PLT: {vsmSummaryData.totalLeadTime} m
+              </text>
+            </g>
+          </g>
+
+          {/* ============================================================ */}
+          {/* SECTION 4: DIAGRAM NOTATION LEGEND (LEGENDA SIMBOL VSM)       */}
+          {/* ============================================================ */}
+          <g transform="translate(60, 665)">
+            <rect
+              width="1180"
+              height="38"
+              fill="#f8fafc"
+              stroke="#cbd5e1"
+              strokeWidth="1"
+              rx="6"
+            />
+            {/* Item 1: Push Arrow */}
+            <g transform="translate(20, 10)">
+              <PushArrow x={0} y={0} width={26} height={18} />
+              <text x="34" y="13" fontSize="10.5" fontWeight="600" fill="#334155">
+                Push Arrow (Alur Dorong Pesanan/WIP)
+              </text>
+            </g>
+
+            {/* Item 2: Inventory Triangle */}
+            <g transform="translate(310, 10)">
+              <polygon points="12,0 0,18 24,18" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.2" />
+              <text x="12" y="14" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="9">I</text>
+              <text x="32" y="13" fontSize="10.5" fontWeight="600" fill="#854d0e">
+                Inventory Buffer (WIP / Antrean NVA)
+              </text>
+            </g>
+
+            {/* Item 3: Finished Goods Delivery */}
+            <g transform="translate(600, 10)">
+              <path d="M 0,9 L 22,9" stroke="#16a34a" strokeWidth="2.5" markerEnd="url(#vsm-arrow-green)" />
+              <text x="34" y="13" fontSize="10.5" fontWeight="600" fill="#15803d">
+                Delivery Flow (Serah Makanan ke Pelanggan)
+              </text>
+            </g>
+
+            {/* Item 4: Manual Info Flow */}
+            <g transform="translate(885, 10)">
+              <path d="M 0,9 L 22,9" stroke="#64748b" strokeWidth="1.5" markerEnd="url(#vsm-arrow)" />
+              <text x="32" y="13" fontSize="10.5" fontWeight="600" fill="#475569">
+                Manual Info Flow (Instruksi Nota Fisik)
+              </text>
+            </g>
+
+            {/* Item 5: Kaizen Burst */}
+            <g transform="translate(1135, 10)">
+              <polygon points="8,0 11,5 17,3 14,8 18,12 12,13 12,18 7,14 2,16 4,11 0,8 5,5 3,0" fill="#ea580c" stroke="#c2410c" strokeWidth="0.8" />
+              <text x="24" y="13" fontSize="10.5" fontWeight="600" fill="#c2410c">
+                Kaizen Burst
               </text>
             </g>
           </g>
