@@ -26,7 +26,29 @@ export function VsmDiagram() {
           <h2>Value Stream Mapping (VSM) — Current State (As-Is)</h2>
           <p>Pemetaan Alur Nilai &amp; Analisis Pemborosan (Waste) Layanan Tenant QuickBite</p>
         </div>
-        <div className="vsm-toggle">
+        <div className="vsm-toggle" style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <a
+            href="/vsm_quickbite_for_lucidchart.drawio"
+            download="vsm_quickbite_for_lucidchart.drawio"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '6px 12px',
+              backgroundColor: '#ea580c',
+              color: '#ffffff',
+              borderRadius: '6px',
+              textDecoration: 'none',
+              fontSize: '13px',
+              fontWeight: 600,
+              boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+              transition: 'background-color 0.15s'
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#c2410c')}
+            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#ea580c')}
+          >
+            📥 Export ke Lucidchart (.drawio)
+          </a>
           <label className="toggle-label">
             <input
               type="checkbox"

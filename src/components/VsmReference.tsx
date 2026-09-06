@@ -310,6 +310,30 @@ export function VsmReference() {
             Panduan lengkap memahami simbol-simbol standar Lean Manufacturing &amp; Service VSM untuk memetakan alur nilai, mengidentifikasi pemborosan (waste), dan menghitung lead time.
           </p>
         </div>
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginTop: '8px' }}>
+          <a
+            href="/vsm_symbols_reference.csv"
+            download="vsm_symbols_reference.csv"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 14px',
+              backgroundColor: '#0284c7',
+              color: '#ffffff',
+              borderRadius: '6px',
+              textDecoration: 'none',
+              fontSize: '13px',
+              fontWeight: 600,
+              boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+              transition: 'background-color 0.15s'
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#0369a1')}
+            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#0284c7')}
+          >
+            📥 Download CSV (Import ke Lucidchart / Excel)
+          </a>
+        </div>
       </header>
 
       {/* Bar Kontrol: Filter Kategori & Pencarian */}
