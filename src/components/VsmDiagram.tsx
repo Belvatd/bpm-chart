@@ -190,8 +190,7 @@ export function VsmDiagram() {
             d="M 1000,70 L 720,70"
             fill="none"
             stroke="#2563eb"
-            strokeWidth="2"
-            strokeDasharray="6 3"
+            strokeWidth="1.8"
             markerEnd="url(#vsm-arrow-blue)"
           />
           <text x="860" y="60" textAnchor="middle" fill="#2563eb" fontSize="10" fontWeight="600">
@@ -204,7 +203,6 @@ export function VsmDiagram() {
             fill="none"
             stroke="#64748b"
             strokeWidth="1.5"
-            strokeDasharray="4 2"
             markerEnd="url(#vsm-arrow)"
           />
           <text x="350" y="172" textAnchor="middle" fill="#64748b" fontSize="10">
