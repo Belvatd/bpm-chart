@@ -4,39 +4,36 @@ import { FishboneDiagram } from './components/FishboneDiagram';
 import { VsmDiagram } from './components/VsmDiagram';
 import { BpmnReference } from './components/BpmnReference';
 import { VsmReference } from './components/VsmReference';
-import { VsmFullDiagram } from './components/VsmFullDiagram';
 import './App.css';
 
-type ActiveTab = 'reference' | 'vsm-reference' | 'bpmn' | 'fishbone' | 'vsm' | 'vsm-full';
+type ActiveTab = 'reference' | 'vsm-reference' | 'bpmn' | 'fishbone' | 'vsm';
 
-// Map hash → tab (deep-link: #vsm-full, #bpmn, #fishbone, dst.)
+// Map hash → tab (deep-link: #vsm, #bpmn, #fishbone, dst.)
 const hashToTab: Record<string, ActiveTab> = {
   '#vsm-reference': 'vsm-reference',
   '#reference': 'reference',
   '#vsm': 'vsm',
-  '#vsm-full': 'vsm-full',
   '#fishbone': 'fishbone',
   '#bpmn': 'bpmn',
 };
 
 function App() {
- const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
-   const h = window.location.hash as string;
-   return (hashToTab[h] ?? 'vsm-reference') as ActiveTab;
- });
+  const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
+    const h = window.location.hash as string;
+    return (hashToTab[h] ?? 'vsm-reference') as ActiveTab;
+  });
 
- // Sinkronkan hash saat tab berubah (biar bisa di-share / di-bookmark)
- useEffect(() => {
-   const tabToHash: Record<ActiveTab, string> = {
-     'vsm-reference': '#vsm-reference',
-     reference: '#reference',
-     vsm: '#vsm',
-     'vsm-full': '#vsm-full',
-     fishbone: '#fishbone',
-     bpmn: '#bpmn',
-   };
-   window.history.replaceState(null, '', tabToHash[activeTab]);
- }, [activeTab]);
+  // Sinkronkan hash saat tab berubah (biar bisa di-share / di-bookmark)
+  useEffect(() => {
+    const tabToHash: Record<ActiveTab, string> = {
+      'vsm-reference': '#vsm-reference',
+      reference: '#reference',
+      vsm: '#vsm',
+      fishbone: '#fishbone',
+      bpmn: '#bpmn',
+    };
+    window.history.replaceState(null, '', tabToHash[activeTab]);
+  }, [activeTab]);
 
   return (
     <main className="app-main">
@@ -61,12 +58,6 @@ function App() {
           📈 Value Stream Mapping (VSM)
         </button>
         <button
-          className={`tab-btn ${activeTab === 'vsm-full' ? 'active' : ''}`}
-          onClick={() => setActiveTab('vsm-full')}
-        >
-          🏭 VSM Lengkap (29 Notasi)
-        </button>
-        <button
           className={`tab-btn ${activeTab === 'fishbone' ? 'active' : ''}`}
           onClick={() => setActiveTab('fishbone')}
         >
@@ -85,7 +76,6 @@ function App() {
         {activeTab === 'vsm-reference' && <VsmReference />}
         {activeTab === 'reference' && <BpmnReference />}
         {activeTab === 'vsm' && <VsmDiagram />}
-        {activeTab === 'vsm-full' && <VsmFullDiagram />}
         {activeTab === 'fishbone' && <FishboneDiagram />}
         {activeTab === 'bpmn' && <BpmnViewer />}
       </div>
