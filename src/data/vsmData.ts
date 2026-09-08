@@ -8,6 +8,9 @@ export interface VsmStep {
   processDetails: string;
   operator: string;
   batchSize: string;
+  inventoryQty?: number; // Physical count / jumlah satuan antrean fisik (Lean VSM)
+  inventoryUnit?: string; // Satuan fisik (Orang, Nota, Pesanan, Porsi)
+  inventoryLabel?: string; // Keterangan antrean
   kaizenBurst?: {
     title: string;
     description: string;
@@ -34,6 +37,9 @@ export const vsmStepsData: VsmStep[] = [
     processDetails: 'Kasir menulis pesanan, menghitung total, dan menerima uang tunai.',
     operator: '1 Kasir',
     batchSize: '1 Customer',
+    inventoryQty: 5,
+    inventoryUnit: 'Orang',
+    inventoryLabel: 'Antrean Mhs',
     kaizenBurst: {
       title: 'Digital Ordering (QR/Kiosk)',
       description: 'Ganti pemesanan lisan & nota manual dengan scan QR menu atau Self-Service Kiosk untuk menghilangkan antrean 10 menit.',
@@ -49,6 +55,9 @@ export const vsmStepsData: VsmStep[] = [
     processDetails: 'Kasir berjalan kaki membawa tumpukan nota fisik ke dapur.',
     operator: '1 Kasir (part-time)',
     batchSize: 'Batch 5 Nota',
+    inventoryQty: 5,
+    inventoryUnit: 'Nota',
+    inventoryLabel: 'Batch 5 Nota',
     kaizenBurst: {
       title: 'Kitchen Display System (KDS)',
       description: 'Hapus sistem batching kertas. Pesanan langsung masuk secara real-time ke layar dapur begitu dibayar.',
@@ -64,6 +73,9 @@ export const vsmStepsData: VsmStep[] = [
     processDetails: 'Koki memasak pesanan sesuai instruksi resep.',
     operator: '1 Koki',
     batchSize: '1 Porsi',
+    inventoryQty: 3,
+    inventoryUnit: 'Pesanan',
+    inventoryLabel: 'Antrean Koki',
     kaizenBurst: {
       title: 'Standardized Order Tickets',
       description: 'Tiket pesanan digital dengan format teks standar dan jelas, menghilangkan salah tafsir singkatan koki.',
@@ -79,6 +91,9 @@ export const vsmStepsData: VsmStep[] = [
     processDetails: 'Mahasiswa mendengar panggilan, maju ke meja saji, dan mengambil makanan.',
     operator: '1 Mahasiswa / Kasir',
     batchSize: '1 Porsi Saji',
+    inventoryQty: 3,
+    inventoryUnit: 'Porsi',
+    inventoryLabel: 'Meja Saji',
     kaizenBurst: {
       title: 'Order Calling Screen / Buzzer',
       description: 'Pasang layar monitor pemanggil nomor antrean atau pager/buzzer getar agar mahasiswa langsung tahu saat pesanan siap.',
@@ -107,6 +122,9 @@ export const vsmWorkcellStepsData: VsmStep[] = [
     processDetails: 'Pelanggan memilih menu digital, bayar cashless, tiket digital otomatis terbit.',
     operator: 'Pelanggan Mandiri / 1 Kasir Standby',
     batchSize: '1 Customer (One-Piece Flow)',
+    inventoryQty: 1,
+    inventoryUnit: 'Orang',
+    inventoryLabel: 'Antrean Kiosk',
     kaizenBurst: {
       title: 'Digital Ordering & QRIS',
       description: 'Menghilangkan nota fisik dan antrean manual.',
@@ -122,6 +140,9 @@ export const vsmWorkcellStepsData: VsmStep[] = [
     processDetails: 'KDS memvisualisasikan urutan pesanan secara otomatis tanpa kertas dan tanpa kurir jalan kaki.',
     operator: 'Sistem Terotomasi (KDS)',
     batchSize: '1 Pesanan (FIFO)',
+    inventoryQty: 3,
+    inventoryUnit: 'Pesanan (Max)',
+    inventoryLabel: 'Buffer KDS',
     kaizenBurst: {
       title: 'Eliminasi Antar Nota',
       description: 'Tahap 2 tradisional (antar nota 5 menit) 100% DIHAPUS.',
@@ -137,6 +158,9 @@ export const vsmWorkcellStepsData: VsmStep[] = [
     processDetails: 'Integrasi 3 sub-proses: 1. Racik bahan (1m) -> 2. Penggorengan cepat (5m) -> 3. Plating & Serah Terima (1m).',
     operator: '2 Staf Multi-Skilled (Koki & Server)',
     batchSize: '1 Porsi (Continuous Flow)',
+    inventoryQty: 0,
+    inventoryUnit: 'Zero WIP',
+    inventoryLabel: 'One-Piece Flow',
     kaizenBurst: {
       title: 'U-Shaped Workcell Layout',
       description: 'Jarak antar alat hanya 1 langkah. Staf dapat saling membantu saat beban tinggi.',

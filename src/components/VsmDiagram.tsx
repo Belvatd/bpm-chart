@@ -841,16 +841,22 @@ export function VsmDiagram() {
                 {/* Segitiga Antrean / Wait Time di sebelah kiri kotak proses */}
                 {idx === 0 && (
                   <g transform={`translate(${x - 85}, ${processY + 25})`}>
+                    <title>{`Antrean Masuk: ${step.inventoryQty ?? 5} ${step.inventoryUnit ?? 'Orang'} (Waktu Tunggu: ${step.waitTime} Menit)`}</title>
                     {/* Segitiga Kuning Lean VSM */}
                     <polygon points="25,0 8,43 42,43" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.5" />
                     <text x="25" y="34" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="13">
                       I
                     </text>
-                    <text x="25" y="58" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="10">
+                    {/* Badge Jumlah Satuan Fisik (Inventory Count) */}
+                    <rect x="-17" y="48" width="84" height="17" rx="8.5" fill="#fef3c7" stroke="#f59e0b" strokeWidth="0.8" />
+                    <text x="25" y="60.5" textAnchor="middle" fill="#92400e" fontWeight="bold" fontSize="9">
+                      Qty: {step.inventoryQty ?? 5} {step.inventoryUnit ?? 'Orang'}
+                    </text>
+                    <text x="25" y="77" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="9.5">
                       Wait: {step.waitTime} m
                     </text>
-                    <text x="25" y="71" textAnchor="middle" fill="#64748b" fontSize="8.5">
-                      (Antrean Mhs)
+                    <text x="25" y="89" textAnchor="middle" fill="#64748b" fontSize="8">
+                      ({step.inventoryLabel ?? 'Antrean Mhs'})
                     </text>
                     {/* Push Arrow: Mahasiswa bergerak dari antrean ke Kasir */}
                     <PushArrow x={48} y={13} width={28} height={18} />
@@ -859,6 +865,7 @@ export function VsmDiagram() {
 
                 {idx > 0 && (
                   <g transform={`translate(${processX[idx - 1] + processWidth}, ${processY + 25})`}>
+                    <title>{`${step.inventoryLabel ?? 'WIP Antrean'}: ${step.inventoryQty} ${step.inventoryUnit} (Waktu Tunggu: ${step.waitTime} Menit)`}</title>
                     {/* Push Arrow 1 (Keluar dari proses sebelumnya menuju antrean/buffer) */}
                     <PushArrow x={4} y={13} width={26} height={18} />
 
@@ -867,11 +874,16 @@ export function VsmDiagram() {
                     <text x="50" y="34" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="13">
                       I
                     </text>
-                    <text x="50" y="58" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="10">
+                    {/* Badge Jumlah Satuan Fisik (Inventory Count) */}
+                    <rect x="8" y="48" width="84" height="17" rx="8.5" fill="#fef3c7" stroke="#f59e0b" strokeWidth="0.8" />
+                    <text x="50" y="60.5" textAnchor="middle" fill="#92400e" fontWeight="bold" fontSize="9">
+                      Qty: {step.inventoryQty} {step.inventoryUnit}
+                    </text>
+                    <text x="50" y="77" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="9.5">
                       Wait: {step.waitTime} m
                     </text>
-                    <text x="50" y="71" textAnchor="middle" fill="#64748b" fontSize="8.5">
-                      {idx === 1 ? '(Batch 5 nota)' : idx === 2 ? '(Delay koki)' : '(Delay panggil)'}
+                    <text x="50" y="89" textAnchor="middle" fill="#64748b" fontSize="8">
+                      ({step.inventoryLabel ?? (idx === 1 ? 'Batch 5 nota' : idx === 2 ? 'Delay koki' : 'Delay panggil')})
                     </text>
 
                     {/* Push Arrow 2 (Keluar dari antrean/buffer menuju proses berikutnya) */}
@@ -1259,10 +1271,14 @@ export function VsmDiagram() {
                 <title>Antrean Masuk: Hanya 1 menit karena ada banyak QR code meja dan multi-kiosk</title>
                 <polygon points="25,0 0,50 50,50" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.5" />
                 <text x="25" y="40" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="16">I</text>
-                <text x="25" y="66" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="10.5">
+                <rect x="-10" y="55" width="70" height="16" rx="8" fill="#fef3c7" stroke="#f59e0b" strokeWidth="0.8" />
+                <text x="25" y="66.5" textAnchor="middle" fill="#92400e" fontWeight="bold" fontSize="8.5">
+                  Qty: 1 Orang
+                </text>
+                <text x="25" y="80" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="9.5">
                   Wait: 1m
                 </text>
-                <text x="25" y="78" textAnchor="middle" fill="#64748b" fontSize="8">
+                <text x="25" y="92" textAnchor="middle" fill="#64748b" fontSize="7.5">
                   (Antrean Kiosk)
                 </text>
               </g>
@@ -1349,12 +1365,17 @@ export function VsmDiagram() {
                 <FifoLane x={0} y={0} width={138} height={32} label="FIFO (Max 3)" />
                 {/* Segitiga buffer antrean digital FIFO */}
                 <g transform="translate(48, -48)">
+                  <title>Buffer FIFO KDS: Maksimal 3 pesanan digital mengantre ke koki (Wait Time: 1m)</title>
                   <polygon points="20,0 0,36 40,36" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.2" />
                   <text x="20" y="28" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="13">I</text>
-                  <text x="20" y="48" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="9.5">
+                  <rect x="-16" y="40" width="72" height="15" rx="7.5" fill="#fef3c7" stroke="#f59e0b" strokeWidth="0.8" />
+                  <text x="20" y="51" textAnchor="middle" fill="#92400e" fontWeight="bold" fontSize="7.5">
+                    Max: 3 Pesanan
+                  </text>
+                  <text x="20" y="65" textAnchor="middle" fill="#dc2626" fontWeight="bold" fontSize="9">
                     Wait: 1m
                   </text>
-                  <text x="20" y="58" textAnchor="middle" fill="#64748b" fontSize="7.5">
+                  <text x="20" y="76" textAnchor="middle" fill="#64748b" fontSize="7.5">
                     (Buffer KDS)
                   </text>
                 </g>
@@ -1703,6 +1724,11 @@ export function VsmDiagram() {
               <div className="time-col waste">
                 <span className="time-col-title">⏳ Wait Time (Pemborosan):</span>
                 <span className="time-col-val">{selectedStep.waitTime} Menit</span>
+                {selectedStep.inventoryQty !== undefined && (
+                  <div style={{ margin: '6px 0', padding: '3px 8px', background: '#fef3c7', borderRadius: '4px', fontSize: '11px', color: '#92400e', fontWeight: 'bold', width: 'fit-content' }}>
+                    📦 Antrean Fisik (WIP): {selectedStep.inventoryQty} {selectedStep.inventoryUnit}
+                  </div>
+                )}
                 <p className="time-col-detail">{selectedStep.waitReason}</p>
               </div>
               <div className="time-col value">
@@ -2179,7 +2205,7 @@ export function VsmDiagram() {
                   <tr>
                     <th>Tahap</th>
                     <th>Nama Aktivitas</th>
-                    <th>Wait Time (NVA)</th>
+                    <th>Wait Time &amp; Inventory WIP</th>
                     <th>Process Time (VA)</th>
                     <th>Penyebab Pemborosan (Waste Cause)</th>
                     <th>Peluang Perbaikan (Kaizen)</th>
@@ -2190,7 +2216,14 @@ export function VsmDiagram() {
                     <tr key={step.id}>
                       <td><strong>Tahap {step.id}</strong></td>
                       <td>{step.name}</td>
-                      <td><span className="text-danger font-bold">{step.waitTime} Menit</span></td>
+                      <td>
+                        <span className="text-danger font-bold">{step.waitTime} Menit</span>
+                        {step.inventoryQty !== undefined && (
+                          <div style={{ fontSize: '11px', color: '#92400e', fontWeight: 600, marginTop: '2px' }}>
+                            Qty: {step.inventoryQty} {step.inventoryUnit}
+                          </div>
+                        )}
+                      </td>
                       <td><span className="text-success font-bold">{step.processTime} Menit</span></td>
                       <td className="detail-text">{step.waitReason}</td>
                       <td>

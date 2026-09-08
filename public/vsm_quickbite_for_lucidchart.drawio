@@ -28,8 +28,8 @@
         <!-- ========================================== -->
         <!-- PROSES 1: KASIR                            -->
         <!-- ========================================== -->
-        <mxCell id="inv_p1" value="I&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 10m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Antrean)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
-          <mxGeometry x="45" y="270" width="50" height="50" as="geometry" />
+        <mxCell id="inv_p1" value="I&lt;br&gt;&lt;font color=&quot;#854d0e&quot;&gt;&lt;b&gt;Qty: 5 Orang&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 10m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Antrean Mhs)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=10;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
+          <mxGeometry x="40" y="265" width="60" height="60" as="geometry" />
         </mxCell>
 
         <mxCell id="p1" value="&lt;b&gt;Tahap 1: Kasir&lt;/b&gt;&lt;br&gt;Pemesanan &amp;amp; Pembayaran di Kasir" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e293b;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
@@ -47,8 +47,8 @@
         <mxCell id="push_1_a" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
           <mxGeometry x="303" y="285" width="18" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="inv_p2" value="I&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 5m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Batch 5 nota)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
-          <mxGeometry x="325" y="270" width="50" height="50" as="geometry" />
+        <mxCell id="inv_p2" value="I&lt;br&gt;&lt;font color=&quot;#854d0e&quot;&gt;&lt;b&gt;Qty: 5 Nota&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 5m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Batch 5 Nota)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=10;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
+          <mxGeometry x="320" y="265" width="60" height="60" as="geometry" />
         </mxCell>
         <mxCell id="push_1_b" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
           <mxGeometry x="379" y="285" width="18" height="20" as="geometry" />
@@ -72,8 +72,8 @@
         <mxCell id="push_2_a" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
           <mxGeometry x="583" y="285" width="18" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="inv_p3" value="I&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 3m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Delay Koki)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
-          <mxGeometry x="605" y="270" width="50" height="50" as="geometry" />
+        <mxCell id="inv_p3" value="I&lt;br&gt;&lt;font color=&quot;#854d0e&quot;&gt;&lt;b&gt;Qty: 3 Pesanan&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 3m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Antrean Koki)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=10;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
+          <mxGeometry x="600" y="265" width="60" height="60" as="geometry" />
         </mxCell>
         <mxCell id="push_2_b" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
           <mxGeometry x="659" y="285" width="18" height="20" as="geometry" />
@@ -97,8 +97,8 @@
         <mxCell id="push_3_a" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
           <mxGeometry x="863" y="285" width="18" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="inv_p4" value="I&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 4m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Delay Panggil)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
-          <mxGeometry x="885" y="270" width="50" height="50" as="geometry" />
+        <mxCell id="inv_p4" value="I&lt;br&gt;&lt;font color=&quot;#854d0e&quot;&gt;&lt;b&gt;Qty: 3 Porsi&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 4m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Meja Saji)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=10;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
+          <mxGeometry x="880" y="265" width="60" height="60" as="geometry" />
         </mxCell>
         <mxCell id="push_3_b" value="" style="shape=singleArrow;direction=east;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.5;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
           <mxGeometry x="939" y="285" width="18" height="20" as="geometry" />
@@ -216,8 +216,8 @@
         </mxCell>
 
         <!-- TAHAP 1: KIOSK PEMESANAN DIGITAL -->
-        <mxCell id="wc_inv1" value="I&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 1m&lt;/b&gt;&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=11;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="wc_1">
-          <mxGeometry x="50" y="270" width="45" height="45" as="geometry" />
+        <mxCell id="wc_inv1" value="I&lt;br&gt;&lt;font color=&quot;#854d0e&quot;&gt;&lt;b&gt;Qty: 1 Orang&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;&lt;b&gt;Wait: 1m&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(Antrean Kiosk)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=10;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="wc_1">
+          <mxGeometry x="45" y="265" width="55" height="55" as="geometry" />
         </mxCell>
 
         <mxCell id="wc_p1" value="&lt;b&gt;Tahap 1: Pemesanan Digital&lt;/b&gt;&lt;br&gt;Self-Service Kiosk / QR Menu" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e293b;strokeWidth=2;fontSize=11;" vertex="1" parent="wc_1">
@@ -228,8 +228,8 @@
         </mxCell>
 
         <!-- FIFO LANE: PENGHUBUNG KIOSK KE WORKCELL -->
-        <mxCell id="wc_fifo" value="&lt;b&gt;FIFO Lane (Max 3)&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;Wait: 1m&lt;/font&gt;" style="shape=mxgraph.vsm.fifo_sequence_flow;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#059669;strokeWidth=2;fontSize=10;fontColor=#047857;" vertex="1" parent="wc_1">
-          <mxGeometry x="320" y="275" width="120" height="35" as="geometry" />
+        <mxCell id="wc_fifo" value="&lt;b&gt;FIFO Lane (Max 3 Pesanan)&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#dc2626&quot;&gt;Wait: 1m&lt;/font&gt;" style="shape=mxgraph.vsm.fifo_sequence_flow;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#059669;strokeWidth=2;fontSize=10;fontColor=#047857;" vertex="1" parent="wc_1">
+          <mxGeometry x="315" y="275" width="130" height="35" as="geometry" />
         </mxCell>
 
         <!-- TAHAP 2: THE WORKCELL (NOTASI RESMI U-SHAPED WORKCELL) -->
