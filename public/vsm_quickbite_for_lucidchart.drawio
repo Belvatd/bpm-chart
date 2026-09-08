@@ -50,9 +50,9 @@
           <mxGeometry x="710" y="155" width="60" height="60" as="geometry" />
         </mxCell>
 
-        <!-- PUSH ARROW DARI KULKAS KE PROSES MEMASAK (AMBIL BAHAN) -->
-        <mxCell id="push_raw_p3" value="" style="shape=singleArrow;direction=south;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#475569;strokeWidth=1.2;arrowWidth=0.45;arrowSize=0.35;" vertex="1" parent="1">
-          <mxGeometry x="730" y="218" width="20" height="18" as="geometry" />
+        <!-- PHYSICAL PULL DARI KULKAS KE PROSES MEMASAK (AMBIL BAHAN) -->
+        <mxCell id="pull_raw_p3" value="&lt;b&gt;Physical Pull&lt;/b&gt;&lt;br&gt;(Ambil Bahan)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0d9488;strokeWidth=2;fontSize=8;fontColor=#0f766e;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="inv_raw" target="p3">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
         <!-- ALIRAN PELANGGAN DATANG MENGANTRE DI KASIR -->

@@ -560,19 +560,19 @@ export function VsmDiagram() {
                   (Pasokan 1 Minggu)
                 </text>
 
-                {/* Panah Dorong (Push) Vertikal: Koki Ambil Bahan ke Kotak Memasak */}
+                {/* Panah Tarik Fisik (Physical Pull / Material Withdrawal): Koki Mengambil Bahan Sesuai Pesanan */}
                 <g transform="translate(17, 84)">
-                  <title>Ambil Bahan Baku: Koki mengambil ayam, telur, dan beras dari kulkas saat mulai memasak di Tahap 3</title>
+                  <title>Physical Pull (Penarikan Material): Koki menarik/mengambil bahan baku segar dari kulkas saat ada pesanan masuk (Demand-driven)</title>
+                  {/* Ikon Resmi Lean VSM Material Pull: Panah Kontur Terbuka */}
                   <path
-                    d="M 4,0 L 12,0 L 12,8 L 16,8 L 8,17 L 0,8 L 4,8 Z"
-                    fill="#f8fafc"
-                    stroke="#475569"
-                    strokeWidth="1.2"
+                    d="M 4,0 L 12,0 L 12,8 L 17,8 L 8,18 L -1,8 L 4,8 Z"
+                    fill="#ffffff"
+                    stroke="#0d9488"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
                   />
-                  <line x1="4" y1="3" x2="12" y2="3" stroke="#94a3b8" strokeWidth="0.8" />
-                  <line x1="4" y1="6" x2="12" y2="6" stroke="#94a3b8" strokeWidth="0.8" />
-                  <text x="22" y="11" fill="#475569" fontSize="7.5" fontWeight="600">
-                    Ambil Bahan
+                  <text x="23" y="11" fill="#0f766e" fontSize="7.5" fontWeight="bold">
+                    Physical Pull (Ambil Bahan)
                   </text>
                 </g>
               </g>
