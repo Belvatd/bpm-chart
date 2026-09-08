@@ -45,9 +45,9 @@
           </mxGeometry>
         </mxCell>
 
-        <!-- SEGITIGA INVENTORY: KULKAS & GUDANG BAHAN BAKU (DI ATAS PROSES MEMASAK) -->
-        <mxCell id="inv_raw" value="I&lt;br&gt;&lt;font color=&quot;#854d0e&quot;&gt;&lt;b&gt;Stok: 100 Porsi&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;Kulkas Bahan&lt;/b&gt;&lt;br&gt;&lt;font size=&quot;1&quot; color=&quot;#64748b&quot;&gt;(1 Minggu)&lt;/font&gt;" style="triangle;whiteSpace=wrap;html=1;direction=north;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=1.5;fontSize=9;fontStyle=1;fontColor=#854d0e;" vertex="1" parent="1">
-          <mxGeometry x="710" y="155" width="60" height="60" as="geometry" />
+        <!-- SUPERMARKET BAHAN BAKU: KULKAS TERKONTROL (DI ATAS PROSES MEMASAK) -->
+        <mxCell id="inv_raw" value="&lt;b&gt;SUPERMARKET&lt;/b&gt;&lt;br&gt;&lt;b&gt;Kulkas Bahan&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#0f766e&quot;&gt;&lt;b&gt;Max: 100 Porsi&lt;/b&gt;&lt;/font&gt;" style="shape=mxgraph.vsm.supermarket;whiteSpace=wrap;html=1;fillColor=#f0fdfa;strokeColor=#0d9488;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#0f766e;" vertex="1" parent="1">
+          <mxGeometry x="710" y="155" width="60" height="50" as="geometry" />
         </mxCell>
 
         <!-- PHYSICAL PULL DARI KULKAS KE PROSES MEMASAK (AMBIL BAHAN) -->

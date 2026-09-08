@@ -538,31 +538,43 @@ export function VsmDiagram() {
               </g>
 
               {/* ============================================================ */}
-              {/* SEGITIGA INVENTORY: GUDANG BAHAN BAKU / KULKAS (DI ATAS TAHAP 3)*/}
+              {/* SUPERMARKET BAHAN BAKU: KULKAS TERKONTROL (DI ATAS TAHAP 3)  */}
               {/* ============================================================ */}
               <g transform="translate(695, 168)">
-                <title>Gudang Bahan Baku / Kulkas: Persediaan bahan baku segar untuk 100 porsi masakan (Pasokan Mingguan)</title>
-                {/* Segitiga Kuning Lean VSM */}
-                <polygon points="25,0 8,38 42,38" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.5" />
-                <text x="25" y="30" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="12.5">
-                  I
+                <title>Supermarket Persediaan Terkontrol: Kulkas bahan baku dengan batas kuota maksimum 100 porsi (Alur Tarik / Pull System)</title>
+                {/* Simbol Resmi Supermarket Lean VSM (Rak Bersekat Terbuka) */}
+                <path
+                  d="M 5,38 L 5,2 L 45,2 L 45,38"
+                  fill="#f0fdfa"
+                  stroke="#0d9488"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+                <line x1="5" y1="14" x2="38" y2="14" stroke="#0d9488" strokeWidth="2" />
+                <line x1="5" y1="26" x2="38" y2="26" stroke="#0d9488" strokeWidth="2" />
+                <text x="25" y="21" textAnchor="middle" fill="#0f766e" fontSize="8" fontWeight="bold">
+                  SUPER
                 </text>
-                {/* Badge Jumlah Persediaan Bahan Baku */}
-                <rect x="-20" y="42" width="90" height="17" rx="8.5" fill="#fef3c7" stroke="#f59e0b" strokeWidth="0.8" />
-                <text x="25" y="54.5" textAnchor="middle" fill="#92400e" fontWeight="bold" fontSize="9">
-                  Stok: 100 Porsi
+                <text x="25" y="33" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">
+                  MARKET
                 </text>
-                {/* Label Kulkas */}
+
+                {/* Badge Jumlah Persediaan Terkontrol Supermarket */}
+                <rect x="-24" y="42" width="98" height="17" rx="8.5" fill="#ccfbf1" stroke="#14b8a6" strokeWidth="0.8" />
+                <text x="25" y="54.5" textAnchor="middle" fill="#0f766e" fontWeight="bold" fontSize="9">
+                  Max: 100 Porsi
+                </text>
+                {/* Label Supermarket Kulkas */}
                 <text x="25" y="70" textAnchor="middle" fill="#0f172a" fontWeight="bold" fontSize="9">
-                  Kulkas &amp; Bahan Baku
+                  Supermarket Kulkas
                 </text>
                 <text x="25" y="80" textAnchor="middle" fill="#64748b" fontSize="7.5">
-                  (Pasokan 1 Minggu)
+                  (Rak Bahan Terkontrol)
                 </text>
 
                 {/* Panah Tarik Fisik (Physical Pull / Material Withdrawal): Koki Mengambil Bahan Sesuai Pesanan */}
                 <g transform="translate(17, 84)">
-                  <title>Physical Pull (Penarikan Material): Koki menarik/mengambil bahan baku segar dari kulkas saat ada pesanan masuk (Demand-driven)</title>
+                  <title>Physical Pull (Penarikan Material): Koki menarik/mengambil bahan baku segar dari supermarket kulkas saat ada pesanan masuk (Demand-driven)</title>
                   {/* Ikon Resmi Lean VSM Material Pull: Panah Kontur Terbuka */}
                   <path
                     d="M 4,0 L 12,0 L 12,8 L 17,8 L 8,18 L -1,8 L 4,8 Z"
