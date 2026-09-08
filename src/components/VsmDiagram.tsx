@@ -501,19 +501,80 @@ export function VsmDiagram() {
                 </text>
               </g>
 
-              {/* Alur Pengiriman Bahan Baku dari Supplier ke Antrean / Tenant */}
+              {/* ============================================================ */}
+              {/* ALUR PENGIRIMAN FISIK BAHAN BAKU (EXTERNAL SHIPMENT TRUCK)   */}
+              {/* Panah Tebal Berongga: Supplier -> Kulkas / Gudang Bahan Dapur*/}
+              {/* ============================================================ */}
+              {/* Jalur Panah Tebal Berongga (Broad Hollow Arrow) */}
               <path
-                d="M 115,100 L 115,195 L 45,195 L 45,270"
+                d="M 115,100 L 115,140 L 720,140 L 720,165"
                 fill="none"
-                stroke="#64748b"
-                strokeWidth="1.8"
-                markerEnd="url(#vsm-arrow)"
+                stroke="#475569"
+                strokeWidth="7"
+                strokeLinejoin="round"
               />
-              <g transform="translate(55, 175)">
-                <rect x="-4" y="-10" width="80" height="20" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1" rx="3" />
-                <text x="36" y="4" textAnchor="middle" fill="#475569" fontSize="8" fontWeight="600">
-                  🚚 Pasokan Harian
+              <path
+                d="M 115,98 L 115,140 L 720,140 L 720,160"
+                fill="none"
+                stroke="#f8fafc"
+                strokeWidth="3.5"
+                strokeLinejoin="round"
+              />
+              {/* Kepala Panah Berongga Menghadap ke Bawah (ke puncak segitiga kulkas) */}
+              <polygon
+                points="720,168 712,154 728,154"
+                fill="#f8fafc"
+                stroke="#475569"
+                strokeWidth="1.8"
+              />
+
+              {/* Badge Truk Pengiriman Bahan Baku */}
+              <g transform="translate(365, 140)">
+                <title>Alur Pengiriman Material Fisik (External Shipment): Distributor mengantar bahan makanan segar langsung ke dapur</title>
+                <rect x="-115" y="-12" width="230" height="24" fill="#ffffff" stroke="#475569" strokeWidth="1.5" rx="12" filter="url(#vsm-shadow)" />
+                <text x="0" y="4.5" textAnchor="middle" fill="#0f172a" fontSize="9.5" fontWeight="bold">
+                  🚚 Pasokan Mingguan (Ayam, Telur, Beras)
                 </text>
+              </g>
+
+              {/* ============================================================ */}
+              {/* SEGITIGA INVENTORY: GUDANG BAHAN BAKU / KULKAS (DI ATAS TAHAP 3)*/}
+              {/* ============================================================ */}
+              <g transform="translate(695, 168)">
+                <title>Gudang Bahan Baku / Kulkas: Persediaan bahan baku segar untuk 100 porsi masakan (Pasokan Mingguan)</title>
+                {/* Segitiga Kuning Lean VSM */}
+                <polygon points="25,0 8,38 42,38" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.5" />
+                <text x="25" y="30" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="12.5">
+                  I
+                </text>
+                {/* Badge Jumlah Persediaan Bahan Baku */}
+                <rect x="-20" y="42" width="90" height="17" rx="8.5" fill="#fef3c7" stroke="#f59e0b" strokeWidth="0.8" />
+                <text x="25" y="54.5" textAnchor="middle" fill="#92400e" fontWeight="bold" fontSize="9">
+                  Stok: 100 Porsi
+                </text>
+                {/* Label Kulkas */}
+                <text x="25" y="70" textAnchor="middle" fill="#0f172a" fontWeight="bold" fontSize="9">
+                  Kulkas &amp; Bahan Baku
+                </text>
+                <text x="25" y="80" textAnchor="middle" fill="#64748b" fontSize="7.5">
+                  (Pasokan 1 Minggu)
+                </text>
+
+                {/* Panah Dorong (Push) Vertikal: Koki Ambil Bahan ke Kotak Memasak */}
+                <g transform="translate(17, 84)">
+                  <title>Ambil Bahan Baku: Koki mengambil ayam, telur, dan beras dari kulkas saat mulai memasak di Tahap 3</title>
+                  <path
+                    d="M 4,0 L 12,0 L 12,8 L 16,8 L 8,17 L 0,8 L 4,8 Z"
+                    fill="#f8fafc"
+                    stroke="#475569"
+                    strokeWidth="1.2"
+                  />
+                  <line x1="4" y1="3" x2="12" y2="3" stroke="#94a3b8" strokeWidth="0.8" />
+                  <line x1="4" y1="6" x2="12" y2="6" stroke="#94a3b8" strokeWidth="0.8" />
+                  <text x="22" y="11" fill="#475569" fontSize="7.5" fontWeight="600">
+                    Ambil Bahan
+                  </text>
+                </g>
               </g>
 
               {/* 2. Production Control: Pengelola Kasir Tenant (Top-Center: Kotak Persegi Panjang Standar VSM) */}
@@ -603,13 +664,13 @@ export function VsmDiagram() {
 
               {/* Alur Instruksi Kerja Kasir ke Tahap 1 */}
               <path
-                d="M 530,100 L 530,180 L 210,180 L 210,270"
+                d="M 510,100 L 510,118 L 210,118 L 210,270"
                 fill="none"
                 stroke="#64748b"
                 strokeWidth="1.6"
                 markerEnd="url(#vsm-arrow)"
               />
-              <text x="360" y="172" textAnchor="middle" fill="#64748b" fontSize="9.5">
+              <text x="218" y="195" fill="#64748b" fontSize="9.5">
                 Instruksi Nota Fisik Manual
               </text>
             </g>
@@ -842,6 +903,14 @@ export function VsmDiagram() {
                 {idx === 0 && (
                   <g transform={`translate(${x - 85}, ${processY + 25})`}>
                     <title>{`Antrean Masuk: ${step.inventoryQty ?? 5} ${step.inventoryUnit ?? 'Orang'} (Waktu Tunggu: ${step.waitTime} Menit)`}</title>
+                    {/* Indikator Aliran Mahasiswa Datang Mengantre */}
+                    <g transform="translate(-18, 21)">
+                      <title>Aliran Pelanggan: Mahasiswa datang memesan makan siang dan masuk antrean kasir</title>
+                      <path d="M -18,0 L 2,0" stroke="#2563eb" strokeWidth="2" markerEnd="url(#vsm-arrow)" />
+                      <text x="-8" y="-7" textAnchor="middle" fill="#2563eb" fontSize="8" fontWeight="bold">
+                        🚶 Datang
+                      </text>
+                    </g>
                     {/* Segitiga Kuning Lean VSM */}
                     <polygon points="25,0 8,43 42,43" fill="#fef08a" stroke="#ca8a04" strokeWidth="1.5" />
                     <text x="25" y="34" textAnchor="middle" fontWeight="bold" fill="#854d0e" fontSize="13">
@@ -894,7 +963,7 @@ export function VsmDiagram() {
                 {/* KAIZEN BURST (Bintang Ledakan Masalah) */}
                 {showKaizen && step.kaizenBurst && (
                   <g
-                    transform={`translate(${x + processWidth / 2}, ${processY - 60})`}
+                    transform={`translate(${idx === 2 ? x + processWidth / 2 + 35 : x + processWidth / 2}, ${processY - 60})`}
                     className="kaizen-burst"
                   >
                     {/* Polygon Bentuk Bintang Burst */}
